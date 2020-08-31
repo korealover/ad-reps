@@ -9,7 +9,7 @@ class Manager extends Controller {
 	}
 
 	public function view($page = 'login') {
-		$session = \Config\Services::session($config);
+		$session = \Config\Services::session();
 		if ( ! is_file(APPPATH.'/Views/manager/'.$page.'.php')) {
 			// Whoops, we don't have a page for that!
 			throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
@@ -30,7 +30,7 @@ class Manager extends Controller {
 	}
 
 	public function login_proc() {
-		$session = \Config\Services::session($config);
+		$session = \Config\Services::session();
 		$db = \Config\Database::connect();
 		$admin_id = $this->request->getPost('admin_id');
 		$admin_pwd = $this->request->getPost('admin_pwd');
@@ -67,7 +67,7 @@ class Manager extends Controller {
 	}
 
 	public function logout() {
-		$session = \Config\Services::session($config);
+		$session = \Config\Services::session();
 		$session->destroy();
 		echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/login'>";
 		exit;
