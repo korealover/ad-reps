@@ -14,6 +14,22 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+<script language="javascript">
+	function fcheck_login() {
+		if ($("#admin_id").val() == "") {
+			alert("ID을 입력하세요.")
+			$("#admin_id").focus()
+			return;
+		}
+		if ($("#admin_pwd").val() == "") {
+			alert("패스워드가 입력되지 않았습니다.")
+			$("#admin_pwd").val().focus()
+			return;
+		}
+		$("#sfm").submit();
+	return;
+}
+</script>
   </head>
   <body class="login-bg">
   	<div class="header">
@@ -33,16 +49,18 @@
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<div class="login-wrapper">
-			        <div class="box">
-			            <div class="content-wrap">
-			                <h6>Admin Login</h6>
-			                <input class="form-control" type="text" placeholder="아이디">
-			                <input class="form-control" type="password" placeholder="Password">
-			                <div class="action">
-			                    <a class="btn btn-primary signup" href="main">Login</a>
-			                </div>                
-			            </div>
-			        </div>
+					<form method="post" id="sfm" name="sfm" action="/manager/login_proc">
+					<div class="box">
+						<div class="content-wrap">
+							<h6>Admin Login</h6>
+							<input class="form-control" type="text" placeholder="아이디" id="admin_id" name="admin_id">
+							<input class="form-control" type="password" placeholder="Password" id="admin_pwd" name="admin_pwd">
+							<div class="action">
+								<a class="btn btn-primary signup" href="javascript:fcheck_login();">Login</a>
+							</div>                
+						</div>
+					</div>
+					</form>
 
 			        <div class="already">
 			            <p>Don't have an account yet?</p>
