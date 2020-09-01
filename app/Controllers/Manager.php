@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
 
+use App\Models\DisplayModel;
 use CodeIgniter\Controller;
 
 class Manager extends Controller {
@@ -23,6 +24,13 @@ class Manager extends Controller {
 				echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/login'>";
 				exit;
 			}
+			if ($page == 'display') {
+                $model = new DisplayModel();
+                $data = [
+                    'display' => $model->getNews(),
+                    'title' => 'display archive',
+                ];
+            }
 		}
 		//echo view('templates/header', $data);
 		echo view('manager/'.$page, $data);
