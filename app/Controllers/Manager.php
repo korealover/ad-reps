@@ -28,7 +28,27 @@ class Manager extends Controller {
                 $model = new DisplayModel();
                 $data = [
                     'display' => $model->getNews(),
-                    'title' => 'display archive',
+                    'current_left' => 'display',
+                ];
+            } elseif ($page == 'board') {
+                $data = [
+                    'current_left' => 'board',
+                ];
+            } elseif ($page == 'event') {
+                $data = [
+                    'current_left' => 'event',
+                ];
+            } elseif ($page == 'stats') {
+                $data = [
+                    'current_left' => 'stats',
+                ];
+            } elseif ($page == 'admin') {
+                $data = [
+                    'current_left' => 'admin',
+                ];
+            } else {
+                $data = [
+                    'current_left' => 'main',
                 ];
             }
 		}

@@ -1,9 +1,9 @@
-<em>&copy; 2019</em>
+<footer>
+    <div class="container">
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="/static/bootstrap/js/bootstrap.min.js"></script>
-	<script src="/static/js/custom.js"></script>
-</body>
-</html>
+        <div class="copy text-center">
+            Copyright 2020 <a href='/'>대한민국 공익광고제 공모전</a>
+        </div>
+
+    </div>
+</footer>
