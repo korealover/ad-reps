@@ -29,7 +29,16 @@
                 </div>
             </div>
             <div class="col-md-5">
-
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="input-group form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+	                         <button class="btn btn-primary" type="button">Search</button>
+	                       </span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-2">
                 <div class="navbar navbar-inverse" role="banner">
@@ -54,54 +63,39 @@
 <div class="page-content">
     <div class="row">
         <?= $this->include('templates/menu') ?>
-        <div class="col-md-10 text-right">
+        <div class="col-md-10">
 
-            <div class="content-box-large">
-                <div class="panel-heading">
-                    <div class="panel-title">공지사항 관리</div>
+            <div class="col-md-10">
+                <div class="content-box-large">
+                    <div class="panel-heading">
+                        <div class="panel-title">공지사항 관리</div>
 
-
-                        <div class="col-md-3 text-right">
-                            <div class="input-group form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-	                         <button class="btn btn-primary" type="button">Search</button>
-	                       </span>
-                            </div>
+                        <div class="panel-options">
+                            <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                            <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
                         </div>
-
-                </div>
-
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped"">
-                            <thead>
-                            <tr>
-                                <th style="width: 7%;text-align: center;">번호</th>
-                                <th style="width: *;text-align: center;">제목</th>
-                                <th style="width: 15%;text-align: center;">등록일</th>
-                                <th style="width: 10%;text-align: center;">조회</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            foreach ($list as $row) {
-                            ?>
-                            <tr style="text-align: center;">
-                                <td><?=$row->id?></td>
-                                <td style="text-align: left;"><a href="/manager/view/boardv/<?=$row->id?>"><?=$row->subject?></a></td>
-                                <td><?=$row->reg_date?></td>
-                                <td><?=$row->hits?></td>
-                            </tr>
-                            <?php
-                            }
-                            ?>
-                            </tbody>
-                        </table>
                     </div>
-                </div>
-                <div>
-                    <button class="btn btn-primary">글쓰기</button>
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form" id="fm" name="fm" onsubmit="return fnBoardCk();" action="/manager/board_proc">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">제목</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="in" placeholder="제목">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">내용</label>
+                                <div class="col-sm-10">
+                                    <textarea id="tinymce_full"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10 text-right">
+                                    <button type="submit" class="btn btn-primary">글쓰기</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
@@ -113,6 +107,7 @@
 <?= $this->include('templates/footer') ?>
 
 <link href="/static/vendors/datatables/dataTables.bootstrap.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" type="text/css" href="/static/vendors/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css"></link>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery.js"></script>
@@ -125,7 +120,17 @@
 
 <script src="/static/vendors/datatables/dataTables.bootstrap.js"></script>
 
+
+<script src="/static/vendors/bootstrap-wysihtml5/lib/js/wysihtml5-0.3.0.js"></script>
+<script src="/static/vendors/bootstrap-wysihtml5/src/bootstrap-wysihtml5.js"></script>
+
+<script src="/static/vendors/ckeditor/ckeditor.js"></script>
+<script src="/static/vendors/ckeditor/adapters/jquery.js"></script>
+
+<script type="text/javascript" src="/static/vendors/tinymce/js/tinymce/tinymce.min.js"></script>
 <script src="/static/js/custom.js"></script>
 <script src="/static/js/tables.js"></script>
+<script src="/static/js/editors.js"></script>
+
 </body>
 </html>

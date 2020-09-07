@@ -63,12 +63,12 @@
 <div class="page-content">
     <div class="row">
         <?= $this->include('templates/menu') ?>
-        <div class="col-md-10">
+        <div class="col-md-10 text-right">
 
-            <div class="col-md-6">
+            <div class="col-md-10">
                 <div class="content-box-large">
                     <div class="panel-heading">
-                        <div class="panel-title">게시판 관리</div>
+                        <div class="panel-title">공지사항 관리</div>
 
                         <div class="panel-options">
                             <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
@@ -76,45 +76,26 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">제목</label>
-                                <div class="col-sm-10">
-                                    <?=$vs['subject']?>
-                                </div>
+                        <table id="user" class="table table-bordered table-striped" style="clear: both">
+                            <tbody>
+                            <tr>
+                                <td width="25%" class="text-center"><b>제목</b></td>
+                                <td width="75%"><?= $vs['subject'] ?></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"><b>내용</b></td>
+                                <td style="height: 100px;"><?= $vs['contents'] ?></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" class="btn btn-primary" onclick="javascript:location.href='/manager/view/boardw'">글쓰기</button>
+                                <button type="button" class="btn btn-info" onclick="javascript:location.href='/manager/view/board'">목록</button>
+                                <button type="button" class="btn btn-success" onclick="javascript:location.href='/manager/view/boarde/'">수정</button>
+                                <button type="button" class="btn btn-danger" onclick="javascript:location.href='/manager/boardd/'">삭제</button>
                             </div>
-                            <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">내용</label>
-                                <div class="col-sm-10">
-                                    <?=$vs['contents']?>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Textarea</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" placeholder="Textarea" rows="3"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> Checkbox
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> Checkbox
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Sign in</button>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

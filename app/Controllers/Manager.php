@@ -38,7 +38,7 @@ class Manager extends Controller {
                     'current_left' => 'board',
                     'list' => $model->get_list(),
                 ];
-            } elseif ($page == 'board_view') {
+            } elseif ($page == 'boardv') {
                 $model = new BoardModel();
                 $uri = new \CodeIgniter\HTTP\URI();
                 $uri = $this->request->uri;
@@ -47,6 +47,16 @@ class Manager extends Controller {
                 $data = [
                     'current_left' => 'board',
                     'vs' => $model->get_view('board', $id),
+                ];
+
+            } elseif ($page == 'boardw') {
+                $model = new BoardModel();
+                $uri = new \CodeIgniter\HTTP\URI();
+                $uri = $this->request->uri;
+                $id = $uri->getSegment(4);
+                echo  $id;
+                $data = [
+                    'current_left' => 'board',
                 ];
 
             } elseif ($page == 'event') {
@@ -115,4 +125,8 @@ class Manager extends Controller {
 		echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/login'>";
 		exit;
 	}
+
+	public function board_proc() {
+
+    }
 }
