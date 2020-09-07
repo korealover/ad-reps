@@ -65,40 +65,57 @@
         <?= $this->include('templates/menu') ?>
         <div class="col-md-10">
 
-            <div class="content-box-large">
-                <div class="panel-heading">
-                    <div class="panel-title">게시판 관리</div>
-                </div>
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped"">
-                            <thead>
-                            <tr>
-                                <th style="width: 7%;text-align: center;">번호</th>
-                                <th style="width: *;text-align: center;">제목</th>
-                                <th style="width: 10%;text-align: center;">등록일</th>
-                                <th style="width: 10%;text-align: center;">조회</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            foreach ($list as $row) {
-                            ?>
-                            <tr style="text-align: center;">
-                                <td><?=$row->id?></td>
-                                <td style="text-align: left;"><a href="/manager/view/board_view/<?=$row->id?>"><?=$row->subject?></a></td>
-                                <td><?=$row->reg_date?></td>
-                                <td><?=$row->hits?></td>
-                            </tr>
-                            <?php
-                            }
-                            ?>
-                            </tbody>
-                        </table>
+            <div class="col-md-6">
+                <div class="content-box-large">
+                    <div class="panel-heading">
+                        <div class="panel-title">게시판 관리</div>
+
+                        <div class="panel-options">
+                            <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                            <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <button class="btn btn-primary">글쓰기</button>
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">제목</label>
+                                <div class="col-sm-10">
+                                    <?=$vs['subject']?>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">내용</label>
+                                <div class="col-sm-10">
+                                    <?=$vs['contents']?>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Textarea</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" placeholder="Textarea" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Checkbox
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Checkbox
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 

@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
 
+use App\Models\BoardModel;
 use App\Models\DisplayModel;
 use CodeIgniter\Controller;
 
@@ -31,9 +32,23 @@ class Manager extends Controller {
                     'current_left' => 'display',
                 ];
             } elseif ($page == 'board') {
+			    $model = new BoardModel();
+//			    $id = $this->url->segment(4);
                 $data = [
                     'current_left' => 'board',
+                    'list' => $model->get_list(),
                 ];
+            } elseif ($page == 'board_view') {
+                $model = new BoardModel();
+                $uri = new \CodeIgniter\HTTP\URI();
+                $uri = $this->request->uri;
+                $id = $uri->getSegment(4);
+                echo  $id;
+                $data = [
+                    'current_left' => 'board',
+                    'vs' => $model->get_view('board', $id),
+                ];
+
             } elseif ($page == 'event') {
                 $data = [
                     'current_left' => 'event',
