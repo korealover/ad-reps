@@ -2,6 +2,7 @@
 
 use App\Models\BoardModel;
 use App\Models\DisplayModel;
+use App\Models\LoginModel;
 use CodeIgniter\Controller;
 
 class Manager extends Controller {
@@ -10,6 +11,11 @@ class Manager extends Controller {
         $this->view();
 	}
 
+    /**
+     * 관리 화면 관련 처리
+     * @param string $page
+     *
+     */
 	public function view($page = 'login') {
 		$session = \Config\Services::session();
 		if ( ! is_file(APPPATH.'/Views/manager/'.$page.'.php')) {
@@ -25,13 +31,14 @@ class Manager extends Controller {
 				echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/login'>";
 				exit;
 			}
-			if ($page == 'display') {
+
+			if ($page == 'display') { /** 전시관 관리 */
                 $model = new DisplayModel();
                 $data = [
-                    'display' => $model->getNews(),
                     'current_left' => 'display',
+                    'list' => $model->get_list(),
                 ];
-            } elseif ($page == 'board') {
+            } elseif ($page == 'board') { /** 게시판 관리 - list */
 			    $model = new BoardModel();
 //			    $id = $this->url->segment(4);
                 $data = [
@@ -82,21 +89,21 @@ class Manager extends Controller {
 		//echo view('templates/footer', $data);
 	}
 
+    /**
+     * 로그인 처리
+     */
 	public function login_proc() {
 		$session = \Config\Services::session();
-		$db = \Config\Database::connect();
 		$admin_id = $this->request->getPost('admin_id');
 		$admin_pwd = $this->request->getPost('admin_pwd');
-		//echo $admin_id;
-		//echo $admin_pwd;
-		
-		$sql = "Select * from tbl_admin where admin_id = :admin_id: and admin_pwd = password(:admin_pwd:) ";
-		$query = $db->query($sql, [
-			'admin_id' => $admin_id,
-			'admin_pwd' => $admin_pwd
-		]);
+        $model = new LoginModel();
 
-		$row = $query->getRow();
+        $logindata  = array(
+            'admin_id' => $admin_id,
+			'admin_pwd' => $admin_pwd
+        );
+        $row = $model->get_logon_check($logindata);
+
 		if (isset($row)) {
 			$newdata = array(
 					'admin_number' => $row->number,
@@ -109,16 +116,18 @@ class Manager extends Controller {
 			echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/main'>";
 			exit;
 		} else {
+
 			echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/login'>";
 			exit;
 		}
 
-		print_r($session->get('logged_admin'));
-
-		$db = db_connect();
+//		print_r($session->get('logged_admin'));
 
 	}
 
+    /**
+     * 로그아웃 처리
+     */
 	public function logout() {
 		$session = \Config\Services::session();
 		$session->destroy();
@@ -126,7 +135,29 @@ class Manager extends Controller {
 		exit;
 	}
 
+    /**
+     * 게시판 저장 처리
+     */
 	public function board_proc() {
 
+    }
+
+    /**
+     * 전시관 저장
+     */
+    public function displays() {
+        $session = \Config\Services::session();
+        $id = $this->request->getPost('id');
+        $url = $this->request->getPost('url');
+        $model = new DisplayModel();
+        $newdata = array(
+            'id' => $id,
+            'url' => $url
+        );
+
+        $result = $model->get_save($newdata);
+
+        echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/display'>";
+        exit;
     }
 }

@@ -17,6 +17,19 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <script>
+        function fnDisplaySave(id) {
+            var url = $("#url" + id).val();
+            if (url == "") {
+                alert("VR URL을 입력해 주세요.");
+                $("#url" + id).focus();
+                return;
+            }
+            $("#id").val(id);
+            $("#url").val(url);
+            $("#sfrm").submit();
+        }
+    </script>
 </head>
 <body>
 <div class="header">
@@ -59,7 +72,10 @@
         </div>
     </div>
 </div>
-
+<form id="sfrm" name="sfrm" method="post" action="/manager/displays">
+    <input type="hidden" id="id" name="id">
+    <input type="hidden" id="url" name="url">
+</form>
 <div class="page-content">
     <div class="row">
         <?= $this->include('templates/menu') ?>
@@ -74,41 +90,29 @@
                         <table class="table table-striped"">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>구분</th>
-                                <th>VR URL</th>
-                                <th>최종 업데이트일</th>
-                                <th>저장</th>
+                                <th class="text-center">#</th>
+                                <th class="text-center">구분</th>
+                                <th class="text-center">VR URL</th>
+                                <th class="text-center">최종 업데이트일</th>
+                                <th class="text-center">저장</th>
                             </tr>
                             </thead>
                             <tbody>
+                            <?php
+                            foreach ($list as $row) {
+                            ?>
                             <tr>
-                                <td>1</td>
-                                <td>역사관</td>
-                                <td><input type="text" class="form-control"></td>
-                                <td>@mdo</td>
-                                <td>
-                                    <button class="btn btn-primary">저장</button>
+                                <td style="text-align: center"><?=$row->id?></td>
+                                <td class="text-center"><?=$row->title?></td>
+                                <td class="text-center"><input type="text" class="form-control" id="url<?=$row->id?>" name="url<?=$row->id?>" value="<?=$row->url?>"></td>
+                                <td class="text-center"><?=$row->upd_dt?></td>
+                                <td class="text-center">
+                                    <button class="btn btn-primary" onclick="fnDisplaySave('<?=$row->id?>');">저장</button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>수상작관</td>
-                                <td><input type="text" class="form-control"></td>
-                                <td>@fat</td>
-                                <td>
-                                    <button class="btn btn-primary">저장</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Larry</td>
-                                <td><input type="text" class="form-control"></td>
-                                <td>@twitter</td>
-                                <td>
-                                    <button class="btn btn-primary">저장</button>
-                                </td>
-                            </tr>
+                            <?php
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>
