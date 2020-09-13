@@ -29,4 +29,17 @@ class BoardModel extends Model {
 
         return $result;
     }
+
+    public function get_save($boarddata) {
+        $db = \Config\Database::connect();
+        $sql = "INSERT INTO board (pid, user_id, user_name, subject, contents, hits, reg_date) VALUES 
+	            (0, :user_id:, :user_name:, :subject:, :contents:, 0, now());";
+
+        if (!$db->query($sql, $boarddata)) {
+            $error = $db->error();
+            return $error;
+        }
+
+        return "200";
+    }
 }

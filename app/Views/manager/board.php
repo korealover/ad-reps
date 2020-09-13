@@ -61,47 +61,49 @@
                     <div class="panel-title">공지사항 관리</div>
 
 
-                        <div class="col-md-3 text-right">
-                            <div class="input-group form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
+                    <div class="col-md-3 text-right">
+                        <div class="input-group form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
 	                         <button class="btn btn-primary" type="button">Search</button>
 	                       </span>
-                            </div>
                         </div>
+                    </div>
 
                 </div>
 
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-striped"">
-                            <thead>
-                            <tr>
-                                <th style="width: 7%;text-align: center;">번호</th>
-                                <th style="width: *;text-align: center;">제목</th>
-                                <th style="width: 15%;text-align: center;">등록일</th>
-                                <th style="width: 10%;text-align: center;">조회</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            foreach ($list as $row) {
+                        <table class="table table-striped"
+                        ">
+                        <thead>
+                        <tr>
+                            <th style="width: 7%;text-align: center;">번호</th>
+                            <th style="width: *;text-align: center;">제목</th>
+                            <th style="width: 15%;text-align: center;">등록일</th>
+                            <th style="width: 10%;text-align: center;">조회</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        foreach ($list as $row) {
                             ?>
                             <tr style="text-align: center;">
-                                <td><?=$row->id?></td>
-                                <td style="text-align: left;"><a href="/manager/view/boardv/<?=$row->id?>"><?=$row->subject?></a></td>
-                                <td><?=$row->reg_date?></td>
-                                <td><?=$row->hits?></td>
+                                <td><?= $row->id ?></td>
+                                <td style="text-align: left;"><a
+                                            href="/manager/view/boardv/<?= $row->id ?>"><?= $row->subject ?></a></td>
+                                <td><?= $row->reg_date ?></td>
+                                <td><?= $row->hits ?></td>
                             </tr>
                             <?php
-                            }
-                            ?>
-                            </tbody>
+                        }
+                        ?>
+                        </tbody>
                         </table>
                     </div>
                 </div>
                 <div>
-                    <button class="btn btn-primary">글쓰기</button>
+                    <button class="btn btn-primary" onclick="javascript:location.href='/manager/view/boardw';">글쓰기</button>
                 </div>
             </div>
 

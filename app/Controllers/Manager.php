@@ -138,7 +138,43 @@ class Manager extends Controller {
     /**
      * 게시판 저장 처리
      */
-	public function board_proc() {
+	public function boardp() {
+        $session = \Config\Services::session();
+        $subject = $this->request->getPost('subject');
+        $contents = $this->request->getPost('ckeditor_standard');
+        $files = $this->request->getFiles();
+
+        if ($files->hasFile('uploadedFile'))
+        {
+            $file = $files->getFile('uploadedfile');
+
+            // Generate a new secure name
+            $name = $file->getRandomName();
+
+            // Move the file to it's new home
+            $file->move('/path/to/dir', $name);
+
+            echo $file->getSize('mb');      // 1.23
+            echo $file->getExtension();     // jpg
+            echo $file->getType();          // image/jpg
+        }
+
+
+
+        $model = new BoardModel();
+        $boarddata = array(
+            'user_id' => $session->get('admin_id'),
+            'user_name' => $session->get('admin_name'),
+            'subject' => $subject,
+            'contents' => $contents,
+        );
+
+        $result = $model->get_save($boarddata);
+
+//        echo $result;
+
+        echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/board'>";
+        exit;
 
     }
 
