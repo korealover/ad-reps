@@ -13,7 +13,16 @@ class BoardModel extends Model {
         $query = $db->query($sql);
         $result = $query -> getResult();
 
+        $db->close();
         return $result;
+    }
+
+    public function get_count($table = 'board') {
+        $db = \Config\Database::connect();
+        $count = $db->table($table)->countAll();
+
+        $db->close();
+        return $count;
     }
 
     public function get_view($table = 'board', $id) {
@@ -27,6 +36,7 @@ class BoardModel extends Model {
 
         $result = $query->getRowArray();
 
+        $db->close();
         return $result;
     }
 
@@ -40,6 +50,7 @@ class BoardModel extends Model {
             return $error;
         }
 
+        $db->close();
         return "200";
     }
 
@@ -53,17 +64,55 @@ class BoardModel extends Model {
             return $error;
         }
 
+        $db->close();
         return "200";
     }
 
     public function get_info($table = 'board', $id) {
         $db = \Config\Database::connect();
         $sql = "SELECT * FROM ".$table." WHERE id = ".$id."";
-        echo $sql;
+        //echo $sql;
         $query = $db->query($sql);
 
         $result = $query->getRowArray();
+        $db->close();
+        return $result;
+    }
 
+    public function get_file_delete($table = 'board', $id) {
+        $db = \Config\Database::connect();
+        $sql = "SELECT * FROM ".$table." WHERE id = ".$id."";
+        $query = $db->query($sql);
+        $row = $query->getRowArray();
+        //첨부파일 삭제
+        if ($row['file_name'] != "") {
+            @unlink(ORG_FILE_PATH . "/" . $row['file_name']);
+        }
+
+        $db->close();
+    }
+
+    public function get_delete($table = 'board', $id) {
+        $db = \Config\Database::connect();
+        $sql = "SELECT * FROM ".$table." WHERE id = ".$id."";
+        $query = $db->query($sql);
+        $row = $query->getRowArray();
+        //첨부파일 삭제
+        if ($row['file_name'] != "") {
+            @unlink(ORG_FILE_PATH . "/" . $row['file_name']);
+        }
+
+        $sql2 = "DELETE FROM ".$table." WHERE id = ".$id."";
+        if ($db->simpleQuery($sql2 ))
+        {
+            $result = "Success!";
+        }
+        else
+        {
+            $result = "Query failed!";
+        }
+
+        $db->close();
         return $result;
     }
 }

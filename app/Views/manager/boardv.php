@@ -24,9 +24,9 @@
                 $("#subject").focus();
                 return false;
             }
-            if ($("#ckeditor_standard").val() == "") {
+            if ($("#ckeditor_full").val() == "") {
                 alert("내용을 등록해주세요")
-                $("#ckeditor_standard").focus();
+                $("#ckeditor_full").focus();
                 return false;
             }
         }
@@ -103,7 +103,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">내용</label>
                                 <div class="col-sm-10">
-                                    <textarea id="ckeditor_standard" name="ckeditor_standard"><?= $vs['contents'] ?></textarea>
+                                    <textarea id="ckeditor_full" name="ckeditor_full"><?= $vs['contents'] ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -127,8 +127,8 @@
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-success">수정</button>
-                                    <button type="button" class="btn btn-info" onclick="javascript:location.href='/manager/view/board'">목록</button>
-                                    <button type="button" class="btn btn-danger" onclick="javascript:location.href='/manager/boardd/'">삭제</button>
+                                    <button type="button" class="btn btn-info" onclick="location.href='/manager/view/board'">목록</button>
+                                    <button type="button" class="btn btn-danger" onclick="location.href='/manager/boardd/<?= $vs['id'] ?>'">삭제</button>
                                 </div>
                             </div>
                         </form>

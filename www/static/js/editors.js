@@ -8,7 +8,7 @@ $(function() {
 		[ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],			// Defines toolbar group without name.
 		{ name: 'basicstyles', items: [ 'Bold', 'Italic' ] }
 	]});
-    $( 'textarea#ckeditor_full' ).ckeditor({width:'98%', height: '150px'});
+    $( 'textarea#ckeditor_full' ).ckeditor({width:'98%', height: '350px'});
 });
 
 // Tiny MCE

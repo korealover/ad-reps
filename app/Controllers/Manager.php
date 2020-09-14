@@ -44,6 +44,7 @@ class Manager extends Controller {
                 $data = [
                     'current_left' => 'board',
                     'list' => $model->get_list(),
+                    'cnt' => $model->get_count(),
                 ];
             } elseif ($page == 'boardv') {
                 $model = new BoardModel();
@@ -139,7 +140,7 @@ class Manager extends Controller {
 	public function boardp() {
         $session = \Config\Services::session();
         $subject = $this->request->getPost('subject');
-        $contents = $this->request->getPost('ckeditor_standard');
+        $contents = $this->request->getPost('ckeditor_full');
         $id = $this->request->getPost('id');
         $mode = $this->request->getPost('mode');
         $file_size = 0;
@@ -157,9 +158,9 @@ class Manager extends Controller {
             $file_name = $name;
             $org_file_name = $file->getName();
 
-            $org_file_path = "D:\projects\dev\ad-reps\www\upload";
+//            $org_file_path = "D:\projects\dev\ad-reps\www\upload";
             // Move the file to it's new home
-            $file->move($org_file_path, $name);
+            $file->move(ORG_FILE_PATH, $name);
             $file_path = "/upload";
 
             $file_size = $file->getSize('mb');      // 1.23
@@ -181,6 +182,9 @@ class Manager extends Controller {
                 $file_name = $row['file_name'];
                 $file_path = $row['file_path'];
                 $org_file_name = $row['org_file_name'];
+            } else {
+                // 수정된 파일 업로드가 있다면 기존 파일 삭제
+                $model->get_file_delete('board', $id);
             }
 
             $boarddata = array(
@@ -228,6 +232,20 @@ class Manager extends Controller {
         $result = $model->get_save($newdata);
 
         echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/display'>";
+        exit;
+    }
+
+    public function boardd() {
+        $session = \Config\Services::session();
+        $model = new BoardModel();
+        $uri = new \CodeIgniter\HTTP\URI();
+        $uri = $this->request->uri;
+        $id = $uri->getSegment(3);
+
+        $result = $model->get_delete('board', $id);
+
+//        echo $result;
+        echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/board'>";
         exit;
     }
 }

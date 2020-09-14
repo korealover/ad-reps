@@ -77,7 +77,7 @@
                         foreach ($list as $row) {
                             ?>
                             <tr style="text-align: center;">
-                                <td><?= $row->id ?></td>
+                                <td><?=$cnt--?></td>
                                 <td style="text-align: left;"><a
                                             href="/manager/view/boardv/<?= $row->id ?>"><?= $row->subject ?></a></td>
                                 <td><?= $row->reg_date ?></td>

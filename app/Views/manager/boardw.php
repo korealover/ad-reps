@@ -24,9 +24,9 @@
                 $("#subject").focus();
                 return false;
             }
-            if ($("#ckeditor_standard").val() == "") {
+            if ($("#ckeditor_full").val() == "") {
                 alert("내용을 등록해주세요")
-                $("#ckeditor_standard").focus();
+                $("#ckeditor_full").focus();
                 return false;
             }
         }
@@ -84,10 +84,10 @@
                     <div class="panel-heading">
                         <div class="panel-title">공지사항 관리</div>
 
-                        <div class="panel-options">
-                            <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                        <!--  <div class="panel-options">
+                           <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
                             <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" id="fm" name="fm" method="post"
@@ -103,7 +103,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">내용</label>
                                 <div class="col-sm-10">
-                                    <textarea id="ckeditor_standard" name="ckeditor_standard"></textarea>
+                                    <textarea id="ckeditor_full" name="ckeditor_full"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
