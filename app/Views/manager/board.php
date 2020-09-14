@@ -59,23 +59,11 @@
             <div class="content-box-large">
                 <div class="panel-heading">
                     <div class="panel-title">공지사항 관리</div>
-
-
-                    <div class="col-md-3 text-right">
-                        <div class="input-group form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-	                         <button class="btn btn-primary" type="button">Search</button>
-	                       </span>
-                        </div>
-                    </div>
-
                 </div>
 
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-striped"
-                        ">
+                        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
                         <thead>
                         <tr>
                             <th style="width: 7%;text-align: center;">번호</th>

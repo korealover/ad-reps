@@ -32,8 +32,8 @@ class BoardModel extends Model {
 
     public function get_save($boarddata) {
         $db = \Config\Database::connect();
-        $sql = "INSERT INTO board (pid, user_id, user_name, subject, contents, hits, reg_date) VALUES 
-	            (0, :user_id:, :user_name:, :subject:, :contents:, 0, now());";
+        $sql = "INSERT INTO board (pid, user_id, user_name, subject, contents, hits, file_size, file_name, file_path, org_file_name, reg_date) VALUES 
+	            (0, :user_id:, :user_name:, :subject:, :contents:, 0, :file_size:, :file_name:, :file_path:, :org_file_name:, now());";
 
         if (!$db->query($sql, $boarddata)) {
             $error = $db->error();
@@ -41,5 +41,29 @@ class BoardModel extends Model {
         }
 
         return "200";
+    }
+
+    public function get_edit($boarddata) {
+        $db = \Config\Database::connect();
+        $sql = "UPDATE board SET subject=:subject:, contents=:contents:, file_size=:file_size:, file_name=:file_name:, file_path=:file_path:
+                , org_file_name=:org_file_name: WHERE id=:id:";
+
+        if (!$db->query($sql, $boarddata)) {
+            $error = $db->error();
+            return $error;
+        }
+
+        return "200";
+    }
+
+    public function get_info($table = 'board', $id) {
+        $db = \Config\Database::connect();
+        $sql = "SELECT * FROM ".$table." WHERE id = ".$id."";
+        echo $sql;
+        $query = $db->query($sql);
+
+        $result = $query->getRowArray();
+
+        return $result;
     }
 }

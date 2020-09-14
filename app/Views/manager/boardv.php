@@ -17,6 +17,20 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <script language="JavaScript">
+        function fnBoardCk() {
+            if ($("#subject").val() == "") {
+                alert("제목을 등록해주세요")
+                $("#subject").focus();
+                return false;
+            }
+            if ($("#ckeditor_standard").val() == "") {
+                alert("내용을 등록해주세요")
+                $("#ckeditor_standard").focus();
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="header">
@@ -76,26 +90,48 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <table id="user" class="table table-bordered table-striped" style="clear: both">
-                            <tbody>
-                            <tr>
-                                <td width="25%" class="text-center"><b>제목</b></td>
-                                <td width="75%"><?= $vs['subject'] ?></td>
-                            </tr>
-                            <tr>
-                                <td class="text-center"><b>내용</b></td>
-                                <td style="height: 100px;"><?= $vs['contents'] ?></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="button" class="btn btn-primary" onclick="javascript:location.href='/manager/view/boardw'">글쓰기</button>
-                                <button type="button" class="btn btn-info" onclick="javascript:location.href='/manager/view/board'">목록</button>
-                                <button type="button" class="btn btn-success" onclick="javascript:location.href='/manager/view/boarde/'">수정</button>
-                                <button type="button" class="btn btn-danger" onclick="javascript:location.href='/manager/boardd/'">삭제</button>
+                        <form class="form-horizontal" role="form" id="fm" name="fm" method="post" onsubmit="return fnBoardCk();"
+                              action="/manager/boardp" encType="multipart/form-data">
+                            <input type="hidden" id="id" name="id" value="<?= $vs['id'] ?>">
+                            <input type="hidden" id="mode" name="mode" value="edit">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label text-center">제목</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="제목" value="<?= $vs['subject'] ?>">
+                                </div>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">내용</label>
+                                <div class="col-sm-10">
+                                    <textarea id="ckeditor_standard" name="ckeditor_standard"><?= $vs['contents'] ?></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">File input</label>
+                                <div class="col-md-10">
+                                    <p class="help-block text-left">
+                                        <?php
+                                        if ($vs['file_size'] > 0 && $vs['file_name'] != "") {
+                                        ?>
+                                        <a href="/upload/<?=$vs['file_name']?>" target="_blank"><?=$vs['org_file_name']?></a>
+                                        <?php
+                                        }
+                                        ?>
+                                    </p>
+                                    <input type="file" class="btn btn-default" id="uploadedfile" name="uploadedfile">
+                                    <p class="help-block text-left">
+                                        ※ 첨부파일은 1개, 30MB이하, 이미지 및 문서, PDF만 가능
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-success">수정</button>
+                                    <button type="button" class="btn btn-info" onclick="javascript:location.href='/manager/view/board'">목록</button>
+                                    <button type="button" class="btn btn-danger" onclick="javascript:location.href='/manager/boardd/'">삭제</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -120,7 +156,16 @@
 
 <script src="/static/vendors/datatables/dataTables.bootstrap.js"></script>
 
+
+<script src="/static/vendors/bootstrap-wysihtml5/lib/js/wysihtml5-0.3.0.js"></script>
+<script src="/static/vendors/bootstrap-wysihtml5/src/bootstrap-wysihtml5.js"></script>
+
+<script src="/static/vendors/ckeditor/ckeditor.js"></script>
+<script src="/static/vendors/ckeditor/adapters/jquery.js"></script>
+
+<script type="text/javascript" src="/static/vendors/tinymce/js/tinymce/tinymce.min.js"></script>
 <script src="/static/js/custom.js"></script>
 <script src="/static/js/tables.js"></script>
+<script src="/static/js/editors.js"></script>
 </body>
 </html>

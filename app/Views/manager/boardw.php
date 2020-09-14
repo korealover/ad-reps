@@ -19,7 +19,16 @@
     <![endif]-->
     <script language="JavaScript">
         function fnBoardCk() {
-
+            if ($("#subject").val() == "") {
+                alert("제목을 등록해주세요")
+                $("#subject").focus();
+                return false;
+            }
+            if ($("#ckeditor_standard").val() == "") {
+                alert("내용을 등록해주세요")
+                $("#ckeditor_standard").focus();
+                return false;
+            }
         }
     </script>
 </head>
@@ -81,12 +90,14 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" id="fm" name="fm" method="post" onsubmit="return fnBoardCk();"
+                        <form class="form-horizontal" role="form" id="fm" name="fm" method="post"
+                              onsubmit="return fnBoardCk();"
                               action="/manager/boardp" encType="multipart/form-data">
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label text-center">제목</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="제목">
+                                    <input type="text" class="form-control" id="subject" name="subject"
+                                           placeholder="제목">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -98,7 +109,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">File input</label>
                                 <div class="col-md-10">
-                                    <input type="file" class="btn btn-default" id="exampleInputFile1">
+                                    <input type="file" class="btn btn-default" id="uploadedfile" name="uploadedfile">
                                     <p class="help-block">
                                         ※ 첨부파일은 1개, 30MB이하, 이미지 및 문서, PDF만 가능
                                     </p>

@@ -50,7 +50,6 @@ class Manager extends Controller {
                 $uri = new \CodeIgniter\HTTP\URI();
                 $uri = $this->request->uri;
                 $id = $uri->getSegment(4);
-                echo  $id;
                 $data = [
                     'current_left' => 'board',
                     'vs' => $model->get_view('board', $id),
@@ -61,7 +60,6 @@ class Manager extends Controller {
                 $uri = new \CodeIgniter\HTTP\URI();
                 $uri = $this->request->uri;
                 $id = $uri->getSegment(4);
-                echo  $id;
                 $data = [
                     'current_left' => 'board',
                 ];
@@ -142,36 +140,72 @@ class Manager extends Controller {
         $session = \Config\Services::session();
         $subject = $this->request->getPost('subject');
         $contents = $this->request->getPost('ckeditor_standard');
-        $files = $this->request->getFiles();
+        $id = $this->request->getPost('id');
+        $mode = $this->request->getPost('mode');
+        $file_size = 0;
+        $file_name = "";
+        $file_path = "";
+        $org_file_name = "";
+        $edit = "";
 
-        if ($files->hasFile('uploadedFile'))
-        {
-            $file = $files->getFile('uploadedfile');
+        if ($this->request->getFile('uploadedfile')->getName()) {
+            $file = $this->request->getFile('uploadedfile');
+            //print_r($file);
 
             // Generate a new secure name
             $name = $file->getRandomName();
+            $file_name = $name;
+            $org_file_name = $file->getName();
 
+            $org_file_path = "D:\projects\dev\ad-reps\www\upload";
             // Move the file to it's new home
-            $file->move('/path/to/dir', $name);
+            $file->move($org_file_path, $name);
+            $file_path = "/upload";
 
-            echo $file->getSize('mb');      // 1.23
-            echo $file->getExtension();     // jpg
-            echo $file->getType();          // image/jpg
+            $file_size = $file->getSize('mb');      // 1.23
+//            echo $file->getExtension();     // jpg
+//            echo $file->getType();          // image/jpg
+        } else {
+            if($mode == "edit") {
+                $edit = "N";    // 수정시 파일 업로드 없음
+            }
         }
 
-
-
         $model = new BoardModel();
-        $boarddata = array(
-            'user_id' => $session->get('admin_id'),
-            'user_name' => $session->get('admin_name'),
-            'subject' => $subject,
-            'contents' => $contents,
-        );
 
-        $result = $model->get_save($boarddata);
+        if ($mode == "edit") {
+            $row = $model->get_info('board', $id);
+            //print_r($row);
+            if ($edit == "N") {
+                $file_size = $row['file_size'];
+                $file_name = $row['file_name'];
+                $file_path = $row['file_path'];
+                $org_file_name = $row['org_file_name'];
+            }
 
-//        echo $result;
+            $boarddata = array(
+                'id' => $id,
+                'subject' => $subject,
+                'contents' => $contents,
+                'file_size' => $file_size,
+                'file_name' => $file_name,
+                'file_path' => $file_path,
+                'org_file_name' => $org_file_name,
+            );
+            $result = $model->get_edit($boarddata);
+        } else {
+            $boarddata = array(
+                'user_id' => $session->get('admin_id'),
+                'user_name' => $session->get('admin_name'),
+                'subject' => $subject,
+                'contents' => $contents,
+                'file_size' => $file_size,
+                'file_name' => $file_name,
+                'file_path' => $file_path,
+                'org_file_name' => $org_file_name,
+            );
+            $result = $model->get_save($boarddata);
+        }
 
         echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/board'>";
         exit;
