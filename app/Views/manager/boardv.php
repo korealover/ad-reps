@@ -30,6 +30,13 @@
                 return false;
             }
         }
+
+        function fnFaqDel(id) {
+            var f = confirm("삭제하시겠습니까?");
+            if (f == true) {
+                location.href='/manager/boardd/' + id;
+            }
+        }
     </script>
 </head>
 <body>
@@ -95,26 +102,26 @@
                             <input type="hidden" id="id" name="id" value="<?= $vs['id'] ?>">
                             <input type="hidden" id="mode" name="mode" value="edit">
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label text-center">제목</label>
-                                <div class="col-sm-10">
+                                <label for="inputSubject" class="col-lg-2 text-center"><h5><b>제목</b></h5></label>
+                                <div class="col-lg-10">
                                     <input type="text" class="form-control" id="subject" name="subject" placeholder="제목" value="<?= $vs['subject'] ?>">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">내용</label>
-                                <div class="col-sm-10">
+                                <label for="inputContent" class="col-lg-2 text-center"><h5><b>내용</b></h5></label>
+                                <div class="col-lg-10">
                                     <textarea id="ckeditor_full" name="ckeditor_full"><?= $vs['contents'] ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-2 control-label">File input</label>
-                                <div class="col-md-10">
+                                <label for="inputFile" class="col-lg-2 text-center"><h5><b>파일첨부</b></h5></label>
+                                <div class="col-lg-10">
                                     <p class="help-block text-left">
                                         <?php
                                         if ($vs['file_size'] > 0 && $vs['file_name'] != "") {
-                                        ?>
-                                        <a href="/upload/<?=$vs['file_name']?>" target="_blank"><?=$vs['org_file_name']?></a>
-                                        <?php
+                                            ?>
+                                            <a href="/upload/<?=$vs['file_name']?>" target="_blank"><?=$vs['org_file_name']?></a>
+                                            <?php
                                         }
                                         ?>
                                     </p>
@@ -125,10 +132,10 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-offset-2 col-sm-10 text-center">
                                     <button type="submit" class="btn btn-success">수정</button>
                                     <button type="button" class="btn btn-info" onclick="location.href='/manager/view/board'">목록</button>
-                                    <button type="button" class="btn btn-danger" onclick="location.href='/manager/boardd/<?= $vs['id'] ?>'">삭제</button>
+                                    <button type="button" class="btn btn-danger" onclick="fnFaqDel('<?= $vs['id'] ?>');">삭제</button>
                                 </div>
                             </div>
                         </form>

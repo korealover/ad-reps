@@ -3,11 +3,22 @@
         <ul class="nav">
             <!-- Main menu -->
             <li <?= $current_left=="main"?"class=\"current\"":FALSE?>><a href="/manager/view/main"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-            <li <?= $current_left=="display"?"class=\"current\"":FALSE?>><a href="/manager/view/display"><i class="glyphicon glyphicon-list"></i> 전시관 관리</a></li>
-            <li <?= $current_left=="board"?"class=\"current\"":FALSE?>><a href="/manager/view/board"><i class="glyphicon glyphicon-list"></i> 게시판 관리</a></li>
-            <li <?= $current_left=="event"?"class=\"current\"":FALSE?>><a href="/manager/view/event"><i class="glyphicon glyphicon-list"></i> 이벤트 관리</a></li>
-            <li <?= $current_left=="stats"?"class=\"current\"":FALSE?>><a href="/manager/view/stats"><i class="glyphicon glyphicon-stats"></i> Statistics (Charts)</a></li>
-            <li <?= $current_left=="admin"?"class=\"current\"":FALSE?>><a href="/manager/view/admin"><i class="glyphicon glyphicon-list"></i> 관리자 관리</a></li>
+            <li <?= $current_left=="display"?"class=\"current\"":FALSE?>><a href="/manager/view/display"><i class="glyphicon glyphicon-expand"></i> 전시관 관리</a></li>
+            <li class="submenu <?= ($current_left=="board" || $current_left=="faq")?" current ":FALSE?>">
+                <a href="#">
+                    <i class="glyphicon glyphicon-comment"></i> 게시판 관리
+                    <span class="caret pull-right"></span>
+                </a>
+                <!-- Sub menu -->
+                <ul>
+                    <li <?= $current_left=="board"?"class=\"current\"":FALSE?>><a href="/manager/view/board">공지사항</a></li>
+                    <li <?= $current_left=="faq"?"class=\"current\"":FALSE?>><a href="/manager/view/faq">FAQ</a></li>
+                </ul>
+            </li>
+            <li <?= $current_left=="event"?"class=\"current\"":FALSE?>><a href="/manager/view/event"><i class="glyphicon glyphicon-gift"></i> 이벤트 관리</a></li>
+            <li <?= $current_left=="stats"?"class=\"current\"":FALSE?>><a href="/manager/view/stats"><i class="glyphicon glyphicon-stats"></i> 통계</a></li>
+            <li <?= $current_left=="admin"?"class=\"current\"":FALSE?>><a href="/manager/view/admin"><i class="glyphicon glyphicon-user"></i> 관리자 관리</a></li>
+
             <li <?= $current_left=="calendar"?"class=\"current\"":FALSE?>><a href="/manager/view/calendar"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
             <li <?= $current_left=="tables"?"class=\"current\"":FALSE?>><a href="/manager/view/tables"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
             <li <?= $current_left=="buttons"?"class=\"current\"":FALSE?>><a href="/manager/view/buttons"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>

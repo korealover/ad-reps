@@ -2,6 +2,8 @@
 
 use App\Models\BoardModel;
 use App\Models\DisplayModel;
+use App\Models\EventModel;
+use App\Models\FaqModel;
 use App\Models\LoginModel;
 use CodeIgniter\Controller;
 
@@ -57,18 +59,54 @@ class Manager extends Controller {
                 ];
 
             } elseif ($page == 'boardw') {
-                $model = new BoardModel();
-                $uri = new \CodeIgniter\HTTP\URI();
-                $uri = $this->request->uri;
-                $id = $uri->getSegment(4);
                 $data = [
                     'current_left' => 'board',
                 ];
 
+            } elseif ($page == 'faq') {
+                $model = new FaqModel();
+                $data = [
+                    'current_left' => 'faq',
+                    'list' => $model->get_list(),
+                    'cnt' => $model->get_count(),
+                ];
+            } elseif ($page == 'faqv') {
+                $model = new FaqModel();
+                $uri = new \CodeIgniter\HTTP\URI();
+                $uri = $this->request->uri;
+                $id = $uri->getSegment(4);
+                $data = [
+                    'current_left' => 'faq',
+                    'vs' => $model->get_view('faq', $id),
+                ];
+
+            } elseif ($page == 'faqw') {
+                $data = [
+                    'current_left' => 'faq',
+                ];
+
             } elseif ($page == 'event') {
+			    $model = new EventModel();
+                $data = [
+                    'current_left' => 'event',
+                    'list' => $model->get_list(),
+                    'cnt' => $model->get_count(),
+                ];
+            } elseif ($page == 'eventv') {
+                $model = new EventModel();
+                $uri = new \CodeIgniter\HTTP\URI();
+                $uri = $this->request->uri;
+                $id = $uri->getSegment(4);
+                $data = [
+                    'current_left' => 'event',
+                    'vs' => $model->get_view('event', $id),
+                ];
+
+            } elseif ($page == 'eventw') {
                 $data = [
                     'current_left' => 'event',
                 ];
+
             } elseif ($page == 'stats') {
                 $data = [
                     'current_left' => 'stats',
@@ -135,7 +173,7 @@ class Manager extends Controller {
 	}
 
     /**
-     * 게시판 저장 처리
+     * 공지사항 저장 처리
      */
 	public function boardp() {
         $session = \Config\Services::session();
@@ -235,6 +273,9 @@ class Manager extends Controller {
         exit;
     }
 
+    /**
+     * 공지사항 삭제
+     */
     public function boardd() {
         $session = \Config\Services::session();
         $model = new BoardModel();
@@ -244,8 +285,222 @@ class Manager extends Controller {
 
         $result = $model->get_delete('board', $id);
 
-//        echo $result;
         echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/board'>";
         exit;
+    }
+
+    /**
+     * FAQ 저장 처리
+     */
+    public function faqp() {
+        $session = \Config\Services::session();
+        $subject = $this->request->getPost('subject');
+        $contents = $this->request->getPost('ckeditor_full');
+        $id = $this->request->getPost('id');
+        $mode = $this->request->getPost('mode');
+        $file_size = 0;
+        $file_name = "";
+        $file_path = "";
+        $org_file_name = "";
+        $edit = "";
+
+        if ($this->request->getFile('uploadedfile')->getName()) {
+            $file = $this->request->getFile('uploadedfile');
+            //print_r($file);
+
+            // Generate a new secure name
+            $name = $file->getRandomName();
+            $file_name = $name;
+            $org_file_name = $file->getName();
+
+//            $org_file_path = "D:\projects\dev\ad-reps\www\upload";
+            // Move the file to it's new home
+            $file->move(ORG_FILE_PATH, $name);
+            $file_path = "/upload";
+
+            $file_size = $file->getSize('mb');      // 1.23
+//            echo $file->getExtension();     // jpg
+//            echo $file->getType();          // image/jpg
+        } else {
+            if($mode == "edit") {
+                $edit = "N";    // 수정시 파일 업로드 없음
+            }
+        }
+
+        $model = new FaqModel();
+
+        if ($mode == "edit") {
+            $row = $model->get_info('faq', $id);
+            //print_r($row);
+            if ($edit == "N") {
+                $file_size = $row['file_size'];
+                $file_name = $row['file_name'];
+                $file_path = $row['file_path'];
+                $org_file_name = $row['org_file_name'];
+            } else {
+                // 수정된 파일 업로드가 있다면 기존 파일 삭제
+                $model->get_file_delete('faq', $id);
+            }
+
+            $boarddata = array(
+                'id' => $id,
+                'subject' => $subject,
+                'contents' => $contents,
+                'file_size' => $file_size,
+                'file_name' => $file_name,
+                'file_path' => $file_path,
+                'org_file_name' => $org_file_name,
+            );
+            $result = $model->get_edit($boarddata);
+        } else {
+            $boarddata = array(
+                'user_id' => $session->get('admin_id'),
+                'user_name' => $session->get('admin_name'),
+                'subject' => $subject,
+                'contents' => $contents,
+                'file_size' => $file_size,
+                'file_name' => $file_name,
+                'file_path' => $file_path,
+                'org_file_name' => $org_file_name,
+            );
+            $result = $model->get_save($boarddata);
+        }
+
+        echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/faq'>";
+        exit;
+
+    }
+
+    /**
+     * FAQ 삭제
+     */
+    public function faqd() {
+        $session = \Config\Services::session();
+        $model = new FaqModel();
+        $uri = new \CodeIgniter\HTTP\URI();
+        $uri = $this->request->uri;
+        $id = $uri->getSegment(3);
+
+        $result = $model->get_delete('faq', $id);
+
+        echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/faq'>";
+        exit;
+    }
+
+    /**
+     * 이벤트 저장
+     */
+    public function eventp() {
+        $session = \Config\Services::session();
+        $subject = $this->request->getPost('subject');
+        $contents = $this->request->getPost('ckeditor_full');
+        $id = $this->request->getPost('id');
+        $mode = $this->request->getPost('mode');
+        $pc_file_size = 0;
+        $pc_file_name = "";
+        $pc_org_file_name = "";
+        $mo_file_size = 0;
+        $mo_file_name = "";
+        $mo_org_file_name = "";
+        $file_path = "";
+        $edit = "";
+
+        /**
+         * PC 썸네일 저장
+         */
+        if ($this->request->getFile('uploadedfile')->getName()) {
+            $file = $this->request->getFile('uploadedfile');
+            //print_r($file);
+
+            // Generate a new secure name
+            $name = $file->getRandomName();
+            $pc_file_name = $name;
+            $pc_org_file_name = $file->getName();
+            $file->move(ORG_FILE_PATH, $name);
+            $file_path = "/upload";
+
+            $pc_file_size = $file->getSize('mb');      // 1.23
+//            echo $file->getExtension();     // jpg
+//            echo $file->getType();          // image/jpg
+        } else {
+            if($mode == "edit") {
+                $edit = "N";    // 수정시 파일 업로드 없음
+            }
+        }
+
+        /**
+         * mobile 썸네일 저장
+         */
+        if ($this->request->getFile('moUploadedfile')->getName()) {
+            $file = $this->request->getFile('moUploadedfile');
+            //print_r($file);
+
+            // Generate a new secure name
+            $name = $file->getRandomName();
+            $mo_file_name = $name;
+            $mo_org_file_name = $file->getName();
+            $file->move(ORG_FILE_PATH, $name);
+            $file_path = "/upload";
+
+            $mo_file_size = $file->getSize('mb');      // 1.23
+//            echo $file->getExtension();     // jpg
+//            echo $file->getType();          // image/jpg
+        } else {
+            if($mode == "edit") {
+                $edit = "N";    // 수정시 파일 업로드 없음
+            }
+        }
+
+        $model = new EventModel();
+
+        if ($mode == "edit") {
+            $row = $model->get_info('event', $id);
+            //print_r($row);
+            if ($edit == "N") {
+                $pc_file_size = $row['pc_file_size'];
+                $pc_file_name = $row['pc_file_name'];
+                $pc_org_file_name = $row['org_file_name'];
+                $mo_file_size = $row['mo_file_size'];
+                $mo_file_name = $row['mo_file_name'];
+                $mo_org_file_name = $row['mo_file_name'];
+                $file_path = $row['file_path'];
+            } else {
+                // 수정된 파일 업로드가 있다면 기존 파일 삭제
+                $model->get_file_delete('event', $id);
+            }
+
+            $boarddata = array(
+                'id' => $id,
+                'subject' => $subject,
+                'contents' => $contents,
+                'pc_file_size' => $pc_file_size,
+                'pc_file_name' => $pc_file_name,
+                'pc_org_file_name' => $pc_org_file_name,
+                'mo_file_size' => $mo_file_size,
+                'mo_file_name' => $mo_file_name,
+                'mo_org_file_name' => $mo_org_file_name,
+                'file_path' => $file_path,
+            );
+            $result = $model->get_edit($boarddata);
+        } else {
+            $boarddata = array(
+                'user_id' => $session->get('admin_id'),
+                'user_name' => $session->get('admin_name'),
+                'subject' => $subject,
+                'contents' => $contents,
+                'pc_file_size' => $pc_file_size,
+                'pc_file_name' => $pc_file_name,
+                'pc_org_file_name' => $pc_org_file_name,
+                'mo_file_size' => $mo_file_size,
+                'mo_file_name' => $mo_file_name,
+                'mo_org_file_name' => $mo_org_file_name,
+                'file_path' => $file_path,
+            );
+            $result = $model->get_save($boarddata);
+        }
+
+        echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/event'>";
+        exit;
+
     }
 }

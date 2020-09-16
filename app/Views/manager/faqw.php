@@ -82,7 +82,7 @@
             <div class="col-md-10">
                 <div class="content-box-large">
                     <div class="panel-heading">
-                        <div class="panel-title">공지사항 관리</div>
+                        <div class="panel-title">FAQ</div>
 
                         <!--  <div class="panel-options">
                            <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
@@ -90,7 +90,7 @@
                         </div> -->
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" id="fm" name="fm" method="post" onsubmit="return fnBoardCk();" action="/manager/boardp" encType="multipart/form-data">
+                        <form class="form-horizontal" role="form" id="fm" name="fm" method="post"  onsubmit="return fnBoardCk();"  action="/manager/faqp" encType="multipart/form-data">
                             <div class="form-group">
                                 <label for="inputSubject" class="col-lg-2 text-center"><h5><b>제목</b></h5></label>
                                 <div class="col-lg-10">
@@ -113,9 +113,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10  text-center">
+                                <div class="col-sm-offset-2 col-sm-10 text-center">
                                     <button type="submit" class="btn btn-primary">글쓰기</button>
-                                    <button type="button" class="btn btn-info" onclick="location.href='/manager/view/board'">목록</button>
+                                    <button type="button" class="btn btn-info" onclick="location.href='/manager/view/faq'">목록</button>
                                 </div>
                             </div>
                         </form>
