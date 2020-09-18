@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
 
+use App\Libraries\StatsLib;
 use App\Models\BoardModel;
 use App\Models\DisplayModel;
 use App\Models\EventModel;
@@ -116,8 +117,12 @@ class Manager extends Controller {
                     'current_left' => 'admin',
                 ];
             } else {
+                $stats = new StatsLib();
+
                 $data = [
                     'current_left' => 'main',
+                    'week_row' => $stats->get_week(),
+                    'month_row' => $stats->get_month(),
                 ];
             }
 		}
@@ -149,6 +154,9 @@ class Manager extends Controller {
 					'logged_admin' => TRUE
 				);
 			$session->set($newdata);
+
+			$stats = new StatsLib();
+            $stats->set_today_stats();
 
 			echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/main'>";
 			exit;
