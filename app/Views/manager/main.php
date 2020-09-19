@@ -68,7 +68,7 @@
         <div class="col-md-10">
             <div class="content-box-large">
                 <div class="panel-heading">
-                    <div class="panel-title">주간 접속 추이</div>
+                    <div class="panel-title">일일 접속율 & 주간 접속 추이</div>
 
                     <div class="panel-options">
                         <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
@@ -77,7 +77,10 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-3">
+                            <div id="hero-donut" style="height: 230px;"></div>
+                        </div>
+                        <div class="col-md-9">
                             <div id="hero-bar" style="height: 230px;"></div>
                         </div>
                     </div>
@@ -142,11 +145,22 @@
         ],
         xkey: 'visits_date',
         ykeys: ['visits_count'],
-        labels: ['방문자 수'],
+        labels: ['일일 방문자'],
         barRatio: 0.4,
         xLabelMargin: 10,
         hideHover: 'auto',
         barColors: ["#3d88ba"]
+    });
+
+    // Morris Donut Chart
+    Morris.Donut({
+        element: 'hero-donut',
+        data: [
+            {label: 'PC 방문율', value: <?=$pc_per?> },
+            {label: 'mobile 방문율', value: <?=$mo_per?> },
+        ],
+        colors: ["#30a1ec", "#76bdee", "#c4dafe"],
+        formatter: function (y) { return y + "%" }
     });
 
     // Morris Line Chart
@@ -154,7 +168,7 @@
         <?php
         foreach ($month_row as $mrow) {
         ?>
-        {"period": "<?=$mrow->stats_date?>", "visits": <?=$mrow->stats_count?>},
+        {"period": "<?=$mrow->stats_date?>", "PC": <?=$mrow->pc_count?>, "Mobile": <?=$mrow->mo_count?>},
         <?php
         }
         ?>
@@ -164,8 +178,8 @@
         data: tax_data,
         xkey: 'period',
         xLabels: "month",
-        ykeys: ['visits'],
-        labels: ['월 방문자']
+        ykeys: ['PC', 'Mobile'],
+        labels: ['PC 방문', 'Mobile 방문']
     });
 </script>
 </body>

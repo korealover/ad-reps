@@ -118,11 +118,14 @@ class Manager extends Controller {
                 ];
             } else {
                 $stats = new StatsLib();
+                $perces = $stats->get_today();
 
                 $data = [
                     'current_left' => 'main',
                     'week_row' => $stats->get_week(),
                     'month_row' => $stats->get_month(),
+                    'pc_per' => $perces->pc_per,
+                    'mo_per' => $perces->mo_per,
                 ];
             }
 		}

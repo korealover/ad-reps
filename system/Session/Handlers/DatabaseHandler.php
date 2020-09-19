@@ -317,11 +317,11 @@ class DatabaseHandler extends BaseHandler implements \SessionHandlerInterface
 			{
 				$builder = $builder->where('ip_address', $this->ipAddress);
 			}
-
-			if (! $builder->delete())
-			{
-				return $this->fail();
-			}
+//
+//			if (! $builder->delete())
+//			{
+//				return $this->fail();
+//			}
 		}
 
 		if ($this->close())
