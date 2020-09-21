@@ -82,9 +82,18 @@ class StatsLib {
         $result = $query->getRow();
 
         $db->close();
-
         return $result;
+    }
 
+    public function get_admin_id_check($admin_id) {
+        $db = \Config\Database::connect();
+        $sql = "SELECT COUNT(admin_id) AS cnt FROM tbl_admin WHERE admin_id = '".$admin_id."'";
+        //echo $sql;
+        $query = $db->query($sql);
+        $result = $query->getRow();
+
+        $db->close();
+        return $result;
     }
 
 }

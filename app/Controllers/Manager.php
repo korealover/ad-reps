@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Libraries\StatsLib;
+use App\Models\AdminModel;
 use App\Models\BoardModel;
 use App\Models\DisplayModel;
 use App\Models\EventModel;
@@ -40,6 +41,7 @@ class Manager extends Controller {
                 $data = [
                     'current_left' => 'display',
                     'list' => $model->get_list(),
+                    'admin_menu' =>$session->get('admin_menu'),
                 ];
             } elseif ($page == 'board') { /** 게시판 관리 - list */
 			    $model = new BoardModel();
@@ -48,6 +50,7 @@ class Manager extends Controller {
                     'current_left' => 'board',
                     'list' => $model->get_list(),
                     'cnt' => $model->get_count(),
+                    'admin_menu' =>$session->get('admin_menu'),
                 ];
             } elseif ($page == 'boardv') {
                 $model = new BoardModel();
@@ -57,11 +60,13 @@ class Manager extends Controller {
                 $data = [
                     'current_left' => 'board',
                     'vs' => $model->get_view('board', $id),
+                    'admin_menu' =>$session->get('admin_menu'),
                 ];
 
             } elseif ($page == 'boardw') {
                 $data = [
                     'current_left' => 'board',
+                    'admin_menu' =>$session->get('admin_menu'),
                 ];
 
             } elseif ($page == 'faq') {
@@ -70,6 +75,7 @@ class Manager extends Controller {
                     'current_left' => 'faq',
                     'list' => $model->get_list(),
                     'cnt' => $model->get_count(),
+                    'admin_menu' =>$session->get('admin_menu'),
                 ];
             } elseif ($page == 'faqv') {
                 $model = new FaqModel();
@@ -79,11 +85,13 @@ class Manager extends Controller {
                 $data = [
                     'current_left' => 'faq',
                     'vs' => $model->get_view('faq', $id),
+                    'admin_menu' =>$session->get('admin_menu'),
                 ];
 
             } elseif ($page == 'faqw') {
                 $data = [
                     'current_left' => 'faq',
+                    'admin_menu' =>$session->get('admin_menu'),
                 ];
 
             } elseif ($page == 'event') {
@@ -92,6 +100,7 @@ class Manager extends Controller {
                     'current_left' => 'event',
                     'list' => $model->get_list(),
                     'cnt' => $model->get_count(),
+                    'admin_menu' =>$session->get('admin_menu'),
                 ];
             } elseif ($page == 'eventv') {
                 $model = new EventModel();
@@ -101,20 +110,42 @@ class Manager extends Controller {
                 $data = [
                     'current_left' => 'event',
                     'vs' => $model->get_view('event', $id),
+                    'admin_menu' =>$session->get('admin_menu'),
                 ];
 
             } elseif ($page == 'eventw') {
                 $data = [
                     'current_left' => 'event',
+                    'admin_menu' =>$session->get('admin_menu'),
                 ];
 
             } elseif ($page == 'stats') {
                 $data = [
                     'current_left' => 'stats',
+                    'admin_menu' =>$session->get('admin_menu'),
                 ];
             } elseif ($page == 'admin') {
+                $model = new AdminModel();
                 $data = [
                     'current_left' => 'admin',
+                    'list' => $model->get_list(),
+                    'cnt' => $model->get_count(),
+                    'admin_menu' =>$session->get('admin_menu'),
+                ];
+            } elseif ($page == 'adminw') {
+                $data = [
+                    'current_left' => 'admin',
+                    'admin_menu' =>$session->get('admin_menu'),
+                ];
+            } elseif($page == 'adminv') {
+                $model = new AdminModel();
+                $uri = new \CodeIgniter\HTTP\URI();
+                $uri = $this->request->uri;
+                $number = $uri->getSegment(4);
+                $data = [
+                    'current_left' => 'admin',
+                    'vs' => $model->get_view('tbl_admin', $number),
+                    'admin_menu' =>$session->get('admin_menu'),
                 ];
             } else {
                 $stats = new StatsLib();
@@ -126,6 +157,7 @@ class Manager extends Controller {
                     'month_row' => $stats->get_month(),
                     'pc_per' => $perces->pc_per,
                     'mo_per' => $perces->mo_per,
+                    'admin_menu' =>$session->get('admin_menu'),
                 ];
             }
 		}
@@ -154,7 +186,8 @@ class Manager extends Controller {
 					'admin_number' => $row->number,
 					'admin_id' => $row->admin_id,
 					'admin_name' => $row->admin_name,
-					'logged_admin' => TRUE
+					'logged_admin' => TRUE,
+                    'admin_menu' => $row->gbn,
 				);
 			$session->set($newdata);
 
@@ -513,5 +546,83 @@ class Manager extends Controller {
         echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/event'>";
         exit;
 
+    }
+
+    /**
+     * 관리자 저장/수정 처리
+     */
+    public function adminp() {
+        $session = \Config\Services::session();
+        $number = $this->request->getPost('number');
+        $gbn = $this->request->getPost('gbn');
+        $belong = $this->request->getPost('belong');
+        $admin_id = $this->request->getPost('admin_id');
+        $pwd1 = $this->request->getPost('pwd1');
+        $pwd2 = $this->request->getPost('pwd2');
+        if ($pwd1 != $pwd2) {
+            echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/adminv/$number'>";
+            exit;
+        } else {
+            $admin_pwd = $pwd1;
+        }
+        $mode = $this->request->getPost('mode');
+        $admin_name = $this->request->getPost('admin_name');
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $pwd_mode = $this->request->getPost('pwd_mode');
+        $model = new AdminModel();
+
+        if ($mode == "edit") {
+            $admindata = array(
+                'number' => $number,
+                'gbn' => $gbn,
+                'belong' => $belong,
+                'admin_pwd' => $admin_pwd,
+                'admin_name' => $admin_name,
+                'ip' => $ip,
+            );
+            $result = $model->get_edit($admindata, $pwd_mode);
+        } else {
+            $admindata = array(
+                'gbn' => $gbn,
+                'belong' => $belong,
+                'admin_id' => $admin_id,
+                'admin_pwd' => $admin_pwd,
+                'admin_name' => $admin_name,
+                'ip' => $ip,
+            );
+            $result = $model->get_save($admindata);
+        }
+
+        echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/admin'>";
+        exit;
+
+    }
+
+    /**
+     * 관리자 아이디 사용 유무
+     * @return mixed
+     */
+    public function adminIDCheck() {
+        $admin_id = $this->request->getPost('admin_id');
+        $stats = new StatsLib();
+        $result = $stats->get_admin_id_check($admin_id);
+
+        return $result->cnt;
+    }
+
+    /**
+     * FAQ 삭제
+     */
+    public function admind() {
+        $session = \Config\Services::session();
+        $model = new AdminModel();
+        $uri = new \CodeIgniter\HTTP\URI();
+        $uri = $this->request->uri;
+        $number = $uri->getSegment(3);
+
+        $result = $model->get_delete('tbl_admin', $number);
+
+        echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/admin'>";
+        exit;
     }
 }

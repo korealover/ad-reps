@@ -54,7 +54,7 @@
 <div class="page-content">
     <div class="row">
         <?= $this->include('templates/menu') ?>
-        <div class="col-md-10 text-right">
+        <div class="col-md-10">
 
             <div class="content-box-large">
                 <div class="panel-heading">
@@ -90,7 +90,7 @@
                         </table>
                     </div>
                 </div>
-                <div>
+                <div class="text-right">
                     <button class="btn btn-primary" onclick="javascript:location.href='/manager/view/boardw';">글쓰기</button>
                 </div>
             </div>

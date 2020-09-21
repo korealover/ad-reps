@@ -31,7 +31,7 @@
             }
         }
 
-        function fnFaqDel(id) {
+        function fnBoardDel(id) {
             var f = confirm("삭제하시겠습니까?");
             if (f == true) {
                 location.href='/manager/boardd/' + id;
@@ -135,7 +135,7 @@
                                 <div class="col-sm-offset-2 col-sm-10 text-center">
                                     <button type="submit" class="btn btn-success">수정</button>
                                     <button type="button" class="btn btn-info" onclick="location.href='/manager/view/board'">목록</button>
-                                    <button type="button" class="btn btn-danger" onclick="fnFaqDel('<?= $vs['id'] ?>');">삭제</button>
+                                    <button type="button" class="btn btn-danger" onclick="fnBoardDel('<?= $vs['id'] ?>');">삭제</button>
                                 </div>
                             </div>
                         </form>
