@@ -120,8 +120,15 @@ class Manager extends Controller {
                 ];
 
             } elseif ($page == 'stats') {
+                $stats = new StatsLib();
+                $perces = $stats->get_today();
+
                 $data = [
                     'current_left' => 'stats',
+                    'week_row' => $stats->get_week(),
+                    'month_row' => $stats->get_month(),
+                    'pc_per' => $perces->pc_per,
+                    'mo_per' => $perces->mo_per,
                     'admin_menu' =>$session->get('admin_menu'),
                 ];
             } elseif ($page == 'admin') {

@@ -38,61 +38,22 @@
             <div class="sub-sect2 community1">
                 <h3 class="h-ty1">공지사항</h3>
                 <div class="notice-lists">
+                    <?php if(count($LOOP) > 0) {?>
+                        <?php foreach($LOOP as $ITEM):?>
                     <div class="notice-item">
                         <a href="#" class="box">
-                            <div class="title"><h4 class="tx1 ellipsis ln2">공공기관 청렴도 측정 관련 개인정보 제3자 제공사항 알림 공공기관 청렴도 측정 관련 개인정보 제3자 제공사항 알림</h4></div>
-                            <p class="tx ellipsis ln3">한국방송광고진흥공사는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다. 한국방송광고진흥공사는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.</p>
-                            <p class="date">2020.08.24</p>
+                            <div class="title"><h4 class="tx1 ellipsis ln2"><?=$ITEM['subject']?></h4></div>
+                            <p class="tx ellipsis ln3"><?=$ITEM['contents']?></p>
+                            <p class="date"><?=$ITEM['regdate']?></p>
                         </a>
                     </div>
-                    <div class="notice-item">
-                        <a href="#" class="box">
-                            <div class="title"><h4 class="tx1 ellipsis ln2">공공기관 청렴도 측정 관련 개인정보 제3자 제공사항 알림 공공기관 청렴도 측정 관련 개인정보 제3자 제공사항 알림</h4></div>
-                            <p class="tx ellipsis ln3">한국방송광고진흥공사는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다. 한국방송광고진흥공사는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.</p>
-                            <p class="date">2020.08.24</p>
-                        </a>
-                    </div>
-                    <div class="notice-item">
-                        <a href="#" class="box">
-                            <div class="title"><h4 class="tx1 ellipsis ln2">공공기관 청렴도 측정 관련 개인정보 제3자 제공사항 알림 공공기관 청렴도 측정 관련 개인정보 제3자 제공사항 알림</h4></div>
-                            <p class="tx ellipsis ln3">한국방송광고진흥공사는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다. 한국방송광고진흥공사는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.</p>
-                            <p class="date">2020.08.24</p>
-                        </a>
-                    </div>
-                    <div class="notice-item">
-                        <a href="#" class="box">
-                            <div class="title"><h4 class="tx1 ellipsis ln2">공공기관 청렴도 측정 관련 개인정보 제3자 제공사항 알림 공공기관 청렴도 측정 관련 개인정보 제3자 제공사항 알림</h4></div>
-                            <p class="tx ellipsis ln3">한국방송광고진흥공사는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다. 한국방송광고진흥공사는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.</p>
-                            <p class="date">2020.08.24</p>
-                        </a>
-                    </div>
-                    <div class="notice-item">
-                        <a href="#" class="box">
-                            <div class="title"><h4 class="tx1 ellipsis ln2">공공기관 청렴도 측정 관련 개인정보 제3자 제공사항 알림 공공기관 청렴도 측정 관련 개인정보 제3자 제공사항 알림</h4></div>
-                            <p class="tx ellipsis ln3">한국방송광고진흥공사는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다. 한국방송광고진흥공사는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.</p>
-                            <p class="date">2020.08.24</p>
-                        </a>
-                    </div>
-                    <div class="notice-item">
-                        <a href="#" class="box">
-                            <div class="title"><h4 class="tx1 ellipsis ln2">공공기관 청렴도 측정 관련 개인정보 제3자 제공사항 알림 공공기관 청렴도 측정 관련 개인정보 제3자 제공사항 알림</h4></div>
-                            <p class="tx ellipsis ln3">한국방송광고진흥공사는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다. 한국방송광고진흥공사는 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.</p>
-                            <p class="date">2020.08.24</p>
-                        </a>
-                    </div>
+                        <?php endforeach;?>
+                     <?php }?>
                 </div>
                 <!-- paging  : pc-->
                 <div class="pagination">
                     <div class="paging">
-                        <a href="#self" class="page_prev"><span class="hide">이전</span></a>
-                        <span class="page">
-                            <a href="#self" class="on">1</a>
-                            <a href="#self">2</a>
-                            <a href="#self">3</a>
-                            <a href="#self">4</a>
-                            <a href="#self">5</a>
-                        </span>
-                        <a href="#self" class="page_next"><span class="hide">다음</span></a>
+                        <?=$pagenum?>
                     </div>
                 </div>
                 <!-- //paging -->
