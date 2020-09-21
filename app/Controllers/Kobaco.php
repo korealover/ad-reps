@@ -113,11 +113,44 @@ class Kobaco extends BaseController
         return view('/kobaco/notice', $data);
     }
 
+    /**
+     * 공지사항 상세 화면
+     * @return string
+     */
     public function detail() {
+        $uri = new \CodeIgniter\HTTP\URI();
+        $uri = $this->request->uri;
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
         $see->set_browser($agent );
-        return view('/kobaco/detail');
+        $id = $uri->getSegment(3);
+        $model = new FNoticeModel();
+        
+        //다음글
+        $next = $model->get_next($id);
+        if (!$model->get_next($id)) {
+            $next = [
+                'id' => '',
+                'subject' => '다음글이 존재하지 않습니다.',
+                ];
+        }
+        
+        //이전글
+        $prev = $model->get_prev($id);
+        if (!$model->get_prev($id)) {
+            $prev = [
+                'id' => '',
+                'subject' => '이전글이 존재하지 않습니다.',
+            ];
+        }
+
+        $date = [
+            'row' => $model->get_view('board', $id),
+            'nrow' => $next,
+            'prow' => $prev,
+        ];
+
+        return view('/kobaco/detail', $date);
     }
 
     public function theme() {

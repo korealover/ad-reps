@@ -41,7 +41,7 @@
                     <?php if(count($LOOP) > 0) {?>
                         <?php foreach($LOOP as $ITEM):?>
                     <div class="notice-item">
-                        <a href="#" class="box">
+                        <a href="/kobaco/detail/<?=$ITEM['id']?>" class="box">
                             <div class="title"><h4 class="tx1 ellipsis ln2"><?=$ITEM['subject']?></h4></div>
                             <p class="tx ellipsis ln3"><?=$ITEM['contents']?></p>
                             <p class="date"><?=$ITEM['regdate']?></p>

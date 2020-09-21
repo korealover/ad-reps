@@ -117,4 +117,24 @@ class FNoticeModel extends Model {
         $db->close();
         return $result;
     }
+
+    public function get_next($id) {
+        $db = \Config\Database::connect();
+        $sql = "SELECT id, subject FROM board where id > ".$id." ORDER BY id ASC LIMIT 1";
+        $query = $db->query($sql);
+        $result = $query->getRowArray();
+
+        $db->close();
+        return $result;
+    }
+
+    public function get_prev($id) {
+        $db = \Config\Database::connect();
+        $sql = "SELECT id, subject FROM board where id < ".$id." ORDER BY id DESC LIMIT 1";
+        $query = $db->query($sql);
+        $result = $query->getRowArray();
+
+        $db->close();
+        return $result;
+    }
 }
