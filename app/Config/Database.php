@@ -30,11 +30,11 @@ class Database extends \CodeIgniter\Database\Config
 	 * @var array
 	 */
 	public $default = [
-		'DSN'      => 'addb',
-		'hostname' => 'localhost',
-		'username' => 'aduser',
-		'password' => '!ad1234',
-		'database' => 'addb',
+		'DSN'      => '',
+		'hostname' => '127.0.0.1',
+		'username' => '',
+		'password' => '',
+		'database' => '',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,

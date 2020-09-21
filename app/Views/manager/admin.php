@@ -106,7 +106,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="text-right">
+                <div class="panel-body text-right">
                     <button class="btn btn-primary" onclick="location.href='/manager/view/adminw'">관리자 생성</button>
                 </div>
             </div>
