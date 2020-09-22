@@ -3,6 +3,7 @@
 
 use App\Libraries\Paging;
 use App\Libraries\SessionLib;
+use App\Models\FaqModel;
 use App\Models\FNoticeModel;
 
 class Kobaco extends BaseController
@@ -163,8 +164,12 @@ class Kobaco extends BaseController
     public function faq() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
-        $see->set_browser($agent );
-        return view('/kobaco/faq');
+        $see->set_browser($agent);
+        $model = new FaqModel();
+        $data = [
+            'list' => $model->get_list(),
+        ];
+        return view('/kobaco/faq', $data );
     }
 
     public function event() {
