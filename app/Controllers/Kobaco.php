@@ -77,16 +77,10 @@ class Kobaco extends BaseController
         $scale_row = 9;
         $start = ($page - 1) * $scale_row;
         $total_cnt = $model->get_count('board');
-        echo $total_cnt." ";
         $total_page = ceil($total_cnt / $scale_row);
-        echo $total_page." ";
-        echo $page." ";
         $start = $lib->start($page);
-        echo $start." ";
         $total_page = $lib->tpage($total_cnt);
-        echo $total_page." ";
-        $lastpage = $lib->tpage($total_cnt);
-        echo $lastpage." ";
+         $lastpage = $lib->tpage($total_cnt);
 
         if ($lastpage == $page) {
             $scale_row = $total_cnt - (($lastpage - 1) * $scale_row);
@@ -105,29 +99,26 @@ class Kobaco extends BaseController
         $data['PAGE']		=	$page;			//현재페이지
         $data['TOTAL_PAGE']	=	$total_page;	//총페이지수
         $list_result = $model->get_list('board', $start, $scale_row);
-        print_r($list_result);
-       // echo $list_result->countAllResults();
-//        if ($list_result->countAllResults() > 0) {
-//            $total_num	=	$total_cnt;	//임시게시물번호
-//            if($page > 1) {
-//                $total_num	=	$total_num - ($page - 1) * $scale_row;
-//            }
-////            $q = $list_result->get($start, $scale_row);
-//
-//            foreach ($list_result->get($start, $scale_row)->getResult() as $row) {
-//                $list_data[]	=	array(
-//                    'NUM'		=>	$total_num,
-//                    'id'        => $row->id,
-//                    'subject'   => $row->subject,
-//                    'contents'  => iconv_substr(strip_tags($row->contents), 0, 80, 'utf-8'),
-//                    'regdate'   => str_replace("-", ".", substr($row->reg_date, 0, 10)),
-//                );
-//                $total_num	=	$total_num - 1;
-//            }
-//            $data['LOOP']	=	$list_data;
-//        }
+        if ($model->get_count() > 0) {
+            $total_num	=	$total_cnt;	//임시게시물번호
+            if($page > 1) {
+                $total_num	=	$total_num - ($page - 1) * $scale_row;
+            }
 
-//        return view('/kobaco/notice', $data);
+            foreach ($list_result->getResult() as $row) {
+                $list_data[]	=	array(
+                    'NUM'		=>	$total_num,
+                    'id'        => $row->id,
+                    'subject'   => $row->subject,
+                    'contents'  => iconv_substr(strip_tags($row->contents), 0, 80, 'utf-8'),
+                    'regdate'   => str_replace("-", ".", substr($row->reg_date, 0, 10)),
+                );
+                $total_num	=	$total_num - 1;
+            }
+            $data['LOOP']	=	$list_data;
+        }
+
+        return view('/kobaco/notice', $data);
     }
 
     /**
