@@ -7,16 +7,16 @@ class FNoticeModel extends Model {
     protected $allowedFields = ['title'];
 
     public function get_list($table = 'board', $start, $page_row) {
+        echo $start;
         $db = \Config\Database::connect();
-        $builder = $db->table($table);
-        $builder->get($start, $page_row);
-        $query = $builder->orderBy('id', 'DESC');
+        $builder = $db->table('board');
+        $builder->limit(0, 9);
+        $builder->orderBy('id', 'DESC');
+        $query = $builder->getCompiledSelect(false);
+        echo $query;
 
-/*        $query = $db->query($sql);
-        $result = $query -> getResult();*/
-
-//        $db->close();
-        return $query;
+        $db->close();
+//        return $query;
     }
 
     public function get_count($table = 'board') {

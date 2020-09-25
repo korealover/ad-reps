@@ -4,14 +4,14 @@ Class Paging {
     var $start,$total_page,$scale;
 
     public function start($page){
-        $scale = 10;
+        $scale = 9;
         global $start;
         $start = ($page - 1) * $scale;
         return $start;
     }
 
     public function tpage($total) {
-        $scale = 10;
+        $scale = 9;
         global $total_page;
         $total_page = ceil($total/$scale);
 
@@ -51,7 +51,7 @@ Class Paging {
         if($npage > $scale)
         {
             //$divpageing.="<a href=$url/?page=1$ln><IMG SRC=\"/img/admin/bbs_first.gif\" align=\"absmiddle\" border=0></a>&nbsp;";
-            $divpageing.="<a href=\"$url/?page=$prev$ln\" class=\"page_prev\"><span class=\"hide\">이전</span></a>";
+            $divpageing.="<a href=\"$url/?page=$prev.$ln\" class=\"page_prev\"><span class=\"hide\">이전</span></a>";
         }
         else {
             $divpageing.="<a href=\"#self\" class=\"page_prev\"><span class=\"hide\">이전</span></a>";
@@ -66,9 +66,9 @@ Class Paging {
 
             if($npage==$i)
             {
-                $divpageing.="<a href=\".$url/?page=$i.$ln.\" class=\"on\">".$i."</a>";
+                $divpageing.="<a href=\"$url/?page=$i.$ln\" class=\"on\">".$i."</a>";
             }else{
-                $divpageing.="<a href=\".$url/?page=$i.$ln.\">$i</a>";
+                $divpageing.="<a href=\"$url/?page=$i$ln\">$i</a>";
             }
         }
 

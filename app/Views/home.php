@@ -55,7 +55,7 @@
                                 <span class="text-line"><em>통해 우리 사회의 생활양식과 가치관의 </em></span>
                                 <span class="text-line"><em>역사를 살펴볼 수 있습니다</em></span>
                             </p>
-                            <a href="#" class="btn-cir-link n-motion n-bottom n-delay3">역사관 링크</a>
+                            <a href="/" class="btn-cir-link n-motion n-bottom n-delay3">역사관 링크</a>
                         </div>
                     </div>
                 </div>
