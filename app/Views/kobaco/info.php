@@ -16,45 +16,12 @@
 <div id="wrap">
     <header id="header">
         <div class="header-top">
-            <h1 class="logo"><a href="#">2020 대한민국공익광고제</a></h1>
+            <h1 class="logo"><a href="/">2020 대한민국공익광고제</a></h1>
             <button type="button" class="hamburger-box"><span class="hamburger">메뉴오픈</span></button>
         </div>
         <div class="header-gnb">
             <div class="static">
-                <div class="nav-wrap" id="gnb">
-                    <ul>
-                        <li>
-                            <button type="button">공익광고</button>
-                            <ul>
-                                <li><a href="#">공익광고</a></li>
-                                <li><a href="#">인사말</a></li>
-                                <li><a href="#">행사개요</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">전시관 소개</a>
-                        </li>
-                        <li>
-                            <button type="button">테마별 전시관</button>
-                            <ul>
-                                <li><a href="#">역사관</a></li>
-                                <li><a href="#">수상작관</a></li>
-                                <li><a href="#">광고제작관</a></li>
-                                <li><a href="#">특별관</a></li>
-                                <li><a href="#">글로벌관</a></li>
-                                <li><a href="#">태마관</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <button type="button">커뮤니티</button>
-                            <ul>
-                                <li><a href="#">공지사항</a></li>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">이벤트</a></li>
-                            </ul>
-                        </li>
-                </div>
-                </ul>
+                <?= $this->include('templates/gnb') ?>
             </div>
         </div>
     </header>
@@ -95,21 +62,17 @@
                 </ul>
                 <div class="public3-links n-motion n-bottom">
                     <ul>
-                        <li><a href="#">공익광고 역사관</a></li>
-                        <li><a href="#">공모전 수상작 전시관</a></li>
-                        <li><a href="#">공익광고 제작관</a></li>
-                        <li><a href="#">스페셜 전시관</a></li>
-                        <li><a href="#">글로벌 캠페인관</a></li>
+                        <li><a href="/kobaco/history">공익광고 역사관</a></li>
+                        <li><a href="/kobaco/winner">공모전 수상작 전시관</a></li>
+                        <li><a href="/kobaco/adv">공익광고 제작관</a></li>
+                        <li><a href="/kobaco/special">스페셜 전시관</a></li>
+                        <li><a href="/kobaco/global">글로벌 캠페인관</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <footer id="footer">
-        <div class="static">
-            <p class="copy">copyright (c) korea broadcast advertising corp. all rights reserved.</p>
-        </div>
-    </footer>
+    <?= $this->include('templates/ffooter') ?>
 </div>
 
 </body>

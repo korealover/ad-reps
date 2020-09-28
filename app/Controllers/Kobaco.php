@@ -69,7 +69,10 @@ class Kobaco extends BaseController
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
         $see->set_browser($agent);
-        $page = $this->request->getGet('page');
+        $uri = new \CodeIgniter\HTTP\URI();
+        $uri = $this->request->uri;
+        $page  = $uri->getSegment(3);
+        //$page = $this->request->getGet('page');
         $lib = new Paging();
         $model = new FNoticeModel();
 
@@ -110,7 +113,7 @@ class Kobaco extends BaseController
                     'NUM'		=>	$total_num,
                     'id'        => $row->id,
                     'subject'   => $row->subject,
-                    'contents'  => iconv_substr(strip_tags($row->contents), 0, 80, 'utf-8'),
+                    'contents'  => iconv_substr(strip_tags($row->contents), 0, 75, 'utf-8'),
                     'regdate'   => str_replace("-", ".", substr($row->reg_date, 0, 10)),
                 );
                 $total_num	=	$total_num - 1;

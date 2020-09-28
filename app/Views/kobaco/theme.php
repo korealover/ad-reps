@@ -17,12 +17,12 @@
 <div id="wrap">
     <header id="header">
         <div class="header-top">
-            <h1 class="logo"><a href="#">2020 대한민국공익광고제</a></h1>
+            <h1 class="logo"><a href="/">2020 대한민국공익광고제</a></h1>
             <button type="button" class="hamburger-box"><span class="hamburger">메뉴오픈</span></button>
         </div>
         <div class="header-gnb">
             <div class="static">
-                <?= $this->include('templates/gbn') ?>
+                <?= $this->include('templates/gnb') ?>
             </div>
         </div>
     </header>
@@ -85,11 +85,7 @@
         </div>
         <!-- //content -->
     </div>
-    <footer id="footer">
-        <div class="static">
-            <p class="copy">copyright (c) korea broadcast advertising corp. all rights reserved.</p>
-        </div>
-    </footer>
+    <?= $this->include('templates/ffooter') ?>
 </div>
 
 

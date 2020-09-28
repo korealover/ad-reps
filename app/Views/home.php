@@ -15,12 +15,12 @@
 <div id="wrap">
     <header id="header">
         <div class="header-top">
-            <h1 class="logo"><a href="#">2020 대한민국공익광고제</a></h1>
+            <h1 class="logo"><a href="/">2020 대한민국공익광고제</a></h1>
             <button type="button" class="hamburger-box"><span class="hamburger">메뉴오픈</span></button>
         </div>
         <div class="header-gnb">
             <div class="static">
-                <?= $this->include('templates/gbn') ?>
+                <?= $this->include('templates/gnb') ?>
             </div>
         </div>
     </header>
@@ -55,7 +55,7 @@
                                 <span class="text-line"><em>통해 우리 사회의 생활양식과 가치관의 </em></span>
                                 <span class="text-line"><em>역사를 살펴볼 수 있습니다</em></span>
                             </p>
-                            <a href="/" class="btn-cir-link n-motion n-bottom n-delay3">역사관 링크</a>
+                            <a href="/kobaco/history" class="btn-cir-link n-motion n-bottom n-delay3">역사관 링크</a>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                                 <span class="text-line"><em>누구나 참여할 수 있는 대한민국 공익광고제 공모전</em></span>
                                 <span class="text-line"><em>2020 영광의 수상작들을 만나보시죠</em></span>
                             </p>
-                            <a href="#" class="btn-cir-link n-motion n-bottom">수장작관 링크</a>
+                            <a href="/kobaco/winner" class="btn-cir-link n-motion n-bottom">수장작관 링크</a>
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                                 <span class="text-line"><em>공익광고로 제작되는 일련의 과정과 통합 캠페인까지</em></span>
                                 <span class="text-line"><em>실제 제작사례를 통해 확인할 수 있습니다</em></span>
                             </p>
-                            <a href="#" class="btn-cir-link n-motion n-bottom">광고제작관 링크</a>
+                            <a href="/kobaco/adv" class="btn-cir-link n-motion n-bottom">광고제작관 링크</a>
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                                 <span class="text-line"><em>새로운 시대상과 그에 필요한 행동문화를 보여주며</em></span>
                                 <span class="text-line"><em>국민의 마음을 하나로 잇기 위해 노력해 왔습니다</em></span>
                             </p>
-                            <a href="#" class="btn-cir-link n-motion n-bottom">특별관 링크</a>
+                            <a href="/kobaco/special" class="btn-cir-link n-motion n-bottom">특별관 링크</a>
                         </div>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                                 <span class="text-line"><em>해외광고 중에서 공익적인 메시지와 창의적인 표현이</em></span>
                                 <span class="text-line"><em>뛰어난 작품들을 둘러볼 수 있습니다</em></span>
                             </p>
-                            <a href="#" class="btn-cir-link n-motion n-bottom">글로벌관 링크</a>
+                            <a href="/kobaco/global" class="btn-cir-link n-motion n-bottom">글로벌관 링크</a>
                         </div>
                     </div>
                 </div>
@@ -160,18 +160,14 @@
                                 <span class="text-line"><em>테마별로 재미있게 구성된 콘텐츠와 </em></span>
                                 <span class="text-line"><em>참신한 전시 체험을 선사합니다</em></span>
                             </p>
-                            <a href="#" class="btn-cir-link n-motion n-bottom">테마관 링크</a>
+                            <a href="/kobaco/theme" class="btn-cir-link n-motion n-bottom">테마관 링크</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    <footer id="footer">
-        <div class="static">
-            <p class="copy">copyright (c) korea broadcast advertising corp. all rights reserved.</p>
-        </div>
-    </footer>
+    <?= $this->include('templates/ffooter') ?>
 </div>
 
 </body>

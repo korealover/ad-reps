@@ -51,7 +51,7 @@ Class Paging {
         if($npage > $scale)
         {
             //$divpageing.="<a href=$url/?page=1$ln><IMG SRC=\"/img/admin/bbs_first.gif\" align=\"absmiddle\" border=0></a>&nbsp;";
-            $divpageing.="<a href=\"$url/?page=$prev.$ln\" class=\"page_prev\"><span class=\"hide\">이전</span></a>";
+            $divpageing.="<a href=\"$url/$prev$ln\" class=\"page_prev\"><span class=\"hide\">이전</span></a>";
         }
         else {
             $divpageing.="<a href=\"#self\" class=\"page_prev\"><span class=\"hide\">이전</span></a>";
@@ -66,9 +66,9 @@ Class Paging {
 
             if($npage==$i)
             {
-                $divpageing.="<a href=\"$url/?page=$i.$ln\" class=\"on\">".$i."</a>";
+                $divpageing.="<a href=\"$url/$i$ln\" class=\"on\">".$i."</a>";
             }else{
-                $divpageing.="<a href=\"$url/?page=$i$ln\">$i</a>";
+                $divpageing.="<a href=\"$url/$i$ln\">".$i."</a>";
             }
         }
 
@@ -77,7 +77,7 @@ Class Paging {
         $next = $last_page+1;
         if($next <= $totpage)
         {
-            $divpageing.="<a href=\"$url/?page=$next$ln\" class=\"page_next\"><span class=\"hide\">다음</span></a>";
+            $divpageing.="<a href=\"$url/$next$ln\" class=\"page_next\"><span class=\"hide\">다음</span></a>";
             //$divpageing.="&nbsp;<a href=$url/?page=$totpage$ln><IMG SRC=\"/img/admin/bbs_last.gif\" align=\"absmiddle\" border=0></a>";
         }
         else {
