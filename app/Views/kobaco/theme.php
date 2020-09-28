@@ -46,6 +46,7 @@
             <div class="theme-ad">
                 <div class="theme-ad-nav">
                     <div class="theme-sd-nav">
+                        <div class="tx1"><span>스타관</span></div>
                         <div class="tx1"><span>공포관</span></div>
                         <div class="tx1"><span>명품관</span></div>
                         <div class="tx1"><span>바이럴관</span></div>
@@ -56,6 +57,12 @@
                         <div>
                             <div class="bx">
                                 <img src="/static/images/@theme.jpg" alt="">
+                                <a href="#" class="ico-play"></a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="bx">
+                                <img src="/static/images/@theme2.jpg" alt="">
                                 <a href="#" class="ico-play"></a>
                             </div>
                         </div>

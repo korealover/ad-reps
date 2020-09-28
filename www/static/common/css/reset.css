@@ -30,7 +30,7 @@ input[type=number],
 input[type=email],
 input[type=password]{height: 40px; padding: 10px 20px 10px 20px; border: 1px solid #e2e2e2; font-size: 1rem; line-height: 18px; color: #222;  background: #ffffff;box-sizing:border-box;}
 select{height:40px; padding: 10px 32px 10px 20px; border: 1px solid #e2e2e2; font-size: 1rem; line-height: 18px; color: #222; 
-       background: #ffffff url(/static/images/common/ico-sel-arr.png) 100% 50% no-repeat; -webkit-appearance: none; appearance: none;box-sizing: border-box;}
+       background: #ffffff url(../../images/common/ico-sel-arr.png) 100% 50% no-repeat; -webkit-appearance: none; appearance: none;box-sizing: border-box;}
 textarea{width: 100%;padding: 20px; border: 1px solid #cccccc; font-size: 14px; line-height: 18px; color: #222; background: #ffffff;box-sizing: border-box}
 select::-ms-expand{display: none;}
 ::-webkit-input-placeholder{color: #959595;}
@@ -59,7 +59,7 @@ a:focus{text-decoration: none;}
 .checkbox input{position: absolute;clip: rect(1px,1px,1px,1px);}
 .checkbox input + label:before{content:'';display: inline-block;width:23px;height:23px;margin-right:10px;border:1px solid #bdbdbd;vertical-align:top;background: #fff;}
 .checkbox input + label{line-height:23px;color:#444}
-.checkbox input:checked + label:before{background:#fff url(/static/images/common/ico-chk.png) no-repeat 50% 50%} 
+.checkbox input:checked + label:before{background:#fff url(../../images/common/ico-chk.png) no-repeat 50% 50%} 
 .radio{display:inline-block}
 .radio input{position: absolute;clip: rect(1px,1px,1px,1px);}
 .radio input + label:before{content:'';display: inline-block;width:28px;height:28px;margin-right:10px;background:#fff;vertical-align:top;border:1px solid #bdbdbd;border-radius:100%;;box-sizing: border-box;}

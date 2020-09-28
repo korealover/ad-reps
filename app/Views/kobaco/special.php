@@ -36,16 +36,16 @@
         </div>
         <div class="contents static">
             <div class="sub-sect1 theme">
-                <h3 class="h-ty1 n-motion n-bottom">역사관</h3>
+                <h3 class="h-ty1 n-motion n-bottom">특별관</h3>
                 <div class="theme1-tit">
-                    <h4 class="tx4 n-motion n-bottom">공익광고의 현재와<br>미래를 말한다</h4>
-                    <p class="tx1 n-motion n-bottom n-delay1">80년대부터 현재까지 국민의 생활양식과<br class="pc-br">가치관의 역사를 공익광고를 통해 한눈에 볼 수<br class="pc-br">있습니다.</p>
+                    <h4 class="tx4 n-motion n-bottom">시대와 시대를 잇고, <br>국민의 마음을 하나로</h4>
+                    <p class="tx1 n-motion n-bottom n-delay1">공익광고는 변화의 시기마다 등장하는 <br class="pc-br">사회인식과 행동문화를 광고적으로 풀어 <br class="pc-br">국민들의 공감을 이끌어왔습니다.</p>
                 </div>
-                <div class="themt1-imgs">
-                    <div class="p-img1 n-motion n-bottom"><img src="/static/images/theme1-img1.jpg" alt=""></div>
-                    <div class="p-img2 n-motion n-bottom n-delay1"><img src="/static/images/theme1-img2.jpg" alt=""></div>
-                    <div class="p-img3 n-motion n-bottom n-delay2"><img src="/static/images/theme1-img3.jpg" alt=""></div>
-                    <div class="p-img4 n-motion n-bottom n-delay3"><img src="/static/images/theme1-img4.jpg" alt=""></div>
+                <div class="themt4-imgs">
+                    <div class="p-img1 n-motion n-bottom"><img src="/static/images/theme4-img1.jpg" alt=""></div>
+                    <div class="p-img2 n-motion n-bottom n-delay1"><img src="/static/images/theme4-img2.jpg" alt=""></div>
+                    <div class="p-img3 n-motion n-bottom n-delay2"><img src="/static/images/theme4-img3.jpg" alt=""></div>
+                    <div class="p-img4 n-motion n-bottom n-delay3"><img src="/static/images/theme4-img4.jpg" alt=""></div>
                 </div>
             </div>
         </div>

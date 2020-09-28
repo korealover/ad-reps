@@ -49,13 +49,13 @@ body{font: normal 400 16px/1.1 'NotoSans', sans-serif; color: #000;letter-spacin
 .pagination {overflow: hidden;position: relative;width: 100%;text-align: center;padding-top:40px;border-top:2px solid #000}
 .pagination .paging {display: inline-block}
 .pagination .paging > a {display: block;float: left;box-sizing: border-box;width: 46px;height: 46px;background-color: none;transition: all .3s;border-radius: 100%;}
-.pagination .paging .page_prev {margin-right:10px;background:#fff url(/static//images/p-prev-b.png) no-repeat 46% 50% }
-.pagination .paging .page_next {margin-left:10px;background:#fff url(/static//images/p-prev-b.png) no-repeat 46% 50%;transform:rotate(-180deg)}
+.pagination .paging .page_prev {margin-right:10px;background:#fff url(../../images/p-prev-b.png) no-repeat 46% 50% }
+.pagination .paging .page_next {margin-left:10px;background:#fff url(../../images/p-prev-b.png) no-repeat 46% 50%;transform:rotate(-180deg)}
 .pagination .paging .page {float: left; padding: 0 0}
 .pagination .paging .page > a {display: block;position: relative;top:0;float: left;width: 46px;height: 46px;margin: 0 0 0 5px;font-size: 24px;line-height: 46px;color: #fff;transition: all .3s;}
 .pagination .paging .page > a.on, .pagination .paging .page > a:hover {color:#fff;font-weight: 700;}
-.pagination .paging .page_prev:hover{background:#777 url(/static//images/p-prev-b.png) no-repeat 46% 50% }
-.pagination .paging .page_next:hover{background:#777 url(/static//images/p-prev-b.png) no-repeat 46% 50%;transform:rotate(-180deg)}
+.pagination .paging .page_prev:hover{background:#777 url(../../images/p-prev-b.png) no-repeat 46% 50% }
+.pagination .paging .page_next:hover{background:#777 url(../../images/p-prev-b.png) no-repeat 46% 50%;transform:rotate(-180deg)}
 
 #wrap{background:#000;color:#fff}
 #header{position:fixed;width:100%;z-index: 101}
@@ -63,9 +63,9 @@ body{font: normal 400 16px/1.1 'NotoSans', sans-serif; color: #000;letter-spacin
 #footer{background:#f0f0f0}
 #footer .static{padding:70px 0 90px;text-align: center;}
 #footer .copy{font-family: 'Montserrat', sans-serif;font-size:20px;color:#777}
-#footer .copy:before{content:'';display:block;width: 122px;height:40px;margin:0 auto 18px;background:url(/static//images/f-logo.png) no-repeat 50% 50%;}
+#footer .copy:before{content:'';display:block;width: 122px;height:40px;margin:0 auto 18px;background:url(../../images/f-logo.png) no-repeat 50% 50%;}
 .static{width:100%;max-width:1920px;margin:0 auto}
-.btn-cir-link{width:102px;height:102px;background:url(/static//images/ico-cir-arr.png) no-repeat 50% 50%;background-size:100%;font-size:0}
+.btn-cir-link{width:102px;height:102px;background:url(../../images/ico-cir-arr.png) no-repeat 50% 50%;background-size:100%;font-size:0}
 .hamburger-box{display:inline-block;position:relative;width:50px;height:35px}
 .hamburger{display:block}
 .hamburger:before,
@@ -83,10 +83,10 @@ body{font: normal 400 16px/1.1 'NotoSans', sans-serif; color: #000;letter-spacin
 .aside-open .hamburger:after{transform:rotate(-90deg);bottom:0;width:100%}
 .header-top{display:flex;justify-content:space-between;align-items: center;width:100%;max-width:1920px;margin:0 auto;padding:24px 72px;z-index: 102;position: relative}
 .header-top .logo{width:276px}
-.header-top .logo a{display:block;height:80px;background:url(/static//images/h1-logo.png) no-repeat;font-size:0;background-size:100%}
+.header-top .logo a{display:block;height:80px;background:url(../../images/h1-logo.png) no-repeat;font-size:0;background-size:100%}
 .header-gnb{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:#fff;display:none;}
 .header-gnb .static{display:flex;}
-.header-gnb .static:before{content:'';display:inline-block;width:370px;height:100%;background:#000 url(/static//images/gnb-bg.png) no-repeat 50% 0}
+.header-gnb .static:before{content:'';display:inline-block;width:370px;height:100%;background:#000 url(../../images/gnb-bg.png) no-repeat 50% 0}
 .header-gnb .static .nav-wrap{width:calc(100% - 370px);height:100%;padding:129px}
 .header-gnb .nav-wrap>ul{overflow: hidden;border-top:2px solid #888;padding-top:100px}
 .header-gnb .nav-wrap>ul>li{float:left;width:25%;padding-left:40px;}
@@ -96,7 +96,7 @@ body{font: normal 400 16px/1.1 'NotoSans', sans-serif; color: #000;letter-spacin
 .header-gnb .nav-wrap>ul>li>ul>li{margin-bottom:40px}
 .header-gnb .nav-wrap>ul>li>ul>li>a{font-size:1.625rem;color:#000}
 .aside-open{overflow:hidden}
-.aside-open .header-top .logo a{background:url(/static//images/h1-logo.png) no-repeat;background-size:100%}
+.aside-open .header-top .logo a{background:url(../../images/h1-logo.png) no-repeat;background-size:100%}
 .aside-open .header-gnb{display:flex}
 .aside-open #header.sticky .header-top{background:transparent}
 
@@ -106,17 +106,17 @@ body{font: normal 400 16px/1.1 'NotoSans', sans-serif; color: #000;letter-spacin
 
 .main-intro{background:#000}
 .main-sect1{background:#64b149}
-.main-sect1 .static{background:url(/static//images/ms-vs1.jpg) no-repeat 100% 50%;background-size:auto 100%}
+.main-sect1 .static{background:url(../../images/ms-vs1.jpg) no-repeat 100% 50%;background-size:auto 100%}
 .main-sect2{background:#6c9bce}
-.main-sect2 .static{background:url(/static//images/ms-vs2.jpg) no-repeat 100% 50%;background-size:auto 100%}
+.main-sect2 .static{background:url(../../images/ms-vs2.jpg) no-repeat 100% 50%;background-size:auto 100%}
 .main-sect3{background:#359f74}
-.main-sect3 .static{background:url(/static//images/ms-vs3.jpg) no-repeat 100% 50%;background-size:auto 100%}
+.main-sect3 .static{background:url(../../images/ms-vs3.jpg) no-repeat 100% 50%;background-size:auto 100%}
 .main-sect4{background:#f69320}
-.main-sect4 .static{background:url(/static//images/ms-vs4.jpg) no-repeat 100% 50%;background-size:auto 100%}
+.main-sect4 .static{background:url(../../images/ms-vs4.jpg) no-repeat 100% 50%;background-size:auto 100%}
 .main-sect5{background:#e17e74}
-.main-sect5 .static{background:url(/static//images/ms-vs5.jpg) no-repeat 100% 50%;background-size:auto 100%}
+.main-sect5 .static{background:url(../../images/ms-vs5.jpg) no-repeat 100% 50%;background-size:auto 100%}
 .main-sect6{background:#d277b4}
-.main-sect6 .static{background:url(/static//images/ms-vs6.jpg) no-repeat 100% 50%;background-size:auto 100%}
+.main-sect6 .static{background:url(../../images/ms-vs6.jpg) no-repeat 100% 50%;background-size:auto 100%}
 .main .static{display:flex;align-items: center;height:42.1875vw;padding-left:222px}
 
 .sect{position: relative;}
@@ -221,7 +221,7 @@ body{font: normal 400 16px/1.1 'NotoSans', sans-serif; color: #000;letter-spacin
     .header-gnb .nav-wrap>ul>li>ul>li{margin:0}
     .header-gnb .nav-wrap>ul>li>ul>li>a{font-size:3.8vw;padding:3.3vw 0}
     .header-gnb .nav-wrap>ul>li.on>ul{display:block}
-    .mobile.aside-open .header-top .logo a{background:url(/static//images/h1-logo-w.png) no-repeat;background-size:100%}
+    .mobile.aside-open .header-top .logo a{background:url(../../images/h1-logo-w.png) no-repeat;background-size:100%}
 
 
     .main .static{display: block;height:auto;padding:13.88vw 0 0 19.4vw;margin:-2px 0 0}
@@ -235,12 +235,12 @@ body{font: normal 400 16px/1.1 'NotoSans', sans-serif; color: #000;letter-spacin
     .sect .text-box .text p{font-size:3.6vw}
     .sect .text-box .text .btn-cir-link{margin-top:5.55vw;margin-left:0}
 
-    .main-sect1 .static{background:url(/static//images/ms-vs1-m.jpg) no-repeat 100% 100%;background-size:100% auto}
-    .main-sect2 .static{background:url(/static//images/ms-vs2-m.jpg) no-repeat 100% 100%;background-size:100% auto}
-    .main-sect3 .static{background:url(/static//images/ms-vs3-m.jpg) no-repeat 100% 100%;background-size:100% auto}
-    .main-sect4 .static{background:url(/static//images/ms-vs4-m.jpg) no-repeat 100% 100%;background-size:100% auto}
-    .main-sect5 .static{background:url(/static//images/ms-vs5-m.jpg) no-repeat 100% 100%;background-size:100% auto}
-    .main-sect6 .static{background:url(/static//images/ms-vs6-m.jpg) no-repeat 100% 100%;background-size:100% auto}
+    .main-sect1 .static{background:url(../../images/ms-vs1-m.jpg) no-repeat 100% 100%;background-size:100% auto}
+    .main-sect2 .static{background:url(../../images/ms-vs2-m.jpg) no-repeat 100% 100%;background-size:100% auto}
+    .main-sect3 .static{background:url(../../images/ms-vs3-m.jpg) no-repeat 100% 100%;background-size:100% auto}
+    .main-sect4 .static{background:url(../../images/ms-vs4-m.jpg) no-repeat 100% 100%;background-size:100% auto}
+    .main-sect5 .static{background:url(../../images/ms-vs5-m.jpg) no-repeat 100% 100%;background-size:100% auto}
+    .main-sect6 .static{background:url(../../images/ms-vs6-m.jpg) no-repeat 100% 100%;background-size:100% auto}
     .main-sect1 .static{padding-bottom:61.38vw}
     .main-sect2 .static{padding-bottom:52.7vw}
     .main-sect3 .static{padding-top:10vw;padding-bottom:51.9vw}

@@ -228,15 +228,16 @@
 				})
 							
 				this.$themeNai = $('.theme-sd-nav').slick({
-					slidesToShow:3,
+					slidesToShow:4,
 					slidesToscroll:1,
 					asNavFor:'.theme-sd-slider',
-					dot:true,
+					arrows:false,
+					dot:false,
+					infinite : false,
 					focusOnSelect:true,	
 					variableWidth: true,
-					centerMode: true,
-					initialSlide: 1,	
-
+					//centerMode: true,
+					initialSlide: 1,
 				});
 			},	
 		

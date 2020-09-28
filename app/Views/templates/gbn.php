@@ -15,10 +15,10 @@
             <button type="button">테마별 전시관</button>
             <ul>
                 <li><a href="/kobaco/history">역사관</a></li>
-                <li><a href="/kobaco/history">수상작관</a></li>
-                <li><a href="/kobaco/history">광고제작관</a></li>
-                <li><a href="/kobaco/history">특별관</a></li>
-                <li><a href="/kobaco/history">글로벌관</a></li>
+                <li><a href="/kobaco/winner">수상작관</a></li>
+                <li><a href="/kobaco/adv">광고제작관</a></li>
+                <li><a href="/kobaco/special">특별관</a></li>
+                <li><a href="/kobaco/global">글로벌관</a></li>
                 <li><a href="/kobaco/theme">테마관</a></li>
             </ul>
         </li>

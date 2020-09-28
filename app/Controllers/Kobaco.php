@@ -168,6 +168,34 @@ class Kobaco extends BaseController
         return view('/kobaco/theme');
     }
 
+    public function winner() {
+        $agent = $this->request->getUserAgent();
+        $see = new SessionLib();
+        $see->set_browser($agent );
+        return view('/kobaco/winner');
+    }
+
+    public function adv() {
+        $agent = $this->request->getUserAgent();
+        $see = new SessionLib();
+        $see->set_browser($agent );
+        return view('/kobaco/adv');
+    }
+
+    public function special() {
+        $agent = $this->request->getUserAgent();
+        $see = new SessionLib();
+        $see->set_browser($agent );
+        return view('/kobaco/special');
+    }
+
+    public function global() {
+        $agent = $this->request->getUserAgent();
+        $see = new SessionLib();
+        $see->set_browser($agent );
+        return view('/kobaco/global');
+    }
+
     public function faq() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
@@ -186,11 +214,11 @@ class Kobaco extends BaseController
         return view('/kobaco/event');
     }
 
-    public function edatil() {
+    public function edetail() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
         $see->set_browser($agent );
-        return view('/kobaco/edatil');
+        return view('/kobaco/edetail');
     }
 
 }

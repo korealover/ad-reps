@@ -36,16 +36,16 @@
         </div>
         <div class="contents static">
             <div class="sub-sect1 theme">
-                <h3 class="h-ty1 n-motion n-bottom">역사관</h3>
+                <h3 class="h-ty1 n-motion n-bottom">수상작관</h3>
                 <div class="theme1-tit">
-                    <h4 class="tx4 n-motion n-bottom">공익광고의 현재와<br>미래를 말한다</h4>
-                    <p class="tx1 n-motion n-bottom n-delay1">80년대부터 현재까지 국민의 생활양식과<br class="pc-br">가치관의 역사를 공익광고를 통해 한눈에 볼 수<br class="pc-br">있습니다.</p>
+                    <h4 class="tx4 n-motion n-bottom">대한민국 공익광고제<br>마음, 세상을 잇다</h4>
+                    <p class="tx1 n-motion n-bottom n-delay1">누구나 공익광고를 통해 밝고 건강한 사회를<br class="pc-br"> 만들어 가고 있는 2020대한민국공익광고제<br class="pc-br">수상작을 소개합니다.</p>
                 </div>
-                <div class="themt1-imgs">
-                    <div class="p-img1 n-motion n-bottom"><img src="/static/images/theme1-img1.jpg" alt=""></div>
-                    <div class="p-img2 n-motion n-bottom n-delay1"><img src="/static/images/theme1-img2.jpg" alt=""></div>
-                    <div class="p-img3 n-motion n-bottom n-delay2"><img src="/static/images/theme1-img3.jpg" alt=""></div>
-                    <div class="p-img4 n-motion n-bottom n-delay3"><img src="/static/images/theme1-img4.jpg" alt=""></div>
+                <div class="themt2-imgs">
+                    <div class="p-img1 n-motion n-bottom"><img src="/static/images/theme2-img1.jpg" alt=""></div>
+                    <div class="p-img2 n-motion n-bottom n-delay1"><img src="/static/images/theme2-img2.jpg" alt=""></div>
+                    <div class="p-img3 n-motion n-bottom n-delay2"><img src="/static/images/theme2-img3.jpg" alt=""></div>
+                    <div class="p-img4 n-motion n-bottom n-delay3"><img src="/static/images/theme2-img4.jpg" alt=""></div>
                 </div>
             </div>
         </div>
