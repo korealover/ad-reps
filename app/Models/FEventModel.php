@@ -23,13 +23,19 @@ class FEventModel extends Model {
     }
 
     public function get_count($table = 'event') {
-        $today = date("Y-m-d");
+        $today = date("Y-m-d", time());
         $db = \Config\Database::connect();
         //$count = $db->table($table)->countAll();
         $builder = $db->table($table);
+        $builder->selectCount('id');
         $builder->where('start_dt <=', $today.' 00:00:00');
-        $count = $builder->where('end_dt >=', $today.' 23:59:59')->countAll();
+        $builder->where('end_dt >=', $today.' 23:59:59');
+        $query = $builder->get();
+        $row = $query->getResult();
+        $count = $row[0]->id;
 
+//        $query = $builder->getCompiledSelect();
+//        echo $query;
 
         $db->close();
         return $count;
