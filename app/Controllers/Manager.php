@@ -508,7 +508,7 @@ class Manager extends Controller {
 
         if ($mode == "edit") {
             $row = $model->get_info('event', $id);
-            print_r($row);
+            //print_r($row);
             if ($edit == "N") {
                 $pc_file_size = $row['pc_file_size'];
                 $pc_file_name = $row['pc_file_name'];
@@ -536,6 +536,7 @@ class Manager extends Controller {
                 'mo_org_file_name' => $mo_org_file_name,
                 'file_path' => $file_path,
             );
+            print_r($boarddata);
             $result = $model->get_edit($boarddata);
         } else {
             $boarddata = array(
@@ -556,7 +557,7 @@ class Manager extends Controller {
             $result = $model->get_save($boarddata);
         }
 
-        echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/event'>";
+        //echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/event'>";
         exit;
 
     }
