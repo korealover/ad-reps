@@ -94,12 +94,12 @@
             <div class="col-md-5">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="input-group form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-	                         <button class="btn btn-primary" type="button">Search</button>
-	                       </span>
-                        </div>
+<!--                        <div class="input-group form">-->
+<!--                            <input type="text" class="form-control" placeholder="Search...">-->
+<!--                            <span class="input-group-btn">-->
+<!--	                         <button class="btn btn-primary" type="button">Search</button>-->
+<!--	                       </span>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b
                                             class="caret"></b></a>
                                 <ul class="dropdown-menu animated fadeInUp">
-                                    <li><a href="profile">Profile</a></li>
+                                    <li><a href="admin">관리자 관리</a></li>
                                     <li><a href="login">Logout</a></li>
                                 </ul>
                             </li>
