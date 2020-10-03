@@ -445,6 +445,8 @@ class Manager extends Controller {
         $session = \Config\Services::session();
         $subject = $this->request->getPost('subject');
         $contents = $this->request->getPost('ckeditor_full');
+        $start_dt = $this->request->getPost('startDt');
+        $end_dt = $this->request->getPost('endDt');
         $id = $this->request->getPost('id');
         $mode = $this->request->getPost('mode');
         $pc_file_size = 0;
@@ -506,14 +508,14 @@ class Manager extends Controller {
 
         if ($mode == "edit") {
             $row = $model->get_info('event', $id);
-            //print_r($row);
+            print_r($row);
             if ($edit == "N") {
                 $pc_file_size = $row['pc_file_size'];
                 $pc_file_name = $row['pc_file_name'];
-                $pc_org_file_name = $row['org_file_name'];
+                $pc_org_file_name = $row['pc_org_file_name'];
                 $mo_file_size = $row['mo_file_size'];
                 $mo_file_name = $row['mo_file_name'];
-                $mo_org_file_name = $row['mo_file_name'];
+                $mo_org_file_name = $row['mo_org_file_name'];
                 $file_path = $row['file_path'];
             } else {
                 // 수정된 파일 업로드가 있다면 기존 파일 삭제
@@ -523,6 +525,8 @@ class Manager extends Controller {
             $boarddata = array(
                 'id' => $id,
                 'subject' => $subject,
+                'start_dt' => $start_dt,
+                'end_dt' => $end_dt,
                 'contents' => $contents,
                 'pc_file_size' => $pc_file_size,
                 'pc_file_name' => $pc_file_name,
@@ -538,6 +542,8 @@ class Manager extends Controller {
                 'user_id' => $session->get('admin_id'),
                 'user_name' => $session->get('admin_name'),
                 'subject' => $subject,
+                'start_dt' => $start_dt,
+                'end_dt' => $end_dt,
                 'contents' => $contents,
                 'pc_file_size' => $pc_file_size,
                 'pc_file_name' => $pc_file_name,

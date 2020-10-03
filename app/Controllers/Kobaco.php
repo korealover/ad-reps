@@ -4,6 +4,7 @@
 use App\Libraries\Paging;
 use App\Libraries\SessionLib;
 use App\Models\FaqModel;
+use App\Models\FEventModel;
 use App\Models\FNoticeModel;
 
 class Kobaco extends BaseController
@@ -213,8 +214,63 @@ class Kobaco extends BaseController
     public function event() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
-        $see->set_browser($agent );
-        return view('/kobaco/event');
+        $see->set_browser($agent);
+        $uri = new \CodeIgniter\HTTP\URI();
+        $uri = $this->request->uri;
+        $page  = $uri->getSegment(3);
+        //$page = $this->request->getGet('page');
+        $lib = new Paging();
+        $model = new FEventModel();
+
+        if (!$page) {$page = 1;}
+        $scale_row = 9;
+        $start = ($page - 1) * $scale_row;
+        $total_cnt = $model->get_count('event');
+        $total_page = ceil($total_cnt / $scale_row);
+        $start = $lib->start($page);
+        $total_page = $lib->tpage($total_cnt);
+        $lastpage = $lib->tpage($total_cnt);
+
+        if ($lastpage == $page) {
+            $scale_row = $total_cnt - (($lastpage - 1) * $scale_row);
+        }
+
+        $linkpage = "/kobaco/event";
+        $ln = "";
+
+        if ($total_cnt > 0) {
+            $data['pagenum'] = $lib->divpage($linkpage, $total_page, $page, $ln);
+        } else {
+            $data['pagenum'] = "";
+        }
+
+        $data['TOTAL_CNT']	=	$total_cnt;		//총게시물
+        $data['PAGE']		=	$page;			//현재페이지
+        $data['TOTAL_PAGE']	=	$total_page;	//총페이지수
+        $list_result = $model->get_list('event', $start, $scale_row);
+        if ($total_cnt > 0) {
+            $total_num = $total_cnt;	//임시게시물번호
+            if($page > 1) {
+                $total_num	=	$total_num - ($page - 1) * $scale_row;
+            }
+
+            foreach ($list_result->getResult() as $row) {
+                $list_data[]	=	array(
+                    'NUM'		=>	$total_num,
+                    'id'        => $row->id,
+                    'subject'   => $row->subject,
+                    'contents'  => iconv_substr(strip_tags($row->contents), 0, 75, 'utf-8'),
+                    'pc_file_name' => $row->pc_file_name,
+                    'mo_file_name' => $row->mo_file_name,
+                    'regdate'   => str_replace("-", ".", substr($row->reg_date, 0, 10)),
+                );
+                $total_num	=	$total_num - 1;
+            }
+
+            $data['LOOP']	=	$list_data;
+        }
+
+        return view('/kobaco/event', $data);
     }
 
     public function edetail() {

@@ -39,28 +39,18 @@
             <div class="sub-sect2 community3">
                 <h3 class="h-ty1">이벤트</h3>
                 <ul class="event-lists">
+                    <?php if(count($LOOP) > 0) {?>
+                    <?php foreach($LOOP as $ITEM):?>
                     <li>
-                        <a href="#"><img src="/static/images/@event-thumb1.jpg" alt=""></a>
+                        <a href="/kobaco/edetail/<?=$ITEM['id']?>"><img src="/upload/<?=$ITEM['pc_file_name']?>" alt=""></a>
                     </li>
-                    <li>
-                        <a href="#"><img src="/static/images/@event-thumb2.jpg" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="/static/images/@event-thumb3.jpg" alt=""></a>
-                    </li>
+                        <?php endforeach;?>
+                    <?php }?>
                 </ul>
                 <!-- paging  : pc-->
                 <div class="pagination">
                     <div class="paging">
-                        <a href="#self" class="page_prev"><span class="hide">이전</span></a>
-                        <span class="page">
-                            <a href="#self" class="on">1</a>
-                            <a href="#self">2</a>
-                            <a href="#self">3</a>
-                            <a href="#self">4</a>
-                            <a href="#self">5</a>
-                        </span>
-                        <a href="#self" class="page_next"><span class="hide">다음</span></a>
+                        <?=$pagenum?>
                     </div>
                 </div>
                 <!-- //paging -->

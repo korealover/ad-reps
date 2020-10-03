@@ -10,6 +10,11 @@
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
     <link href="/static/css/styles.css" rel="stylesheet">
+    <!-- datapiker -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/static/js/datepicker-ko.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,12 +29,31 @@
                 $("#subject").focus();
                 return false;
             }
+            if ($("#startDt").val() == "") {
+                alert("이벤트 시작일을 선택해주세요")
+                $("#startDt").focus();
+                return false;
+            }
+            if ($("#endDt").val() == "") {
+                alert("이벤트 종료일을 선택해주세요")
+                $("#endDt").focus();
+                return false;
+            }
             if ($("#ckeditor_full").val() == "") {
                 alert("내용을 등록해주세요")
                 $("#ckeditor_full").focus();
                 return false;
             }
         }
+
+        $(function(){
+            $("#startDt").datepicker({
+                dateFormat:"yy-mm-dd"
+            });
+            $("#endDt").datepicker({
+                dateFormat:"yy-mm-dd"
+            });
+        });
     </script>
 </head>
 <body>
@@ -110,6 +134,18 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="inputStartDt" class="col-lg-2 text-center"><h5><b>시작일</b></h5></label>
+                                <div class="col-lg-4">
+                                    <input type="text" class="form-control" name="startDt" id="startDt" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEndDt" class="col-lg-2 text-center"><h5><b>종료일</b></h5></label>
+                                <div class="col-lg-4">
+                                    <input type="text" class="form-control" name="endDt" id="endDt" />
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="inputContent" class="col-lg-2 text-center"><h5><b>내용</b></h5></label>
                                 <div class="col-lg-10">
                                     <textarea id="ckeditor_full" name="ckeditor_full"></textarea>
@@ -155,6 +191,14 @@
 <script src="/static/vendors/ckeditor/adapters/jquery.js"></script>
 
 <script type="text/javascript" src="/static/vendors/tinymce/js/tinymce/tinymce.min.js"></script>
+
+<!-- bootstrap-datetimepicker -->
+<script src="/static/vendors/form-helpers/js/bootstrap-formhelpers.min.js"></script>
+
+<link href="/static/vendors/bootstrap-datetimepicker/datetimepicker.css" rel="stylesheet">
+<script src="/static/vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+<!-- bootstrap-datetimepicker -->
+
 <script src="/static/js/custom.js"></script>
 <script src="/static/js/tables.js"></script>
 <script src="/static/js/editors.js"></script>

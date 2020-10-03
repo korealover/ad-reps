@@ -43,8 +43,8 @@ class EventModel extends Model {
 
     public function get_save($boarddata) {
         $db = \Config\Database::connect();
-        $sql = "INSERT INTO event (pid, user_id, user_name, subject, contents, hits, pc_file_size, pc_file_name, pc_org_file_name, mo_file_size, mo_file_name, mo_org_file_name, file_path, reg_date) VALUES 
-	            (0, :user_id:, :user_name:, :subject:, :contents:, 0, :pc_file_size:, :pc_file_name:, :pc_org_file_name:, :mo_file_size:, :mo_file_name:, :mo_org_file_name:, :file_path:,  now());";
+        $sql = "INSERT INTO event (pid, user_id, user_name, subject, start_dt, end_dt, contents, hits, pc_file_size, pc_file_name, pc_org_file_name, mo_file_size, mo_file_name, mo_org_file_name, file_path, reg_date) VALUES 
+	            (0, :user_id:, :user_name:, :subject:, :start_dt:, :end_dt:,  :contents:, 0, :pc_file_size:, :pc_file_name:, :pc_org_file_name:, :mo_file_size:, :mo_file_name:, :mo_org_file_name:, :file_path:,  now());";
 
         if (!$db->query($sql, $boarddata)) {
             $error = $db->error();
@@ -57,7 +57,7 @@ class EventModel extends Model {
 
     public function get_edit($boarddata) {
         $db = \Config\Database::connect();
-        $sql = "UPDATE event SET subject=:subject:, contents=:contents:, pc_file_size=:pc_file_size:, pc_file_name=:pc_file_name:, pc_org_file_name=:pc_org_file_name: 
+        $sql = "UPDATE event SET subject=:subject:, start_dt=:start_dt:, end_dt=:end_dt:, contents=:contents:, pc_file_size=:pc_file_size:, pc_file_name=:pc_file_name:, pc_org_file_name=:pc_org_file_name: 
                 , mo_file_size=:mo_file_size:, mo_file_name=:mo_file_name:, mo_org_file_name=:mo_org_file_name:, file_path=:file_path: WHERE id=:id:";
 
         if (!$db->query($sql, $boarddata)) {
