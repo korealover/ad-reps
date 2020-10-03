@@ -38,19 +38,20 @@
             <div class="sub-sect2 community3">
                 <h3 class="h-ty1">이벤트</h3>
                 <div class="event-dt-top">
-                    <h4>친구 추천하고, 최대 100만원 받자! </h4>
+                    <h4><?=$vs['subject'] ?></h4>
                     <div class="elt">
-                        <span class="date">2020.09.01 ~ 2020.12.31</span>
-                        <span class="sns">
+                        <span class="date"><?=str_replace('-', '.', $vs['start_dt']) ?> ~ <?=str_replace('-', '.', $vs['end_dt']) ?></span>
+                        <!-- <span class="sns">
                             <a href="#" class="ico-sns-fb">페이스북</a>
                             <a href="#" class="ico-sns-kka">카카오톡</a>
                             <a href="#" class="ico-sns-link">링크</a>
-                        </span>
+                        </span> -->
                     </div>
                 </div>
                 <div class="event-dt-body">
-                    <img src="/static/images/@event-detail.jpg" alt="">
+                    <?=$vs['contents'] ?>
                 </div>
+                <!--
                 <div class="event-dt-sns">
                     <p class="tx1">이벤트 페이지를 가족, 친구들과 함께 공유해보세요!</p>
                     <span class="sns">
@@ -81,8 +82,10 @@
                         </li>
                     </ul>
                 </div>
+                -->
 
                 <!-- paging  : pc-->
+                <!--
                 <div class="pagination">
                     <div class="paging">
                         <a href="#self" class="page_prev"><span class="hide">이전</span></a>
@@ -96,14 +99,17 @@
                         <a href="#self" class="page_next"><span class="hide">다음</span></a>
                     </div>
                 </div>
+                -->
                 <!-- //paging -->
 
                 <!-- mo : 더보기 -->
+                <!--
                 <button type="button" class="btn-more"><span>더보기</span></button>
+                -->
                 <!-- // -->
 
                 <div class="event-dt-btn">
-                    <a href="#" class="btn-list">목록</a>
+                    <a href="/kobaco/event" class="btn-list">목록</a>
                 </div>
             </div>
         </div>

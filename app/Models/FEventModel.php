@@ -7,8 +7,11 @@ class FEventModel extends Model {
     protected $allowedFields = ['subject'];
 
     public function get_list($table = 'event', $start, $page_row) {
+        $today = date("Y-m-d");
         $db = \Config\Database::connect();
         $builder = $db->table('event');
+        $builder->where('start_dt <=', $today.' 00:00:00');
+        $builder->where('end_dt >=', $today.' 23:59:59');
         $builder->orderBy('id', 'DESC');
         $builder->limit($page_row, $start);
         $query = $builder->get();
@@ -20,8 +23,13 @@ class FEventModel extends Model {
     }
 
     public function get_count($table = 'event') {
+        $today = date("Y-m-d");
         $db = \Config\Database::connect();
-        $count = $db->table($table)->countAll();
+        //$count = $db->table($table)->countAll();
+        $builder = $db->table($table);
+        $builder->where('start_dt <=', $today.' 00:00:00');
+        $count = $builder->where('end_dt >=', $today.' 23:59:59')->countAll();
+
 
         $db->close();
         return $count;

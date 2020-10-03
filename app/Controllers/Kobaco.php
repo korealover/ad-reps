@@ -3,6 +3,7 @@
 
 use App\Libraries\Paging;
 use App\Libraries\SessionLib;
+use App\Models\EventModel;
 use App\Models\FaqModel;
 use App\Models\FEventModel;
 use App\Models\FNoticeModel;
@@ -277,7 +278,21 @@ class Kobaco extends BaseController
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
         $see->set_browser($agent );
-        return view('/kobaco/edetail');
+        $uri = new \CodeIgniter\HTTP\URI();
+        $uri = $this->request->uri;
+        $id = $uri->getSegment(3);
+
+        $model = new FEventModel();
+
+        $data = [
+            'vs' => $model->get_view('event', $id)
+        ];
+
+
+
+
+
+        return view('/kobaco/edetail', $data);
     }
 
 }

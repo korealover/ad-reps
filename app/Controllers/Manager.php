@@ -536,7 +536,7 @@ class Manager extends Controller {
                 'mo_org_file_name' => $mo_org_file_name,
                 'file_path' => $file_path,
             );
-            print_r($boarddata);
+            //print_r($boarddata);
             $result = $model->get_edit($boarddata);
         } else {
             $boarddata = array(
@@ -557,7 +557,7 @@ class Manager extends Controller {
             $result = $model->get_save($boarddata);
         }
 
-        //echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/event'>";
+        echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/event'>";
         exit;
 
     }
