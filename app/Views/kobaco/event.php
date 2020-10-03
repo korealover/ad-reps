@@ -38,15 +38,17 @@
         <div class="contents static">
             <div class="sub-sect2 community3">
                 <h3 class="h-ty1">이벤트</h3>
-                <ul class="event-lists">
                     <?php if(count($LOOP) > 0) {?>
+                <ul class="event-lists">
                     <?php foreach($LOOP as $ITEM):?>
                     <li>
                         <a href="/kobaco/edetail/<?=$ITEM['id']?>"><img src="/upload/<?=$ITEM['pc_file_name']?>" alt=""></a>
                     </li>
                         <?php endforeach;?>
-                    <?php }?>
                 </ul>
+                    <?php } else {?>
+                        <div style="width: 100%; text-align: center;">등록된 이벤트가 없습니다.</div>
+                    <?php  }?>
                 <!-- paging  : pc-->
                 <div class="pagination">
                     <div class="paging">

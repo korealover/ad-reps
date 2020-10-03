@@ -37,10 +37,9 @@
         <div class="contents static">
             <div class="sub-sect2 community2">
                 <h3 class="h-ty1">FAQ</h3>
+                    <?php if (count($list) > 0) {?>
                 <ul class="faq-lists">
-                    <?php
-                    foreach ($list as $row) {
-                    ?>
+                    <?php    foreach ($list as $row) { ?>
                     <li>
                         <div class="faq-q">
                             <h4 class="tx3"><?= $row->subject ?></h4>
@@ -49,10 +48,11 @@
                             <?= $row->contents ?>
                         </div>
                     </li>
-                    <?php
-                    }
-                    ?>
+                    <?php }?>
                 </ul>
+                    <?php } else { ?>
+                        <div style="width: 100%; text-align: center;">등록된 이벤트가 없습니다.</div>
+                    <?php } ?>
                 <script>
                     ui.addOnAction('.faq-lists>li')
                 </script>

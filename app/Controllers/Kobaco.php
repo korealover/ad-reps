@@ -121,6 +121,8 @@ class Kobaco extends BaseController
                 $total_num	=	$total_num - 1;
             }
             $data['LOOP']	=	$list_data;
+        } else {
+            $data['LOOP']	=	array();
         }
 
         return view('/kobaco/notice', $data);
@@ -209,7 +211,7 @@ class Kobaco extends BaseController
         $data = [
             'list' => $model->get_list(),
         ];
-        return view('/kobaco/faq', $data );
+        return view('/kobaco/faq', $data);
     }
 
     public function event() {
@@ -269,6 +271,8 @@ class Kobaco extends BaseController
             }
 
             $data['LOOP']	=	$list_data;
+        } else {
+            $data['LOOP']	=	array();
         }
 
         return view('/kobaco/event', $data);

@@ -563,6 +563,22 @@ class Manager extends Controller {
     }
 
     /**
+     * 이벤트 삭제
+     */
+    public function eventd() {
+        $session = \Config\Services::session();
+        $model = new EventModel();
+        $uri = new \CodeIgniter\HTTP\URI();
+        $uri = $this->request->uri;
+        $id = $uri->getSegment(3);
+
+        $result = $model->get_delete('event', $id);
+
+        echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/event'>";
+        exit;
+    }
+
+    /**
      * 관리자 저장/수정 처리
      */
     public function adminp() {

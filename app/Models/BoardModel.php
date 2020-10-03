@@ -8,7 +8,7 @@ class BoardModel extends Model {
 
     public function get_list($table = 'board') {
         $db = \Config\Database::connect();
-        $sql = "SELECT * FROM ". $table ." ORDER BY id ASC";
+        $sql = "SELECT * FROM ". $table ." ORDER BY id DESC";
         //echo $sql;
         $query = $db->query($sql);
         $result = $query -> getResult();

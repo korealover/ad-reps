@@ -48,7 +48,9 @@
                         </a>
                     </div>
                         <?php endforeach;?>
-                     <?php }?>
+                     <?php } else {?>
+                        <div style="width: 100%; text-align: center;">등록된 이벤트가 없습니다.</div>
+                    <?php }?>
                 </div>
                 <!-- paging  : pc-->
                 <div class="pagination">
