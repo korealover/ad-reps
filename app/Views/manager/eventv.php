@@ -130,7 +130,7 @@
                                         if ($vs['pc_file_size'] > 0 && $vs['pc_file_name'] != "") {
                                             ?>
                                             <a href="/upload/<?=$vs['pc_file_name']?>" target="_blank"><?=$vs['pc_org_file_name']?></a>
-                                            <a href="#" class="glyphicon glyphicon-trash"></a>
+<!--                                            <a href="#" class="glyphicon glyphicon-trash"></a>-->
                                             <?php
                                         }
                                         ?>
@@ -146,7 +146,7 @@
                                         if ($vs['mo_file_size'] > 0 && $vs['mo_file_name'] != "") {
                                             ?>
                                             <a href="/upload/<?=$vs['mo_file_name']?>" target="_blank"><?=$vs['mo_org_file_name']?></a>
-                                            <a href="#" class="glyphicon glyphicon-trash"></a>
+<!--                                            <a href="#" class="glyphicon glyphicon-trash"></a>-->
                                             <?php
                                         }
                                         ?>
