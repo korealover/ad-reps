@@ -49,7 +49,8 @@ class Manager extends Controller {
                 $data = [
                     'current_left' => 'board',
                     'list' => $model->get_list(),
-                    'cnt' => $model->get_count(),
+//                    'cnt' => $model->get_count(),
+                    'cnt' => 1,
                     'admin_menu' =>$session->get('admin_menu'),
                 ];
             } elseif ($page == 'boardv') {
@@ -74,7 +75,8 @@ class Manager extends Controller {
                 $data = [
                     'current_left' => 'faq',
                     'list' => $model->get_list(),
-                    'cnt' => $model->get_count(),
+//                    'cnt' => $model->get_count(),
+                    'cnt' => 1,
                     'admin_menu' =>$session->get('admin_menu'),
                 ];
             } elseif ($page == 'faqv') {
@@ -99,7 +101,8 @@ class Manager extends Controller {
                 $data = [
                     'current_left' => 'event',
                     'list' => $model->get_list(),
-                    'cnt' => $model->get_count(),
+//                    'cnt' => $model->get_count(),
+                    'cnt' => 1,
                     'admin_menu' =>$session->get('admin_menu'),
                 ];
             } elseif ($page == 'eventv') {

@@ -78,7 +78,7 @@
                             foreach ($list as $row) {
                                 ?>
                                 <tr style="text-align: center;">
-                                    <td><?=$cnt--?></td>
+                                    <td><?=$cnt++?></td>
                                     <td><img src="/upload/<?= $row->pc_file_name ?>" style="width:200px;"/></td>
                                     <td style="text-align: left;"><a
                                                 href="/manager/view/eventv/<?= $row->id ?>"><?= $row->subject ?></a></td>
