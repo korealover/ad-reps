@@ -78,3 +78,9 @@ defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest auto
 
 #define('ORG_FILE_PATH', 'C:\projects\dev\ad-reps\www\upload');
 define('ORG_FILE_PATH', 'D:\projects\dev\ad-reps\www\upload');
+
+# Google Analytics ID
+define('GA_ID', 'UA-179639792-1');
+
+# 라이브리 UID
+define('LIVERE_UID', 'MTAyMC81MTY4OS8yODE3MA==');

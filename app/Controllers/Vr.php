@@ -7,7 +7,7 @@ class Vr extends BaseController
      * 메인
      */
     public function index() {
-        return view('home');
+        return view('/vr/global');
     }
 
     /**
@@ -16,6 +16,14 @@ class Vr extends BaseController
      */
     public function global() {
         return view('/vr/global');
+    }
+
+    /**
+     * @return string
+     * 글로벌관
+     */
+    public function ad() {
+        return view('/vr/ad');
     }
 }
 ?>
