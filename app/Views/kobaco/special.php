@@ -45,7 +45,7 @@
                     <div class="p-img1 n-motion n-bottom"><img src="/static/images/theme4-img1.jpg" alt=""></div>
                     <div class="p-img2 n-motion n-bottom n-delay1"><img src="/static/images/theme4-img2.jpg" alt=""></div>
                     <div class="p-img3 n-motion n-bottom n-delay2"><img src="/static/images/theme4-img3.jpg" alt=""></div>
-                    <div class="p-img4 n-motion n-bottom n-delay3"><img src="/static/images/theme4-img4.jpg" alt=""></div>
+                    <div class="p-img4 n-motion n-bottom n-delay3"><a href="<?=$url?>" target="_blank"><img src="/static/images/theme4-img4.jpg" alt=""></a></div>
                 </div>
             </div>
         </div>

@@ -53,11 +53,17 @@ class Kobaco extends BaseController
         return view('/kobaco/exhibit');
     }
 
+    /**
+     * 역사관
+     * @return string
+     */
     public function history() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
         $see->set_browser($agent );
-        return view('/kobaco/history');
+        $data['url'] = $see->get_url(1);
+
+        return view('/kobaco/history', $data);
     }
 
     public function exhibition() {
@@ -67,6 +73,10 @@ class Kobaco extends BaseController
         return view('/kobaco/history');
     }
 
+    /**
+     * 공지사항
+     * @return string
+     */
     public function notice() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
@@ -168,41 +178,73 @@ class Kobaco extends BaseController
         return view('/kobaco/detail', $date);
     }
 
+    /**
+     * 테마관
+     * @return string
+     */
     public function theme() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
         $see->set_browser($agent );
-        return view('/kobaco/theme');
+        $data['star_url'] = $see->get_url(6);
+        $data['horror_url'] = $see->get_url(5);
+        $data['Luxury_url'] = $see->get_url(9);
+        $data['viral_url'] = $see->get_url(7);
+        return view('/kobaco/theme', $data);
     }
 
+    /**
+     * 수상작관
+     * @return string
+     */
     public function winner() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
         $see->set_browser($agent );
-        return view('/kobaco/winner');
+        $data['url'] = $see->get_url(2);
+        return view('/kobaco/winner', $data);
     }
 
+    /**
+     * 광고제작관
+     * @return string
+     */
     public function adv() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
         $see->set_browser($agent );
-        return view('/kobaco/adv');
+        $data['url'] = $see->get_url(3);
+        return view('/kobaco/adv', $data);
     }
 
+    /**
+     * 특별관
+     * @return string
+     */
     public function special() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
         $see->set_browser($agent );
-        return view('/kobaco/special');
+        $data['url'] = $see->get_url(8);
+        return view('/kobaco/special', $data);
     }
 
+    /**
+     * 글로벌관
+     * @return string
+     */
     public function global() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
         $see->set_browser($agent );
-        return view('/kobaco/global');
+        $data['url'] = $see->get_url(4);
+        return view('/kobaco/global', $data);
     }
 
+    /**
+     * FAQ
+     * @return string
+     */
     public function faq() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
@@ -214,6 +256,10 @@ class Kobaco extends BaseController
         return view('/kobaco/faq', $data);
     }
 
+    /**
+     * 이벤트
+     * @return string
+     */
     public function event() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
@@ -278,6 +324,10 @@ class Kobaco extends BaseController
         return view('/kobaco/event', $data);
     }
 
+    /**
+     * 이벤트 상세
+     * @return string
+     */
     public function edetail() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
@@ -291,10 +341,6 @@ class Kobaco extends BaseController
         $data = [
             'vs' => $model->get_view('event', $id)
         ];
-
-
-
-
 
         return view('/kobaco/edetail', $data);
     }

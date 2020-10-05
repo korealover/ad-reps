@@ -10,6 +10,24 @@
     <script src="/static/common/js/mobile-detect.min.js"></script>
     <script src="/static/common/js/imagesloaded.pkgd.js"></script>
     <script src="/static/common/js/ui.js"></script>
+    <script>
+        function fnPageNext(page, tpage) {
+            //alert(page);
+            var tp = parseInt(tpage);
+            var p = parseInt(page) + 1;
+            if (tp >= p) {
+                location.href = '/kobaco/notice/' + p;
+            }
+        }
+        function fnPagePre(page, tpage) {
+            //alert(page);
+            var tp = parseInt(tpage);
+            var p = parseInt(page) - 1;
+            if (0 < p) {
+                location.href = '/kobaco/notice/' + p;
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -61,7 +79,11 @@
                 <!-- //paging -->
 
                 <!-- mo : 더보기 -->
-                <button type="button" class="btn-more"><span>더보기</span></button>
+                <?php if ($PAGE == $TOTAL_PAGE) {?>
+                    <button type="button" class="btn-more" onclick="fnPagePre('<?=$PAGE?>', '<?=$TOTAL_PAGE?>');"><span>더보기</span></button>
+                <?php } else {?>
+                    <button type="button" class="btn-more" onclick="fnPageNext('<?=$PAGE?>', '<?=$TOTAL_PAGE?>');"><span>더보기</span></button>
+                <?php }?>
                 <!-- // -->
 
             </div>

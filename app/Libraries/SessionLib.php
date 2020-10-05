@@ -28,6 +28,20 @@ class SessionLib {
         }
         $db->close();
     }
+
+    public function get_url($id) {
+        $db = \Config\Database::connect();
+        $sql = "SELECT url FROM display WHERE id=?";
+        $query = $db->query($sql, [$id]);
+        $row = $query->getRow();
+        if (isset($row)) {
+            $url = $row->url;
+        } else {
+            $url = "#";
+        }
+        $db->close();
+        return $url;
+    }
 }
 
 ?>

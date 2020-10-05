@@ -57,25 +57,25 @@
                         <div>
                             <div class="bx">
                                 <img src="/static/images/@theme.jpg" alt="">
-                                <a href="#" class="ico-play"></a>
+                                <a href="<?=$star_url?>" class="ico-play" target="_blank"></a>
                             </div>
                         </div>
                         <div>
                             <div class="bx">
                                 <img src="/static/images/@theme2.jpg" alt="">
-                                <a href="#" class="ico-play"></a>
+                                <a href="<?=$horror_url?>" class="ico-play" target="_blank"></a>
                             </div>
                         </div>
                         <div>
                             <div class="bx">
                                 <img src="/static/images/@theme.jpg" alt="">
-                                <a href="#" class="ico-play"></a>
+                                <a href="<?=$Luxury_url?>" class="ico-play" target="_blank"></a>
                             </div>
                         </div>
                         <div>
                             <div class="bx">
                                 <img src="/static/images/@theme.jpg" alt="">
-                                <a href="#" class="ico-play"></a>
+                                <a href="<?=$viral_url?>" class="ico-play" target="_blank"></a>
                             </div>
                         </div>
                     </div>
