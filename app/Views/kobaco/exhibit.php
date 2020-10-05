@@ -51,7 +51,7 @@
                         <p class="tx2">시대별 대표 공익작품들을 통해 사회 변화와 가치관의 역사를 살펴볼 수 있습니다</p>
                         <p class="p-img">
                             <img src="/static/images/exih-img1.jpg" alt="">
-                            <a href="#" class="link-go">보러가기</a>
+                            <a href="/kobaco/history" class="link-go">보러가기</a>
                         </p>
                     </div>
                     <div class="exhi-item">
@@ -59,7 +59,7 @@
                         <p class="tx2">2020 대한민국 공익광고제 공모전 영광의 수상작들을 만나보시죠</p>
                         <p class="p-img">
                             <img src="/static/images/exih-img2.jpg" alt="">
-                            <a href="#" class="link-go">보러가기</a>
+                            <a href="/kobaco/winner" class="link-go">보러가기</a>
                         </p>
                     </div>
                     <div class="exhi-item">
@@ -67,7 +67,7 @@
                         <p class="tx2">공익광고가 제작되는 일련의 과정과 통합 캠페인까지 실제 제작사례를 통해 확인할 수 있습니다</p>
                         <p class="p-img">
                             <img src="/static/images/exih-img3.jpg" alt="">
-                            <a href="#" class="link-go">보러가기</a>
+                            <a href="/kobaco/adv" class="link-go">보러가기</a>
                         </p>
                     </div>
                     <div class="exhi-item">
@@ -75,7 +75,7 @@
                         <p class="tx2">공익광고는 변화의 시기마다 사회인식과 행동문화를 광고적으로 풀어내 국민들의 공감을 이끌어내고 사회 통합에 기여해왔습니다. 새로운 시대상을 제시해 시대와 시대를 잇고, 갈등으로 멀어진 마음을 이어 국민들의 마음을 하나로 만들어 준 공익광고를 소개합니다.</p>
                         <p class="p-img">
                             <img src="/static/images/exih-img4.jpg" alt="">
-                            <a href="#" class="link-go">보러가기</a>
+                            <a href="/kobaco/special" class="link-go">보러가기</a>
                         </p>
                     </div>
                     <div class="exhi-item">
@@ -83,7 +83,7 @@
                         <p class="tx2">세계 3대 광고제로 불리는 칸 광고제, 클리오 광고제, 뉴욕 페스티벌에서 수상한 해외광고 중에서 공익적 메시지와 창의적인 표현이 뛰어난 작품들을 소개합니다</p>
                         <p class="p-img">
                             <img src="/static/images/exih-img5.jpg" alt="">
-                            <a href="#" class="link-go">보러가기</a>
+                            <a href="/kobaco/global" class="link-go">보러가기</a>
                         </p>
                     </div>
                     <div class="exhi-item">
@@ -95,7 +95,7 @@
                             ⑤ 바이럴관 : 텔레비전에서 볼 수 없는 특별한<br class="pc-br"> 공익광고를 볼 수 있습니다</p>
                         <p class="p-img">
                             <img src="/static/images/exih-img6.jpg" alt="">
-                            <a href="#" class="link-go">보러가기</a>
+                            <a href="/kobaco/theme" class="link-go">보러가기</a>
                         </p>
                     </div>
 
@@ -103,7 +103,7 @@
             </div>
         </div>
     </div>
-    <?= $this->include('templates/ffooter') ?>
+    <?=$this->include('templates/ffooter')?>
 </div>
 
 </body>
