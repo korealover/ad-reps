@@ -23,6 +23,17 @@ class Kobaco extends BaseController
 
     /**
      * @return string
+     * 메인
+     */
+    public function main() {
+        $agent = $this->request->getUserAgent();
+        $see = new SessionLib();
+        $see->set_browser($agent );
+        return view('swiper');
+    }
+
+    /**
+     * @return string
      *
      */
     public function ad() {
