@@ -12,7 +12,7 @@
         var unityInstance = UnityLoader.instantiate("unityContainer", "http://vod.premeet.co.kr/premeet/vr/historyroom/Build/ff3657c970aabbd318c41f4f2cddf218.json", {onProgress: UnityProgress});
     </script>
 </head>
-<body>
+<body bgcolor="#000000">
 <div class="webgl-content">
     <div id="unityContainer" style="width: 960px; height: 600px"></div>
     <div class="footer">
