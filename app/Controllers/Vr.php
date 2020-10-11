@@ -57,5 +57,21 @@ class Vr extends BaseController
     public function viral() {
         return view('/vr/viral');
     }
+
+    /**
+     * @return string
+     * 스페셜관
+     */
+    public function special() {
+        return view('/vr/special');
+    }
+
+    /**
+     * @return string
+     * 스타관
+     */
+    public function star() {
+        return view('/vr/star');
+    }
 }
 ?>

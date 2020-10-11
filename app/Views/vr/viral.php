@@ -18,7 +18,7 @@
     <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">kobaco_viral</div>
+        <div class="title" style="color:#FFFFFF">kobaco_viral</div>
     </div>
 </div>
 <?=$this->include('templates/vrfooter')?>

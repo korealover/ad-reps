@@ -9,7 +9,7 @@
     <script src="http://vod.premeet.co.kr/premeet/vr/historyroom/TemplateData/UnityProgress.js"></script>
     <script src="http://vod.premeet.co.kr/premeet/vr/historyroom/Build/56b27af957420c10aef972428bfcf1ed.js"></script>
     <script>
-        var unityInstance = UnityLoader.instantiate("unityContainer", "http://vod.premeet.co.kr/premeet/vr/historyroom/Build/ff3657c970aabbd318c41f4f2cddf218.json", {onProgress: UnityProgress});
+        var unityInstance = UnityLoader.instantiate("unityContainer", "http://vod.premeet.co.kr/premeet/vr/historyroom/Build/b9b4c9db54398d1f66367e80f0b5a4eb.json", {onProgress: UnityProgress});
     </script>
 </head>
 <body bgcolor="#000000">
@@ -18,7 +18,7 @@
     <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">HistoryRoom</div>
+        <div class="title" style="color:#FFFFFF">HistoryRoom</div>
     </div>
 </div>
 <?=$this->include('templates/vrfooter')?>

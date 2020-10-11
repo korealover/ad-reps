@@ -9,7 +9,7 @@
     <script src="http://vod.premeet.co.kr/premeet/vr/global/TemplateData/UnityProgress.js"></script>
     <script src="http://vod.premeet.co.kr/premeet/vr/global/Build/UnityLoader.js"></script>
     <script>
-        var unityInstance = UnityLoader.instantiate("unityContainer", "http://vod.premeet.co.kr/premeet/vr/global/Build/global_ver2.json", {onProgress: UnityProgress});
+        var unityInstance = UnityLoader.instantiate("unityContainer", "http://vod.premeet.co.kr/premeet/vr/global/Build/global.json", {onProgress: UnityProgress});
     </script>
 </head>
 <body bgcolor="#000000">
@@ -18,7 +18,7 @@
     <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">kobaco_global</div>
+        <div class="title" style="color:#FFFFFF">kobaco_global</div>
     </div>
 </div>
 <?=$this->include('templates/vrfooter')?>
