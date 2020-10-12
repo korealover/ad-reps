@@ -10,6 +10,11 @@
     <script src="/static/common/js/mobile-detect.min.js"></script>
     <script src="/static/common/js/imagesloaded.pkgd.js"></script>
     <script src="/static/common/js/ui.js"></script>
+    <script>
+        function fnClick() {
+            window.open('<?=$url?>', '_blank');
+        }
+    </script>
 </head>
 <body>
 
@@ -45,7 +50,7 @@
                     <div class="p-img1 n-motion n-bottom"><img src="/static/images/theme3-img1.jpg" alt=""></div>
                     <div class="p-img2 n-motion n-bottom n-delay1"><img src="/static/images/theme3-img2.jpg" alt=""></div>
                     <div class="p-img3 n-motion n-bottom n-delay2"><img src="/static/images/theme3-img3.jpg" alt=""></div>
-                    <div class="p-img4 n-motion n-bottom n-delay3"><a href="<?=$url?>" target="_blank"><img src="/static/images/theme3-img4.jpg" alt=""></a></div>
+                    <div class="p-img4 n-motion n-bottom n-delay3"><img src="/static/images/theme3-img4.jpg" alt="" onclick="fnClick();" style="cursor:pointer;"></div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
@@ -10,7 +9,7 @@
         UnityLoader.instantiate("unityContainer", "http://vod.premeet.co.kr/premeet/vr/historyroom/Build/b9b4c9db54398d1f66367e80f0b5a4eb.json");
     </script>
 </head>
-<body bgcolor="#000000">
+<body bgcolor="#000000" topmargin="0" leftmargin="0">
 <div id="unityContainer" style="width: 100%; margin: auto"></div>
 <?=$this->include('templates/vrfooter')?>
 </body>

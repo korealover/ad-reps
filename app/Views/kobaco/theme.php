@@ -11,6 +11,11 @@
     <script src="/static/common/js/imagesloaded.pkgd.js"></script>
     <script src="/static/common/js/slick.js"></script>
     <script src="/static/common/js/ui.js"></script>
+    <script>
+        function fnClick(url) {
+            window.open(url, '_blank');
+        }
+    </script>
 </head>
 <body>
 
@@ -56,26 +61,23 @@
                     <div class="theme-sd-slider">
                         <div>
                             <div class="bx">
-                                <img src="/static/images/@theme.jpg" alt="">
-                                <a href="<?=$star_url?>" class="ico-play" target="_blank"></a>
+                                <img src="/static/images/@theme.jpg" alt="" onclick="fnClick('<?=$star_url?>');" style="cursor:pointer;">
+
                             </div>
                         </div>
                         <div>
                             <div class="bx">
-                                <img src="/static/images/@theme2.jpg" alt="">
-                                <a href="<?=$horror_url?>" class="ico-play" target="_blank"></a>
+                                <img src="/static/images/@theme2.jpg" alt="" onclick="fnClick('<?=$horror_url?>');" style="cursor:pointer;">
                             </div>
                         </div>
                         <div>
                             <div class="bx">
-                                <img src="/static/images/@theme.jpg" alt="">
-                                <a href="<?=$Luxury_url?>" class="ico-play" target="_blank"></a>
+                                <img src="/static/images/@theme.jpg" alt="" onclick="fnClick('<?=$Luxury_url?>');" style="cursor:pointer;">
                             </div>
                         </div>
                         <div>
                             <div class="bx">
-                                <img src="/static/images/@theme.jpg" alt="">
-                                <a href="<?=$viral_url?>" class="ico-play" target="_blank"></a>
+                                <img src="/static/images/@theme.jpg" alt="" onclick="fnClick('<?=$viral_url?>');" style="cursor:pointer;">
                             </div>
                         </div>
                     </div>
