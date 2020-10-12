@@ -147,6 +147,11 @@ class Manager extends Controller {
                     'current_left' => 'admin',
                     'admin_menu' =>$session->get('admin_menu'),
                 ];
+            } elseif ($page == 'howto') {
+                $data = [
+                    'current_left' => 'howto',
+                    'admin_menu' =>$session->get('admin_menu'),
+                ];
             } elseif($page == 'adminv') {
                 $model = new AdminModel();
                 $uri = new \CodeIgniter\HTTP\URI();

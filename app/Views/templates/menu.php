@@ -31,6 +31,7 @@
             <li <?= $current_left=="admin"?"class=\"current\"":FALSE?>><a href="/manager/view/admin"><i class="glyphicon glyphicon-user"></i> 관리자 관리</a></li>
             <?php }?>
             <?php if($admin_menu=='1001'){?>
+            <li <?= $current_left=="howto"?"class=\"current\"":FALSE?>><a href="/manager/view/howto"><i class="glyphicon glyphicon-calendar"></i> 에디터 사용법</a></li>
 <!--
             <li <?= $current_left=="calendar"?"class=\"current\"":FALSE?>><a href="/manager/view/calendar"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
             <li <?= $current_left=="tables"?"class=\"current\"":FALSE?>><a href="/manager/view/tables"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
