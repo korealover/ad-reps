@@ -73,5 +73,13 @@ class Vr extends BaseController
     public function star() {
         return view('/vr/star');
     }
+
+    /**
+     * @return string
+     * 명품관
+     */
+    public function luxury() {
+        return view('/vr/luxury');
+    }
 }
 ?>
