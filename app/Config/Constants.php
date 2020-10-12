@@ -83,4 +83,5 @@ define('ORG_FILE_PATH', 'D:\projects\dev\ad-reps\www\upload');
 define('GA_ID', 'UA-179639792-1');
 
 # 라이브리 UID
+define('LIVERE_ID', 'city');
 define('LIVERE_UID', 'MTAyMC81MTY4OS8yODE3MA==');

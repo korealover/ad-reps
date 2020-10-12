@@ -51,74 +51,13 @@
                     <h4><?=$vs['subject'] ?></h4>
                     <div class="elt">
                         <span class="date"><?=str_replace('-', '.', $vs['start_dt']) ?> ~ <?=str_replace('-', '.', $vs['end_dt']) ?></span>
-                        <!-- <span class="sns">
-                            <a href="#" class="ico-sns-fb">페이스북</a>
-                            <a href="#" class="ico-sns-kka">카카오톡</a>
-                            <a href="#" class="ico-sns-link">링크</a>
-                        </span> -->
                     </div>
                 </div>
                 <div class="event-dt-body">
                     <?=$vs['contents'] ?>
                 </div>
-                <!--
-                <div class="event-dt-sns">
-                    <p class="tx1">이벤트 페이지를 가족, 친구들과 함께 공유해보세요!</p>
-                    <span class="sns">
-                        <a href="#" class="ico-sns-fb">페이스북</a>
-                        <a href="#" class="ico-sns-kka">카카오톡</a>
-                        <a href="#" class="ico-sns-link">링크</a>
-                    </span>
-                </div>
-
-                <div class="event-reply">
-                    <h4>이벤트 참여하기</h4>
-                    <div class="reply-edit">
-                        <textarea name="" id="" cols="30" rows="3" placeholder="최대 500자까지 입력이 가능하며 주제와 무관한 내용은 작성자 동의 없이 삭제될 수 있습니다."></textarea>
-                        <button type="submit" class="btn-reg">등록</button>
-                    </div>
-                    <ul class="reply">
-                        <li>
-                            <p class="rp1">nowo***님 (2020.10.20)</p>
-                            <p class="tx">참여완료! 대한민국공익광고제를 응원합니다!</p>
-                        </li>
-                        <li>
-                            <p class="rp1">nowo***님 (2020.10.20)</p>
-                            <p class="tx">참여완료! 대한민국공익광고제를 응원합니다!</p>
-                        </li>
-                        <li>
-                            <p class="rp1">nowo***님 (2020.10.20)</p>
-                            <p class="tx">참여완료! 대한민국공익광고제를 응원합니다!</p>
-                        </li>
-                    </ul>
-                </div>
-                -->
-
-                <!-- paging  : pc-->
-                <!--
-                <div class="pagination">
-                    <div class="paging">
-                        <a href="#self" class="page_prev"><span class="hide">이전</span></a>
-                        <span class="page">
-                            <a href="#self" class="on">1</a>
-                            <a href="#self">2</a>
-                            <a href="#self">3</a>
-                            <a href="#self">4</a>
-                            <a href="#self">5</a>
-                        </span>
-                        <a href="#self" class="page_next"><span class="hide">다음</span></a>
-                    </div>
-                </div>
-                -->
-                <!-- //paging -->
-
-                <!-- mo : 더보기 -->
-                <!--
-                <button type="button" class="btn-more"><span>더보기</span></button>
-                -->
-                <!-- // -->
                 <!-- 라이브리 시티 설치 코드 -->
-                <div id="lv-container" data-id="city" data-uid="<?=LIVERE_UID?>">
+                <div id="lv-container" data-id="<?=LIVERE_ID?>" data-uid="<?=LIVERE_UID?>">
                     <script type="text/javascript">
                         (function(d, s) {
                             var j, e = d.getElementsByTagName(s)[0];

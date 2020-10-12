@@ -354,6 +354,11 @@ class Kobaco extends BaseController
             'id' => $id
         ];
 
+        if ($data['vs'] == "") {
+            echo "<meta http-equiv='Refresh' content='0; URL=/kobaco/event'>";
+            exit;
+        }
+
         return view('/kobaco/edetail', $data);
     }
 

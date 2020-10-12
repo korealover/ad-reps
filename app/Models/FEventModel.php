@@ -7,11 +7,11 @@ class FEventModel extends Model {
     protected $allowedFields = ['subject'];
 
     public function get_list($table = 'event', $start, $page_row) {
-        $today = date("Y-m-d");
+        $today = date("Y-m-d", time() + 50400); //호스팅 php 시간이 america/chicago time zone
         $db = \Config\Database::connect();
         $builder = $db->table('event');
-        $builder->where('start_dt <=', $today.' 00:00:00');
-        $builder->where('end_dt >=', $today.' 23:59:59');
+        $builder->where('start_dt <=', $today);
+        $builder->where('end_dt >=', $today);
         $builder->orderBy('id', 'DESC');
         $builder->limit($page_row, $start);
         $query = $builder->get();
@@ -23,13 +23,13 @@ class FEventModel extends Model {
     }
 
     public function get_count($table = 'event') {
-        $today = date("Y-m-d", time());
+        $today = date("Y-m-d", time() + 50400); //호스팅 php 시간이 america/chicago time zone
         $db = \Config\Database::connect();
         //$count = $db->table($table)->countAll();
         $builder = $db->table($table);
         $builder->selectCount('id');
-        $builder->where('start_dt <=', $today.' 00:00:00');
-        $builder->where('end_dt >=', $today.' 23:59:59');
+        $builder->where('start_dt <=', $today);
+        $builder->where('end_dt >=', $today);
         $query = $builder->get();
         $row = $query->getResult();
         $count = $row[0]->id;
@@ -42,11 +42,11 @@ class FEventModel extends Model {
     }
 
     public function get_view($table = 'event', $id) {
+        $today = date("Y-m-d", time() + 50400); //호스팅 php 시간이 america/chicago time zone
         $db = \Config\Database::connect();
         $sql0 = "UPDATE ".$table." SET hits = hits + 1 WHERE id = " .$id."";
         $db->query($sql0);
-
-        $sql = "SELECT * FROM ".$table." WHERE id = ".$id."";
+        $sql = "SELECT * FROM ".$table." WHERE id = '".$id."' AND start_dt <= '".$today."' AND end_dt >= '".$today."' ";
 //        echo $sql;
         $query = $db->query($sql);
 

@@ -69,6 +69,7 @@
                                 <th style="width: 7%;text-align: center;">번호</th>
                                 <th style="width: 20%;text-align: center;">썸네일</th>
                                 <th style="width: *;text-align: center;">제목</th>
+                                <th style="width: 15%;text-align: center;">이벤트기간</th>
                                 <th style="width: 15%;text-align: center;">등록일</th>
                                 <th style="width: 10%;text-align: center;">조회</th>
                             </tr>
@@ -82,6 +83,7 @@
                                     <td><img src="/upload/<?= $row->pc_file_name ?>" style="width:200px;"/></td>
                                     <td style="text-align: left;"><a
                                                 href="/manager/view/eventv/<?= $row->id ?>"><?= $row->subject ?></a></td>
+                                    <td><?= $row->start_dt ?> ~ <?= $row->end_dt ?></td>
                                     <td><?= $row->reg_date ?></td>
                                     <td><?= $row->hits ?></td>
                                 </tr>
