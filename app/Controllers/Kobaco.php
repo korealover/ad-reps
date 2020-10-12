@@ -350,7 +350,8 @@ class Kobaco extends BaseController
         $model = new FEventModel();
 
         $data = [
-            'vs' => $model->get_view('event', $id)
+            'vs' => $model->get_view('event', $id),
+            'id' => $id
         ];
 
         return view('/kobaco/edetail', $data);

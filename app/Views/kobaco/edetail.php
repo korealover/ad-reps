@@ -10,6 +10,16 @@
     <script src="/static/common/js/mobile-detect.min.js"></script>
     <script src="/static/common/js/imagesloaded.pkgd.js"></script>
     <script src="/static/common/js/ui.js"></script>
+    <!-- 라이브리 프로퍼티설정-->
+    <!-- SNS에포스팅 될 설명 -->
+    <meta property="og:description" content="2020 대한민국 공익광고제 - <?=$vs['subject'] ?>" />
+    <!-- SNS에 포스팅 될 사이트 URL -->
+    <meta property="og:site" content="psa.kobaco.co.kr/kobaco/edetail/<?=$id?>" />
+    <!-- SNS에포스팅 될 썸네일 이미지 -->
+    <meta property="og:image" content="/upload/<?=$vs['pc_file_name']?>" />
+    <!-- SNS 포스팅 될 타이틀 값 -->
+    <meta property="og:title" content="2020 대한민국 공익광고제 - <?=$vs['subject'] ?>" />
+    <!— 프로퍼티 설정 끝 -->
 </head>
 <body>
 
