@@ -3,15 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unity WebGL Player | 역사관</title>
-    <script src="http://vod.premeet.co.kr/premeet/vr/historyroom/Build/56b27af957420c10aef972428bfcf1ed.js"></script>
+    <link rel="stylesheet" href="http://vod.premeet.co.kr/premeet/vr/historyroom/TemplateData/style.css">
+    <script src="http://vod.premeet.co.kr/premeet/vr/historyroom/TemplateData/UnityProgress.js"></script>
+    <script src="http://vod.premeet.co.kr/premeet/vr/historyroom/Build/UnityLoader.js"></script>
     <script>
-        UnityLoader.instantiate("unityContainer", "http://vod.premeet.co.kr/premeet/vr/historyroom/Build/b9b4c9db54398d1f66367e80f0b5a4eb.json");
+        var unityInstance = UnityLoader.instantiate("unityContainer", "http://vod.premeet.co.kr/premeet/vr/historyroom/Build/histroy.json", {onProgress: UnityProgress});
     </script>
 </head>
-<body bgcolor="#000000" topmargin="0" leftmargin="0">
-<div id="unityContainer" style="width: 100%; margin: auto"></div>
+<body bgcolor="#000000" topmargin="0" leftmargin="0" style="position: fixed; overflow: hidden;width: 100%; height: 100%;">
+<div class="webgl-content" style="width: 100%; height: 100%; margin: auto">
+    <div id="unityContainer" style="width: 100%; height: 100%; margin: auto"></div>
+</div>
 <?=$this->include('templates/vrfooter')?>
-</body>
 </html>
-
