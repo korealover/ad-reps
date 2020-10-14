@@ -80,16 +80,16 @@ class EventModel extends Model {
         return $result;
     }
 
-    public function get_file_delete($table = 'event', $id) {
+    public function get_file_delete($table = 'event', $id, $et) {
         $db = \Config\Database::connect();
         $sql = "SELECT * FROM ".$table." WHERE id = ".$id."";
         $query = $db->query($sql);
         $row = $query->getRowArray();
         //첨부파일 삭제
-        if ($row['pc_file_name'] != "") {
+        if ($row['pc_file_name'] != "" && $et == "PC") {
             @unlink(ORG_FILE_PATH . "/" . $row['pc_file_name']);
         }
-        if ($row['mo_file_name'] != "") {
+        if ($row['mo_file_name'] != "" && $et == "MO") {
             @unlink(ORG_FILE_PATH . "/" . $row['mo_file_name']);
         }
 

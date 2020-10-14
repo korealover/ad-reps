@@ -464,7 +464,8 @@ class Manager extends Controller {
         $mo_file_name = "";
         $mo_org_file_name = "";
         $file_path = "";
-        $edit = "";
+        $edit1 = "Y";
+        $edit2 = "Y";
 
         /**
          * PC 썸네일 저장
@@ -485,7 +486,7 @@ class Manager extends Controller {
 //            echo $file->getType();          // image/jpg
         } else {
             if($mode == "edit") {
-                $edit = "N";    // 수정시 파일 업로드 없음
+                $edit1 = "N";    // 수정시 파일 업로드 없음
             }
         }
 
@@ -508,7 +509,7 @@ class Manager extends Controller {
 //            echo $file->getType();          // image/jpg
         } else {
             if($mode == "edit") {
-                $edit = "N";    // 수정시 파일 업로드 없음
+                $edit2 = "N";    // 수정시 파일 업로드 없음
             }
         }
 
@@ -517,17 +518,24 @@ class Manager extends Controller {
         if ($mode == "edit") {
             $row = $model->get_info('event', $id);
             //print_r($row);
-            if ($edit == "N") {
+            if ($edit1 == "N") {
                 $pc_file_size = $row['pc_file_size'];
                 $pc_file_name = $row['pc_file_name'];
                 $pc_org_file_name = $row['pc_org_file_name'];
+                $file_path = $row['file_path'];
+            } else {
+                // 수정된 파일 업로드가 있다면 기존 파일 삭제
+                $model->get_file_delete('event', $id, 'PC');
+            }
+
+            if ($edit2 == "N") {
                 $mo_file_size = $row['mo_file_size'];
                 $mo_file_name = $row['mo_file_name'];
                 $mo_org_file_name = $row['mo_org_file_name'];
                 $file_path = $row['file_path'];
             } else {
                 // 수정된 파일 업로드가 있다면 기존 파일 삭제
-                $model->get_file_delete('event', $id);
+                $model->get_file_delete('event', $id, 'MO');
             }
 
             $boarddata = array(
@@ -544,7 +552,9 @@ class Manager extends Controller {
                 'mo_org_file_name' => $mo_org_file_name,
                 'file_path' => $file_path,
             );
-            //print_r($boarddata);
+//            print_r($boarddata);
+////            echo $edit1;
+//            exit;
             $result = $model->get_edit($boarddata);
         } else {
             $boarddata = array(
@@ -562,6 +572,7 @@ class Manager extends Controller {
                 'mo_org_file_name' => $mo_org_file_name,
                 'file_path' => $file_path,
             );
+//            print_r($boarddata);
             $result = $model->get_save($boarddata);
         }
 
