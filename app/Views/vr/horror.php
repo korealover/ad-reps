@@ -13,9 +13,9 @@
         var unityInstance = UnityLoader.instantiate("unityContainer", "http://vod.premeet.co.kr/premeet/vr/horror/Build/horror.json", {onProgress: UnityProgress});
     </script>
 </head>
-<body bgcolor="#000000" topmargin="0" leftmargin="0" style="position: fixed; overflow: hidden;width: 100%; height: 100%;">
-<div class="webgl-content" style="width: 100%; height: 100%;  margin: auto">
-    <div id="unityContainer" style="width: 100%; height: 100%;  margin: auto"></div>
+<body bgcolor="#000000" topmargin="0" leftmargin="0">
+<div class="webgl-content" style="width: 100%; margin: auto">
+    <div id="unityContainer" style="width: 100%; margin: auto"></div>
 </div>
 <?=$this->include('templates/vrfooter')?>
 </body>
