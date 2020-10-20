@@ -62,29 +62,20 @@
                 </div>
 
                 <div class="panel-body">
-                    <h3>1. sftp로 접속하여 www 폴더(디렉토리) 하위 img 폴더(디렉토리)로 이동한다.</h3>
-                    <div><img src="/static/images/editor_howto01.png" /> </div>
-                    <p></p>
-                    <h3>2. img 폴더(디렉토리)에 이미지를 업로드한다.</h3>
-                    <div><img src="/static/images/editor_howto02.png" /> </div>
-                    <p></p>
-                    <h3>3. 브라우저에서 해당 이미지가 뜨는 지 확인한다.
-                        <br/> 위 처럼 올렸다면 주소는 http://pas.kobaco.co.kr/img/이미지명</h3>
-                    <div><img src="/static/images/editor_howto03.png" /></div>
-                    <p></p>
-                    <h3>4. 게시판 또는 이벤트 에디터에서 이미지를 선택한다.</h3>
-                    <div><img src="/static/images/editor_howto04.png" width="80%" /></div>
-                    <p></p>
-                    <h3>5. 이미지 설정 팝업에서 URL에 이미지 경로를 넣는다 이미지는 이미 sftp로 올렸기 때문에 도메인을 제외한 /img/이미지명 으로 넣는다.
-                        <br /> 미리보기에 이미지가 뜨는 지 확인하고 '예' 버튼을 누른다.
+                    <h3>1. 게시판 또는 이벤트 에디터에서 이미지를 선택한다.
+                        <br /> 이미지 설정 팝업에서 업로드 Tab을 선택하고 파일 선택 버튼을 누른다.
                     </h3>
-                    <div><img src="/static/images/editor_howto05.png" width="80%" /></div>
+                    <div><img src="/static/images/editor_howto08.png" width="80%" /></div>
                     <p></p>
-                    <h3>6. 게시판 또는 이벤트 에디터에 이미지가 들어간 것을 확인하고 '등록' 또는 '수정'을 누른다.</h3>
-                    <div><img src="/static/images/editor_howto06.png" width="80%" /></div>
+                    <h3>2. 에디터에 넣을 이미지를 선택 후 서버로 전송 버튼을 클릭한다.
+                    </h3>
+                    <div><img src="/static/images/editor_howto09.png" width="80%" /></div>
                     <p></p>
-                    <h3>7. 게시판 또는 이벤트를 확인한다.</h3>
-                    <div><img src="/static/images/editor_howto07.png" width="80%" /></div>
+                    <h3>3. 업로드가 되면서 자동으로 이미지 정보 tab으로 변경되며 업로드된 이미지이 화면에 보이면 예 버튼을 누른다.</h3>
+                    <div><img src="/static/images/editor_howto10.png" width="80%" /></div>
+                    <p></p>
+                    <h3>4. 에디터에 이미지가 들어간 것을 확인 후 등록 또는 수정 버튼을 누르고 마무리 한다.</h3>
+                    <div><img src="/static/images/editor_howto11.png" width="80%" /></div>
                     <p></p>
                 </div>
             </div>
