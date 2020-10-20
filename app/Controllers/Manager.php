@@ -674,4 +674,21 @@ class Manager extends Controller {
         echo "<meta http-equiv='Refresh' content='0; URL=/manager/view/admin'>";
         exit;
     }
+
+    public function fupload() {
+        if ($this->request->getFile('upload')->getName()) {
+            $file = $this->request->getFile('upload');
+            //print_r($file);
+
+            // Generate a new secure name
+            $name = $file->getRandomName();
+            $pc_file_name = $name;
+            $pc_org_file_name = $file->getName();
+            $file->move(ORG_FILE_PATH, $name);
+            $fileUrl = "/upload/".$pc_file_name;
+
+            $pc_file_size = $file->getSize('mb');      // 1.23
+            echo "<script type='text/javascript'>\nwindow.parent.CKEDITOR.tools.callFunction(1, '".$fileUrl."', '');\n</script>";
+        }
+    }
 }
