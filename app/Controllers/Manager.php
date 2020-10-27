@@ -691,4 +691,12 @@ class Manager extends Controller {
             echo "<script type='text/javascript'>\nwindow.parent.CKEDITOR.tools.callFunction(1, '".$fileUrl."', '');\n</script>";
         }
     }
+
+    public function statscron() {
+        $stats = new StatsLib();
+        $stats->set_today_stats();
+
+        $value = array('result'=>'200'); // PHP 배열
+        echo json_encode($value);
+    }
 }

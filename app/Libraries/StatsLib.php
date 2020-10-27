@@ -74,8 +74,8 @@ class StatsLib {
         $db = \Config\Database::connect();
         $sql = "SELECT 
                     stats_date
-                    , ROUND(ROUND(pc_count/(pc_count+mo_count), 1) * 100) AS pc_per
-                    , ROUND(ROUND(mo_count/(pc_count+mo_count), 1) * 100) AS mo_per
+                    , ROUND(ROUND(pc_count/(pc_count+mo_count), 3) * 100) AS pc_per
+                    , ROUND(ROUND(mo_count/(pc_count+mo_count), 3) * 100) AS mo_per
                 FROM stats
                 WHERE stats_date = CURDATE()";
         $query = $db->query($sql);

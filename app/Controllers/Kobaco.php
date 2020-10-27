@@ -18,7 +18,7 @@ class Kobaco extends BaseController
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
         $see->set_browser($agent );
-        return view('home');
+        return view('swiper');
     }
 
     /**

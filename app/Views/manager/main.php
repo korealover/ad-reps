@@ -71,8 +71,8 @@
                     <div class="panel-title">일일 접속율 & 주간 접속 추이</div>
 
                     <div class="panel-options">
-                        <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                        <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                        <!-- <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                        <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a> -->
                     </div>
                 </div>
                 <div class="panel-body">
@@ -92,8 +92,8 @@
                     <div class="panel-title">월간 접속 추이</div>
 
                     <div class="panel-options">
-                        <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                        <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                        <!-- <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                        <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a> -->
                     </div>
                 </div>
                 <div class="panel-body">
@@ -138,18 +138,18 @@
             <?php
             foreach ($week_row as $row) {
             ?>
-            {visits_date: '<?=$row->stats_date?>', visits_count: <?=$row->stats_count?>},
+            {visits_date: '<?=$row->stats_date?>', visits_pc: <?=$row->pc_count?>, visits_mobile: <?=$row->mo_count?>},
             <?php
             }
             ?>
         ],
         xkey: 'visits_date',
-        ykeys: ['visits_count'],
-        labels: ['일일 방문자'],
+        ykeys: ['visits_pc', 'visits_mobile'],
+        labels: ['PC 방문자', 'mobile 방문자'],
         barRatio: 0.4,
         xLabelMargin: 10,
         hideHover: 'auto',
-        barColors: ["#3d88ba"]
+        barColors: ["#0b62a4", "#7A92A3"]
     });
 
     // Morris Donut Chart
@@ -159,7 +159,7 @@
             {label: 'PC 방문율', value: <?=$pc_per?> },
             {label: 'mobile 방문율', value: <?=$mo_per?> },
         ],
-        colors: ["#30a1ec", "#76bdee", "#c4dafe"],
+        colors: ["#0b62a4", "#7A92A3"],
         formatter: function (y) { return y + "%" }
     });
 
