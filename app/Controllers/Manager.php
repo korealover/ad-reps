@@ -125,6 +125,7 @@ class Manager extends Controller {
             } elseif ($page == 'stats') {
                 $stats = new StatsLib();
                 $perces = $stats->get_today();
+                $accu = $stats->get_accumulate();
 
                 $data = [
                     'current_left' => 'stats',
@@ -132,6 +133,9 @@ class Manager extends Controller {
                     'month_row' => $stats->get_month(),
                     'pc_per' => $perces->pc_per,
                     'mo_per' => $perces->mo_per,
+                    'total' => number_format($accu->total),
+                    'pc_total' => number_format($accu->pc_total),
+                    'mo_total' => number_format($accu->mo_total),
                     'admin_menu' =>$session->get('admin_menu'),
                 ];
             } elseif ($page == 'admin') {
@@ -165,6 +169,7 @@ class Manager extends Controller {
             } else {
                 $stats = new StatsLib();
                 $perces = $stats->get_today();
+                $accu = $stats->get_accumulate();
 
                 $data = [
                     'current_left' => 'main',
@@ -172,6 +177,9 @@ class Manager extends Controller {
                     'month_row' => $stats->get_month(),
                     'pc_per' => $perces->pc_per,
                     'mo_per' => $perces->mo_per,
+                    'total' => number_format($accu->total),
+                    'pc_total' => number_format($accu->pc_total),
+                    'mo_total' => number_format($accu->mo_total),
                     'admin_menu' =>$session->get('admin_menu'),
                 ];
             }
@@ -694,9 +702,9 @@ class Manager extends Controller {
 
     public function statscron() {
         $stats = new StatsLib();
-        $stats->set_today_stats();
+        $re = $stats->set_today_stats();
 
-        $value = array('result'=>'200'); // PHP 배열
+        $value = array('result'=>'200', 'value' => $re); // PHP 배열
         echo json_encode($value);
     }
 }

@@ -20,7 +20,7 @@ class SessionLib {
         $os = $agent->getPlatform();
 
         $db = \Config\Database::connect();
-        $sql = "SELECT * FROM ci_sessions WHERE id = '".$id."' AND device IS NULL";
+        $sql = "SELECT * FROM ci_sessions WHERE id = '".$id."'";
         if ($db->simpleQuery($sql)) {
             // echo "Success!";
             $uSql = "UPDATE ci_sessions SET use_agent='".$currentAgent."', use_os='".$os."', device='".$device."' WHERE id='".$id."'";

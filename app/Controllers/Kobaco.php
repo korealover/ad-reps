@@ -17,7 +17,7 @@ class Kobaco extends BaseController
     public function index() {
         $agent = $this->request->getUserAgent();
         $see = new SessionLib();
-        $see->set_browser($agent );
+        $see->set_browser($agent);
         return view('swiper');
     }
 
@@ -360,6 +360,12 @@ class Kobaco extends BaseController
         }
 
         return view('/kobaco/edetail', $data);
+    }
+
+    public function divicestats() {
+        $agent = $this->request->getUserAgent();
+        $see = new SessionLib();
+        $see->set_browser($agent );
     }
 
 }

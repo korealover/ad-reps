@@ -356,6 +356,6 @@
         },
     });
 </script>
-
+<iframe src="/kobaco/divicestats" style="width:0; height:0"></iframe>
 </body>
 </html>

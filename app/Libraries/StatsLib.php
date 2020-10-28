@@ -4,11 +4,11 @@ class StatsLib {
 
     public function set_today_stats() {
         $db = \Config\Database::connect();
-        $sql = "SELECT DATE_FORMAT(FROM_UNIXTIME(TIMESTAMP), '%Y-%m-%d') AS stats_date
-                , COUNT(id) AS stats_count,SUM(device='PC') AS pc_count
-                , SUM(device='MO') AS mo_count FROM ci_sessions
-                WHERE TIMESTAMP BETWEEN UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 00:00:00')) 
-                AND UNIX_TIMESTAMP(CONCAT(CURDATE(), ' 23:59:59'))";
+        $sql = "SELECT IFNULL(DATE_FORMAT(FROM_UNIXTIME(TIMESTAMP), '%Y-%m-%d'), CURDATE()) AS stats_date
+                , COUNT(id) AS stats_count, IFNULL(SUM(device='PC'), 0) AS pc_count
+                , IFNULL(SUM(device='MO'), 0) AS mo_count FROM ci_sessions
+                WHERE TIMESTAMP BETWEEN UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 5 MINUTE))  
+                AND UNIX_TIMESTAMP(NOW())";
         $query = $db->query($sql);
         $row = $query->getRow();
 
@@ -22,13 +22,19 @@ class StatsLib {
                         , '".$row->stats_count."'
                         , '".$row->pc_count."'
                         , '".$row->mo_count."') 
-                    ON DUPLICATE KEY UPDATE stats_count='".$row->stats_count."'
-                        , pc_count='".$row->pc_count."'
-                        , mo_count='".$row->mo_count."'";
+                    ON DUPLICATE KEY UPDATE stats_count= stats_count + ".$row->stats_count."
+                        , pc_count = pc_count + ".$row->pc_count."
+                        , mo_count = mo_count + ".$row->mo_count;
             $db->simpleQuery($uSql);
         }
 
+        $stats_count = $row->stats_count;
+        $pc_count = $row->pc_count;
+        $mo_count = $row->mo_count;
+
         $db->close();
+
+        return $stats_count."-".$pc_count."-".$mo_count;
     }
 
     /**
@@ -89,6 +95,24 @@ class StatsLib {
         $db = \Config\Database::connect();
         $sql = "SELECT COUNT(admin_id) AS cnt FROM tbl_admin WHERE admin_id = '".$admin_id."'";
         //echo $sql;
+        $query = $db->query($sql);
+        $result = $query->getRow();
+
+        $db->close();
+        return $result;
+    }
+
+    /**
+     * 누적 방문자 수
+     * @return array|mixed|object|null
+     */
+    public function get_accumulate() {
+        $db = \Config\Database::connect();
+        $sql = "SELECT 
+                    SUM(stats_count) AS total
+                    ,SUM(pc_count) AS pc_total
+                    ,SUM(mo_count) AS mo_total
+                FROM stats";
         $query = $db->query($sql);
         $result = $query->getRow();
 
