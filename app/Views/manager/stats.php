@@ -95,6 +95,20 @@
 
             <div class="content-box-large">
                 <div class="panel-heading">
+                    <div class="panel-title">일일 접속 추이</div>
+
+                    <div class="panel-options">
+                        <!-- <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                         <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a> -->
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="hero-graph2" style="height: 230px;"></div>
+                </div>
+            </div>
+
+            <div class="content-box-large">
+                <div class="panel-heading">
                     <div class="panel-title">월간 접속 추이</div>
 
                     <div class="panel-options">
@@ -195,6 +209,25 @@
         data: tax_data,
         xkey: 'period',
         xLabels: "month",
+        ykeys: ['PC', 'Mobile'],
+        labels: ['PC 방문', 'Mobile 방문']
+    });
+
+    // Morris Line Chart
+    var tax_data2 = [
+        <?php
+        foreach ($today_row as $trow) {
+        ?>
+        {"period": "<?=$trow->stats_datetm?>", "PC": <?=$trow->pc_count?>, "Mobile": <?=$trow->mo_count?>},
+        <?php
+        }
+        ?>
+    ];
+    Morris.Line({
+        element: 'hero-graph2',
+        data: tax_data2,
+        xkey: 'period',
+        xLabels: "hour",
         ykeys: ['PC', 'Mobile'],
         labels: ['PC 방문', 'Mobile 방문']
     });

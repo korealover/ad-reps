@@ -7,7 +7,7 @@ class StatsLib {
         $sql = "SELECT IFNULL(DATE_FORMAT(FROM_UNIXTIME(TIMESTAMP), '%Y-%m-%d'), CURDATE()) AS stats_date
                 , COUNT(id) AS stats_count, IFNULL(SUM(device='PC'), 0) AS pc_count
                 , IFNULL(SUM(device='MO'), 0) AS mo_count FROM ci_sessions
-                WHERE TIMESTAMP BETWEEN UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 5 MINUTE))  
+                WHERE TIMESTAMP BETWEEN UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 20 MINUTE))  
                 AND UNIX_TIMESTAMP(NOW())";
         $query = $db->query($sql);
         $row = $query->getRow();
@@ -26,6 +26,18 @@ class StatsLib {
                         , pc_count = pc_count + ".$row->pc_count."
                         , mo_count = mo_count + ".$row->mo_count;
             $db->simpleQuery($uSql);
+
+            $tSql = "INSERT INTO stats_datetime (stats_datetime
+                        , stats_date
+                        , stats_count
+                        , pc_count
+                        , mo_count
+                    ) VALUES (NOW() 
+                        , CURDATE()
+                        , '".$row->stats_count."'
+                        , '".$row->pc_count."'
+                        , '".$row->mo_count."') ";
+            $db->simpleQuery($tSql);
         }
 
         $stats_count = $row->stats_count;
@@ -115,6 +127,26 @@ class StatsLib {
                 FROM stats";
         $query = $db->query($sql);
         $result = $query->getRow();
+
+        $db->close();
+        return $result;
+    }
+
+    /**
+     * 일일 접속 추이
+     * @return array|array[]|object[]
+     */
+    public function get_today_time() {
+        $db = \Config\Database::connect();
+        $sql = "SELECT CONCAT(date_format(stats_datetime, '%Y-%m-%d %H'), ':00') AS stats_datetm
+                    , SUM(stats_count) AS stats_count
+                    , SUM(pc_count) AS pc_count
+                    , SUM(mo_count) AS mo_count
+                from stats_datetime
+                WHERE stats_date=CURDATE()
+                GROUP BY date_format(stats_datetime, '%Y-%m-%d %H')";
+        $query = $db->query($sql);
+        $result = $query->getResult();
 
         $db->close();
         return $result;

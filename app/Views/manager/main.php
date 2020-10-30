@@ -77,13 +77,33 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div id="hero-donut" style="height: 230px;"></div>
+                            <div class="text-center"><b>누적 접속자</b></div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-2">
+                            <div id="hero-donut2" style="height: 230px;"></div>
+                            <div class="text-center"><b>일일 접속율</b></div>
+                        </div>
+                        <div class="col-md-8">
                             <div id="hero-bar" style="height: 230px;"></div>
+                            <div class="text-center"><b>주간 접속 추이</b></div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="content-box-large">
+                <div class="panel-heading">
+                    <div class="panel-title">일일 접속 추이</div>
+
+                    <div class="panel-options">
+                        <!-- <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                         <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a> -->
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="hero-graph2" style="height: 230px;"></div>
                 </div>
             </div>
 
@@ -156,10 +176,21 @@
     Morris.Donut({
         element: 'hero-donut',
         data: [
-            {label: 'PC 방문율', value: <?=$pc_per?> },
-            {label: 'mobile 방문율', value: <?=$mo_per?> },
+            {label: 'PC 누적 접속', value: '<?=$pc_total?>' },
+            {label: 'Mobile 누적 접속', value: '<?=$mo_total?>' },
         ],
         colors: ["#0b62a4", "#7A92A3"],
+        formatter: function (y) { return y}
+    });
+
+    // Morris Donut Chart
+    Morris.Donut({
+        element: 'hero-donut2',
+        data: [
+            {label: 'PC 방문율', value: <?=$pc_per?> },
+            {label: 'Mobile 방문율', value: <?=$mo_per?> },
+        ],
+        colors: ["#30a1ec", "#76bdee", "#c4dafe"],
         formatter: function (y) { return y + "%" }
     });
 
@@ -178,6 +209,25 @@
         data: tax_data,
         xkey: 'period',
         xLabels: "month",
+        ykeys: ['PC', 'Mobile'],
+        labels: ['PC 방문', 'Mobile 방문']
+    });
+
+    // Morris Line Chart
+    var tax_data2 = [
+        <?php
+        foreach ($today_row as $trow) {
+        ?>
+        {"period": "<?=$trow->stats_datetm?>", "PC": <?=$trow->pc_count?>, "Mobile": <?=$trow->mo_count?>},
+        <?php
+        }
+        ?>
+    ];
+    Morris.Line({
+        element: 'hero-graph2',
+        data: tax_data2,
+        xkey: 'period',
+        xLabels: "hour",
         ykeys: ['PC', 'Mobile'],
         labels: ['PC 방문', 'Mobile 방문']
     });
