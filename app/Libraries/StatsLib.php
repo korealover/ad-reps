@@ -152,5 +152,25 @@ class StatsLib {
         return $result;
     }
 
+    /**
+     * 일일 접속 추이
+     * @return array|array[]|object[]
+     */
+    public function get_yesterday_time() {
+        $db = \Config\Database::connect();
+        $sql = "SELECT CONCAT(date_format(stats_datetime, '%Y-%m-%d %H'), ':00') AS stats_datetm
+                    , SUM(stats_count) AS stats_count
+                    , SUM(pc_count) AS pc_count
+                    , SUM(mo_count) AS mo_count
+                from stats_datetime
+                WHERE stats_date=(CURDATE() - INTERVAL 1 DAY)
+                GROUP BY date_format(stats_datetime, '%Y-%m-%d %H')";
+        $query = $db->query($sql);
+        $result = $query->getResult();
+
+        $db->close();
+        return $result;
+    }
+
 }
 ?>

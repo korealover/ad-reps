@@ -93,6 +93,20 @@
                 </div>
             </div>
 
+            <div class="content-box">
+                <div class="panel-heading">
+                    <div class="panel-title">어제 접속 추이</div>
+
+                    <div class="panel-options">
+                        <!-- <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                         <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a> -->
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="hero-graph3" style="height: 230px;"></div>
+                </div>
+            </div>
+
             <div class="content-box-large">
                 <div class="panel-heading">
                     <div class="panel-title">일일 접속 추이</div>
@@ -190,7 +204,7 @@
             {label: 'PC 방문율', value: <?=$pc_per?> },
             {label: 'Mobile 방문율', value: <?=$mo_per?> },
         ],
-        colors: ["#30a1ec", "#76bdee", "#c4dafe"],
+        colors: ["#30a1ec", "#76bdee"],
         formatter: function (y) { return y + "%" }
     });
 
@@ -230,6 +244,26 @@
         xLabels: "hour",
         ykeys: ['PC', 'Mobile'],
         labels: ['PC 방문', 'Mobile 방문']
+    });
+
+    // Morris Line Chart
+    var tax_data3 = [
+        <?php
+        foreach ($yesterday_row as $yrow) {
+        ?>
+        {"period": "<?=$yrow->stats_datetm?>", "PC": <?=$yrow->pc_count?>, "Mobile": <?=$yrow->mo_count?>},
+        <?php
+        }
+        ?>
+    ];
+    Morris.Line({
+        element: 'hero-graph3',
+        data: tax_data3,
+        xkey: 'period',
+        xLabels: "hour",
+        ykeys: ['PC', 'Mobile'],
+        labels: ['PC 방문', 'Mobile 방문'],
+        lineColors: ["#81d5d9", "#a6e182", "#67bdf8"]
     });
 </script>
 </body>
