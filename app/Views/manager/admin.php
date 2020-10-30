@@ -25,7 +25,7 @@
             <div class="col-md-5">
                 <!-- Logo -->
                 <div class="logo">
-                    <h1><a href="main">대한민국 공익광고제 공모전</a></h1>
+                    <h1><a href="main">2020 대한민국 공익광고제</a></h1>
                 </div>
             </div>
             <div class="col-md-5">

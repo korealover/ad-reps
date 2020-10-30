@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>대한민국 공익광고제 공모전</title>
+    <title>2020 대한민국 공익광고제</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@
 	           <div class="col-md-12">
 	              <!-- Logo -->
 	              <div class="logo">
-	                 <h1><a href="main">대한민국 공익광고제 공모전</a></h1>
+	                 <h1><a href="main">2020 대한민국 공익광고제</a></h1>
 	              </div>
 	           </div>
 	        </div>
