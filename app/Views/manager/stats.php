@@ -95,7 +95,7 @@
 
             <div class="content-box-large">
                 <div class="panel-heading">
-                    <div class="panel-title">일일 접속 추이</div>
+                    <div class="panel-title">금일 접속 추이</div>
 
                     <div class="panel-options">
                         <!-- <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
