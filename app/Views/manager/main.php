@@ -66,28 +66,42 @@
     <div class="row">
         <?= $this->include('templates/menu') ?>
         <div class="col-md-10">
-            <div class="content-box-large">
-                <div class="panel-heading">
-                    <div class="panel-title">일일 접속율 & 주간 접속 추이</div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="content-box-large">
+                        <div class="panel-heading">
+                            <div class="panel-title">누적 접속자 & 일일 접속율 - <b>총 누적 접속자 : <?=$total?></b></div>
 
-                    <div class="panel-options">
-                        <!-- <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                        <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a> -->
+                            <div class="panel-options">
+                                <!-- <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                                <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a> -->
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div id="hero-donut" style="height: 230px;"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="hero-donut2" style="height: 230px;"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div id="hero-donut" style="height: 230px;"></div>
-                            <div class="text-center"><b>누적 접속자</b></div>
+
+                <div class="col-md-8">
+                    <div class="content-box-large">
+                        <div class="panel-heading">
+                            <div class="panel-title">금일 시간별 접속 추이</div>
+
+                            <div class="panel-options">
+                                <!-- <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                                 <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a> -->
+                            </div>
                         </div>
-                        <div class="col-md-2">
-                            <div id="hero-donut2" style="height: 230px;"></div>
-                            <div class="text-center"><b>일일 접속율</b></div>
-                        </div>
-                        <div class="col-md-8">
-                            <div id="hero-bar" style="height: 230px;"></div>
-                            <div class="text-center"><b>주간 접속 추이</b></div>
+                        <div class="panel-body">
+                            <div id="hero-graph" style="height: 230px;"></div>
                         </div>
                     </div>
                 </div>
@@ -95,21 +109,7 @@
 
             <div class="content-box-large">
                 <div class="panel-heading">
-                    <div class="panel-title">일일 접속 추이</div>
-
-                    <div class="panel-options">
-                        <!-- <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                         <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a> -->
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <div id="hero-graph2" style="height: 230px;"></div>
-                </div>
-            </div>
-
-            <div class="content-box-large">
-                <div class="panel-heading">
-                    <div class="panel-title">월간 접속 추이</div>
+                    <div class="panel-title">주간 접속 추이</div>
 
                     <div class="panel-options">
                         <!-- <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div id="hero-graph" style="height: 230px;"></div>
+                    <div id="hero-bar" style="height: 230px;"></div>
                 </div>
             </div>
 
@@ -197,25 +197,6 @@
     // Morris Line Chart
     var tax_data = [
         <?php
-        foreach ($month_row as $mrow) {
-        ?>
-        {"period": "<?=$mrow->stats_date?>", "PC": <?=$mrow->pc_count?>, "Mobile": <?=$mrow->mo_count?>},
-        <?php
-        }
-        ?>
-    ];
-    Morris.Line({
-        element: 'hero-graph',
-        data: tax_data,
-        xkey: 'period',
-        xLabels: "month",
-        ykeys: ['PC', 'Mobile'],
-        labels: ['PC 방문', 'Mobile 방문']
-    });
-
-    // Morris Line Chart
-    var tax_data2 = [
-        <?php
         foreach ($today_row as $trow) {
         ?>
         {"period": "<?=$trow->stats_datetm?>", "PC": <?=$trow->pc_count?>, "Mobile": <?=$trow->mo_count?>},
@@ -224,8 +205,8 @@
         ?>
     ];
     Morris.Line({
-        element: 'hero-graph2',
-        data: tax_data2,
+        element: 'hero-graph',
+        data: tax_data,
         xkey: 'period',
         xLabels: "hour",
         ykeys: ['PC', 'Mobile'],

@@ -93,20 +93,6 @@
                 </div>
             </div>
 
-            <div class="content-box">
-                <div class="panel-heading">
-                    <div class="panel-title">어제 접속 추이</div>
-
-                    <div class="panel-options">
-                        <!-- <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                         <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a> -->
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <div id="hero-graph3" style="height: 230px;"></div>
-                </div>
-            </div>
-
             <div class="content-box-large">
                 <div class="panel-heading">
                     <div class="panel-title">일일 접속 추이</div>
@@ -118,6 +104,20 @@
                 </div>
                 <div class="panel-body">
                     <div id="hero-graph2" style="height: 230px;"></div>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <div class="panel-heading">
+                    <div class="panel-title">전일 접속 추이</div>
+
+                    <div class="panel-options">
+                        <!-- <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+                         <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a> -->
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="hero-graph3" style="height: 230px;"></div>
                 </div>
             </div>
 
@@ -263,7 +263,8 @@
         xLabels: "hour",
         ykeys: ['PC', 'Mobile'],
         labels: ['PC 방문', 'Mobile 방문'],
-        lineColors: ["#81d5d9", "#a6e182", "#67bdf8"]
+        lineColors: ["#30a1ec", "#76bdee"]
+        //lineColors: ["#81d5d9", "#a6e182"]
     });
 </script>
 </body>
