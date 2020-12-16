@@ -61,11 +61,11 @@
 						</div>
 					</div>
 					</form>
-
+                <!--
 			        <div class="already">
 			            <p>Don't have an account yet?</p>
 			            <a href="signup">Sign Up</a>
-			        </div>
+			        </div> -->
 			    </div>
 			</div>
 		</div>

@@ -87,7 +87,7 @@
                                             class="caret"></b></a>
                                 <ul class="dropdown-menu animated fadeInUp">
                                     <li><a href="admin">관리자 관리</a></li>
-                                    <li><a href="login">Logout</a></li>
+                                    <li><a href="/manager/logout">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
