@@ -25,7 +25,19 @@
             <li <?= $current_left=="event"?"class=\"current\"":FALSE?>><a href="/manager/view/event"><i class="glyphicon glyphicon-gift"></i> 이벤트 관리</a></li>
             <?php }?>
             <?php if($admin_menu=='1001'){?>
-            <li <?= $current_left=="stats"?"class=\"current\"":FALSE?>><a href="/manager/view/stats"><i class="glyphicon glyphicon-stats"></i> 통계</a></li>
+            <li class="submenu <?= ($current_left=="stats" || $current_left=="statstot" || $current_left=="statsday" || $current_left=="statsweek" || $current_left=="statsmonth")?" current ":FALSE?>">
+                <a href="#">
+                    <i class="glyphicon glyphicon-comment"></i> 통계
+                    <span class="caret pull-right"></span>
+                </a>
+                <ul>
+                    <li <?= $current_left=="stats"?"class=\"current\"":FALSE?>><a href="/manager/view/stats">접속 추이</a></li>
+                    <li <?= $current_left=="statstot"?"class=\"current\"":FALSE?>><a href="/manager/view/statstot">접속 통계</a></li>
+                    <li <?= $current_left=="statsday"?"class=\"current\"":FALSE?>><a href="/manager/view/statsday">일별 접속 통계</a></li>
+                    <li <?= $current_left=="statsweek"?"class=\"current\"":FALSE?>><a href="/manager/view/statsweek">주별 접속 통계</a></li>
+                    <li <?= $current_left=="statsmonth"?"class=\"current\"":FALSE?>><a href="/manager/view/statsmonth">월별 접속 통계</a></li>
+                </ul>
+            </li>
             <?php }?>
             <?php if($admin_menu=='1001'){?>
             <li <?= $current_left=="admin"?"class=\"current\"":FALSE?>><a href="/manager/view/admin"><i class="glyphicon glyphicon-user"></i> 관리자 관리</a></li>

@@ -58,40 +58,36 @@
 
             <div class="content-box-large">
                 <div class="panel-heading">
-                    <div class="panel-title">공지사항 관리</div>
+                    <div class="panel-title">주별 접속 통계</div>
                 </div>
 
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
-                        <thead>
-                        <tr>
-                            <th style="width: 7%;text-align: center;">번호</th>
-                            <th style="width: *;text-align: center;">제목</th>
-                            <th style="width: 15%;text-align: center;">등록일</th>
-                            <th style="width: 10%;text-align: center;">조회</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        foreach ($list as $row) {
-                            ?>
-                            <tr style="text-align: center;">
-                                <td><?=$cnt++?></td>
-                                <td style="text-align: left;"><a
-                                            href="/manager/view/boardv/<?= $row->id ?>"><?= $row->subject ?></a></td>
-                                <td><?= $row->reg_date ?></td>
-                                <td><?= $row->hits ?></td>
+                            <thead>
+                            <tr>
+                                <th class="text-center">일자</th>
+                                <th class="text-center">주별 PC 접속수</th>
+                                <th class="text-center">주별 Mobile 접속수</th>
+                                <th class="text-center">주별 총접속수</th>
                             </tr>
+                            </thead>
+                            <tbody>
                             <?php
-                        }
-                        ?>
-                        </tbody>
+                            foreach ($list as $row) {
+                                ?>
+                                <tr style="text-align: center;">
+                                    <td><?= $row->start ?> ~ <?= $row->end ?></td>
+                                    <td><?= $row->pc_count ?></td>
+                                    <td><?= $row->mo_count ?></td>
+                                    <td><?= $row->stats_count ?></td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                            </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="text-right">
-                    <button class="btn btn-primary" onclick="javascript:location.href='/manager/view/boardw';">글쓰기</button>
                 </div>
             </div>
         </div>

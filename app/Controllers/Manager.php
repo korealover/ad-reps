@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
 
+use App\Libraries\ExcelLib;
 use App\Libraries\StatsLib;
 use App\Models\AdminModel;
 use App\Models\BoardModel;
@@ -7,6 +8,7 @@ use App\Models\DisplayModel;
 use App\Models\EventModel;
 use App\Models\FaqModel;
 use App\Models\LoginModel;
+use App\Models\StatsModel;
 use CodeIgniter\Controller;
 
 class Manager extends Controller {
@@ -138,6 +140,36 @@ class Manager extends Controller {
                     'total' => number_format($accu->total),
                     'pc_total' => number_format($accu->pc_total),
                     'mo_total' => number_format($accu->mo_total),
+                    'admin_menu' =>$session->get('admin_menu'),
+                ];
+            } elseif ($page == 'statsday') {
+			    $model = new StatsModel();
+                $data = [
+                    'current_left' => 'statsday',
+                    'list' => $model->get_stats_day_list(),
+                    'admin_menu' =>$session->get('admin_menu'),
+                ];
+            } elseif ($page == 'statsweek') {
+                $model = new StatsModel();
+                $data = [
+                    'current_left' => 'statsweek',
+                    'list' => $model->get_stats_week_list(),
+                    'admin_menu' =>$session->get('admin_menu'),
+                ];
+            } elseif ($page == 'statsmonth') {
+                $model = new StatsModel();
+                $data = [
+                    'current_left' => 'statsmonth',
+                    'list' => $model->get_stats_month_list(),
+                    'admin_menu' =>$session->get('admin_menu'),
+                ];
+            } elseif ($page == 'statstot') {
+                $model = new StatsModel();
+                $data = [
+                    'current_left' => 'statstot',
+                    'day_list' => $model->get_stats_day_list(),
+                    'week_list' => $model->get_stats_week_list(),
+                    'month_list' => $model->get_stats_month_list(),
                     'admin_menu' =>$session->get('admin_menu'),
                 ];
             } elseif ($page == 'admin') {
@@ -710,5 +742,47 @@ class Manager extends Controller {
 
         $value = array('result'=>'200', 'value' => $re); // PHP 배열
         echo json_encode($value);
+    }
+
+    public function exceldownload() {
+        // PHPExcel 라이브러리 로드
+        $objPHPExcel = new ExcelLib();
+
+        // Set document properties
+//        $objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
+//            ->setLastModifiedBy("Maarten Balliauw")
+//            ->setTitle("Office 2007 XLSX Test Document")
+//            ->setSubject("Office 2007 XLSX Test Document")
+//            ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
+//            ->setKeywords("office 2007 openxml php")
+//            ->setCategory("Test result file");
+
+
+        // Add some data
+        $objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue('A1', '접속일자')
+            ->setCellValue('B1', '일별 PC 접속수')
+            ->setCellValue('C1', '일별 Mobile 접속수')
+            ->setCellValue('D1', '일별 총접속수');
+
+        // Miscellaneous glyphs, UTF-8
+        $objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue('A4', 'Miscellaneous glyphs')
+            ->setCellValue('A5', '안녕하세요');
+
+        // Rename worksheet
+        $objPHPExcel->getActiveSheet()->setTitle('Simple');
+
+
+        // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+        $objPHPExcel->setActiveSheetIndex(0);
+
+        $filename = '01simple.xlsx';
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter->save('php://output');
     }
 }
