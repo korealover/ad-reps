@@ -31,7 +31,8 @@ class StatsModel extends Model {
                 SUM(mo_count) AS mo_count, 
                 SUM(stats_count) AS stats_count
                 FROM " . $table . "
-                GROUP BY date";
+                GROUP BY date
+                ORDER BY date DESC";
         //echo $sql;
         $query = $db->query($sql);
         $result = $query -> getResult();

@@ -17,6 +17,11 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <script>
+        function fnExcelDownload(t) {
+            location.href="/manager/exceldownload/" + t;
+        }
+    </script>
 </head>
 <body>
 <div class="header">
@@ -54,24 +59,23 @@
 <div class="page-content">
     <div class="row">
         <?= $this->include('templates/menu') ?>
-        <div class="col-md-5">
+        <div class="col-md-3">
             <div class="content-box-large">
                 <div class="panel-heading">
                     <div class="panel-title">일별 접속 통계</div>
 
                     <div class="panel-options">
-                        <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                        <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                        <button class="btn btn-success" onclick="fnExcelDownload(1);"><i class="glyphicon glyphicon-floppy-save"></i> Excel 다운로드</button>
                     </div>
                 </div>
                 <div class="panel-body">
                     <table class="table table-bordered">
                         <thead>
                         <tr style="background-color: #f5f5f5">
-                            <th class="text-center">일자</th>
-                            <th class="text-center">일별 PC 접속수</th>
-                            <th class="text-center">일별 Mobile 접속수</th>
-                            <th class="text-center">일별 총접속수</th>
+                            <th class="text-center">일별 <br/>접속일자</th>
+                            <th class="text-center">일별 <br/>PC 접속수</th>
+                            <th class="text-center">일별 <br/>Mobile 접속수</th>
+                            <th class="text-center">일별 <br/>총접속수</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -92,24 +96,23 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-4">
             <div class="content-box-large">
                 <div class="panel-heading">
                     <div class="panel-title">주별 접속 통계</div>
 
                     <div class="panel-options">
-                        <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                        <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                        <button class="btn btn-success" onclick="fnExcelDownload(2);"><i class="glyphicon glyphicon-floppy-save"></i> Excel 다운로드</button>
                     </div>
                 </div>
                 <div class="panel-body">
                     <table class="table table-bordered">
                         <thead>
                         <tr style="background-color: #f5f5f5">
-                            <th class="text-center">일자</th>
-                            <th class="text-center">주별 PC 접속수</th>
-                            <th class="text-center">주별 Mobile 접속수</th>
-                            <th class="text-center">주별 총접속수</th>
+                            <th class="text-center">주별 <br/>접속일자</th>
+                            <th class="text-center">주별 <br/>PC 접속수</th>
+                            <th class="text-center">주별 <br/>Mobile 접속수</th>
+                            <th class="text-center">주별 <br/>총접속수</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -129,24 +132,24 @@
                     </table>
                 </div>
             </div>
-
+        </div>
+        <div class="col-md-3">
             <div class="content-box-large">
                 <div class="panel-heading">
                     <div class="panel-title">월별 접속 통계</div>
 
                     <div class="panel-options">
-                        <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
-                        <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+                        <button class="btn btn-success" onclick="fnExcelDownload(3);"><i class="glyphicon glyphicon-floppy-save"></i> Excel 다운로드</button>
                     </div>
                 </div>
                 <div class="panel-body">
                     <table class="table table-bordered">
                         <thead>
                         <tr style="background-color: #f5f5f5">
-                            <th class="text-center">연월</th>
-                            <th class="text-center">월별 PC 접속수</th>
-                            <th class="text-center">월별 Mobile 접속수</th>
-                            <th class="text-center">월별 총접속수</th>
+                            <th class="text-center">월별 <br/>접속연월</th>
+                            <th class="text-center">월별 <br/>PC 접속수</th>
+                            <th class="text-center">월별 <br/>Mobile 접속수</th>
+                            <th class="text-center">월별 <br/>총접속수</th>
                         </tr>
                         </thead>
                         <tbody>

@@ -190,6 +190,11 @@ class Manager extends Controller {
                     'current_left' => 'howto',
                     'admin_menu' =>$session->get('admin_menu'),
                 ];
+            } elseif ($page == 'analytics') {
+                $data = [
+                    'current_left' => 'analytics',
+                    'admin_menu' =>$session->get('admin_menu'),
+                ];
             } elseif($page == 'adminv') {
                 $model = new AdminModel();
                 $uri = new \CodeIgniter\HTTP\URI();
@@ -745,39 +750,80 @@ class Manager extends Controller {
     }
 
     public function exceldownload() {
+        $uri = new \CodeIgniter\HTTP\URI();
+        $uri = $this->request->uri;
+        $type = $uri->getSegment(3);
         // PHPExcel 라이브러리 로드
         $objPHPExcel = new ExcelLib();
+        $model = new StatsModel();
 
-        // Set document properties
-//        $objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
-//            ->setLastModifiedBy("Maarten Balliauw")
-//            ->setTitle("Office 2007 XLSX Test Document")
-//            ->setSubject("Office 2007 XLSX Test Document")
-//            ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
-//            ->setKeywords("office 2007 openxml php")
-//            ->setCategory("Test result file");
+        // 일별 접속 통계
+        if ($type == '1') {
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue('A1', '일별 접속일자')
+                ->setCellValue('B1', '일별 PC 접속수')
+                ->setCellValue('C1', '일별 Mobile 접속수')
+                ->setCellValue('D1', '일별 총접속수');
 
+            $day_list = $model->get_stats_day_list();
+            $i = 2;
+            foreach ($day_list as $day_row) {
+                $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue("A$i", $day_row->stats_date)
+                    ->setCellValue("B$i", $day_row->pc_count)
+                    ->setCellValue("C$i", $day_row->mo_count)
+                    ->setCellValue("D$i", $day_row->stats_count);
+                $i = $i + 1;
+            }
 
-        // Add some data
-        $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A1', '접속일자')
-            ->setCellValue('B1', '일별 PC 접속수')
-            ->setCellValue('C1', '일별 Mobile 접속수')
-            ->setCellValue('D1', '일별 총접속수');
+            // Rename worksheet
+            $objPHPExcel->getActiveSheet()->setTitle('일별 접속 통계');
+        } elseif ($type == '2') {
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue('A1', '주별 접속일자')
+                ->setCellValue('B1', '주별 PC 접속수')
+                ->setCellValue('C1', '주별 Mobile 접속수')
+                ->setCellValue('D1', '주별 총접속수');
 
-        // Miscellaneous glyphs, UTF-8
-        $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A4', 'Miscellaneous glyphs')
-            ->setCellValue('A5', '안녕하세요');
+            $week_list = $model->get_stats_week_list();
+            $i = 2;
+            foreach ($week_list as $week_row) {
+                $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue("A$i", $week_row->start . "~" . $week_row->end)
+                    ->setCellValue("B$i", $week_row->pc_count)
+                    ->setCellValue("C$i", $week_row->mo_count)
+                    ->setCellValue("D$i", $week_row->stats_count);
+                $i = $i + 1;
+            }
 
-        // Rename worksheet
-        $objPHPExcel->getActiveSheet()->setTitle('Simple');
+            // Rename worksheet
+            $objPHPExcel->getActiveSheet()->setTitle('주별 접속 통계');
+        } elseif ($type == '3') {
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue('A1', '월별 접속연월')
+                ->setCellValue('B1', '월별 PC 접속수')
+                ->setCellValue('C1', '월별 Mobile 접속수')
+                ->setCellValue('D1', '월별 총접속수');
 
+            $month_list = $model->get_stats_month_list();
+            $i = 2;
+            foreach ($month_list as $month_row) {
+                $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue("A$i", $month_row->stats_date)
+                    ->setCellValue("B$i", $month_row->pc_count)
+                    ->setCellValue("C$i", $month_row->mo_count)
+                    ->setCellValue("D$i", $month_row->stats_count);
+                $i = $i + 1;
+            }
+
+            // Rename worksheet
+            $objPHPExcel->getActiveSheet()->setTitle('월별 접속 통계');
+        }
 
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
         $objPHPExcel->setActiveSheetIndex(0);
-
-        $filename = '01simple.xlsx';
+        $timestam = time();
+        $filename = "excel_statistics_".$timestam.".xlsx";
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="' . $filename . '"');
         header('Cache-Control: max-age=0');

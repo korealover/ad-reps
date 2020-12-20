@@ -25,6 +25,9 @@
             <li <?= $current_left=="event"?"class=\"current\"":FALSE?>><a href="/manager/view/event"><i class="glyphicon glyphicon-gift"></i> 이벤트 관리</a></li>
             <?php }?>
             <?php if($admin_menu=='1001'){?>
+            <li <?= $current_left=="stats"?"class=\"current\"":FALSE?>><a href="/manager/view/stats"><i class="glyphicon glyphicon-random"></i> 접속 추이</a></li>
+            <li <?= $current_left=="statstot"?"class=\"current\"":FALSE?>><a href="/manager/view/statstot"><i class="glyphicon glyphicon-floppy-save"></i> 접속 통계</a></li>
+           <!--
             <li class="submenu <?= ($current_left=="stats" || $current_left=="statstot" || $current_left=="statsday" || $current_left=="statsweek" || $current_left=="statsmonth")?" current ":FALSE?>">
                 <a href="#">
                     <i class="glyphicon glyphicon-comment"></i> 통계
@@ -37,14 +40,17 @@
                     <li <?= $current_left=="statsweek"?"class=\"current\"":FALSE?>><a href="/manager/view/statsweek">주별 접속 통계</a></li>
                     <li <?= $current_left=="statsmonth"?"class=\"current\"":FALSE?>><a href="/manager/view/statsmonth">월별 접속 통계</a></li>
                 </ul>
-            </li>
+            </li> -->
             <?php }?>
             <?php if($admin_menu=='1001'){?>
             <li <?= $current_left=="admin"?"class=\"current\"":FALSE?>><a href="/manager/view/admin"><i class="glyphicon glyphicon-user"></i> 관리자 관리</a></li>
             <?php }?>
             <?php if($admin_menu=='1001'){?>
             <li <?= $current_left=="howto"?"class=\"current\"":FALSE?>><a href="/manager/view/howto"><i class="glyphicon glyphicon-calendar"></i> 에디터 사용법</a></li>
+            <li><a href="https://analytics.google.com/analytics/web/?hl=ko&pli=1#/p249978305/reports/home" target="_blank"><i class="glyphicon glyphicon-stats"></i>Google Analytics</a></li>
+
 <!--
+            <li <?= $current_left=="analytics"?"class=\"current\"":FALSE?>><a href="/manager/view/analytics"><i class="glyphicon glyphicon-stats"></i>Google Analytics</a></li>
             <li <?= $current_left=="calendar"?"class=\"current\"":FALSE?>><a href="/manager/view/calendar"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
             <li <?= $current_left=="tables"?"class=\"current\"":FALSE?>><a href="/manager/view/tables"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
             <li <?= $current_left=="buttons"?"class=\"current\"":FALSE?>><a href="/manager/view/buttons"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
