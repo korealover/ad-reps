@@ -9,7 +9,7 @@
     <script src="https://vod.premeet.co.kr/premeet/vr/viral/TemplateData/UnityProgress.js"></script>
     <script src="https://vod.premeet.co.kr/premeet/vr/viral/Build/UnityLoader.js"></script>
     <script>
-        var unityInstance = UnityLoader.instantiate("unityContainer", "http://vods.premeet.co.kr/premeet/vr/viral/Build/viral.json", {onProgress: UnityProgress});
+        var unityInstance = UnityLoader.instantiate("unityContainer", "https://vod.premeet.co.kr/premeet/vr/viral/Build/viral.json", {onProgress: UnityProgress});
     </script>
 </head>
 <body bgcolor="#000000" topmargin="0" leftmargin="0">
